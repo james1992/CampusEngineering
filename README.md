@@ -16,10 +16,16 @@ Here are some examples of the scripts I have posted here:
 
 ### SQL
 
+I will be putting up some scripts for various views and stored procedures that I am currently working on.
 
 #### JavaScript
 
+I intend to eventually create at least some basic JavaScript based web maps running off the ArcGIS JavaScript API.  This is a future goal and will not be populated in the near future.
 
 Data
 ----
+
+### Geojson
+
+I will host some publicly available data in geojson format soon, data can also be accessed through WAGDA from the archive databases that are maintained by the UW Libraries.
 
