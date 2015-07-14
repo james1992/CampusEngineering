@@ -5,12 +5,13 @@
 ###
 
 ############################################################################# 
-### Description: This function takes the Master  Equipment Excel file that
+### Description: This script takes the Master  Equipment Excel file that
 ### is updated by Michael Flanagan and converts it first to an ESRI table.
 ### With that table the script is able to extract the entries and place them 
-### into the relevent tables in SQL which power the web maps.  Any records 
-### that are already in the table are skipped.  The function is run after an
-### an alert is sent from SharePoint that the document has been updated.
+### into the relevent tables in SQL which power the web maps.  If the EIO for 
+### the row is already in the table, then it is skipped.  The function is run
+### after an an alert is sent from SharePoint that the document has been updated.
+###
 
 
 ############################################################################# 

@@ -5,10 +5,14 @@
 ###
 
 ############################################################################# 
-### Description:
-### 
-### 
-### 
+### Description: This script takes the Master Equipment Excel that is updated
+### by Michael Flanagan and coverts the Excel into an ESRI table.  With the 
+### ESRI table the script is able to extract all of the entries and place them
+### into the relevent tables in SQL Server.  The purpose of this script is to
+### update any rows that have been changed in the Excel, for example the room
+### number has been changed.  Any rows that are new or have not changed are
+### skipped.
+###
 
 
 ############################################################################# 
@@ -49,7 +53,11 @@ def main(ExcelTable, InputDescriptionFields, InputLocationFields, AuxTable, AuxF
     
 def UpdateExistingRows(Table, Fields, DescriptionExcelList):
     ''' 
-    
+    This function takes the table in SQL Server that stores the
+    descriptive information about the equipment, the fields in that
+    table and a list from the master excel with the descriptive
+    information.  It then updates any existing rows that have been
+    altered in the Excel.
     '''
     # Initialize editing environment
     edit = arcpy.da.Editor(r"Database Connections\IAMUW_REPLICATION.sde")
@@ -98,7 +106,11 @@ def UpdateExistingRows(Table, Fields, DescriptionExcelList):
 
 def InsertAdditionalRows(Table, Fields, LocationExcelList, ExistingLocationsList):
     '''
-    Function that 
+    Function that takes the equipment location table in SQL Server along with
+    the fields in that table, the location information from the master excel and
+    what locations already exist in the database.  If the entry for a given EIO
+    in the database does not match what is in the Excel then a new row is added
+    with the information from the Excel.  This will provide a location history.
     '''
     # Initialize editing environment
     edit = arcpy.da.Editor(r"Database Connections\IAMUW_REPLICATION.sde")
