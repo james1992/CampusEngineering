@@ -1,8 +1,9 @@
 ############################################################################# 
-### Jay Dahlstrom
-### Campus Engineering, University of Washington
-### June 17, 2014
-###
+### Author: Jay Dahlstrom
+### Entity: Campus Engineering, University of Washington
+### Python Version: 2.7.8
+### Date Created: June 17, 2015
+### Last Modified Date: September 21, 2015
 
 ############################################################################# 
 ### Description: This project required that the working feature class support
@@ -10,8 +11,11 @@
 ### option.  To get new records back to the production tables a python script
 ### was required.  This script truncates the production tables to remove old
 ### entries and then uses a search cursor to extract all of the rows from each
-### of the three tables and finally an insert cursor is used to add the rows
+### of the three tables and finally an insert cursor is used to add those rows
 ### to the production tables.
+###
+### Note: This script needs to be run last
+###
 
 
 ############################################################################# 
@@ -27,10 +31,13 @@ from arcpy import env
 
 # Equipment Tables, names are the same in both databases
 EquipmentTables = ["CEO_EQUIPMENT_INVENTORY", "CEO_EQUIPMENT_INVENTORY_AUX", "CEO_EQUIPMENT_INVENTORY_AUX_LOCATION"]
+
 # Fields to be updated in Feature Class
 GeomFields = ["FEATURE_ID", "FEATURE_TYPE", "FEATURE_STATUS", "FEATURE_STATUS_DATE", "NOTES", "SHAPE@XY"]
+
 # Fields to be updated in Aux Table
 DescriptionFields = ["EIO", "EQUIPMENT_DESCRIPTION", "MANUFACTURE", "MODEL", "SERIAL_NUMBER", "BUDGET_NUMBER"]
+
 # Fields to be updated in Aux Location Table
 LocationFields = ["EIO", "FACNAME", "WING", "ROOM_NUMBER", "LOCATION_DESCRIPTION", "DATE", "CUSTODIAN"]
 
@@ -40,15 +47,17 @@ LocationFields = ["EIO", "FACNAME", "WING", "ROOM_NUMBER", "LOCATION_DESCRIPTION
 
 def main(TableNames, FeatureClassFields, AuxFields, AuxLocationFields):
     TruncateProductionTables(TableNames)
+    
     # Create nested list of fields to allow for iteration
     Fields = [FeatureClassFields, AuxFields, AuxLocationFields]
+    
     # Initialize count variable for iteration
     count = 0
     for DatabaseTable in TableNames:
         NestedList = ExtractDatabaseRecords(DatabaseTable, Fields[count])
         Repopulatetable(DatabaseTable, Fields[count], NestedList)
         count = count + 1
-    print 'all records have been copied to production tables'
+    print 'All scripts have been run successfully and production tables are now synced'
 
 def TruncateProductionTables(Tables):
     '''
@@ -88,8 +97,9 @@ def ExtractDatabaseRecords(Table, Fields):
 def Repopulatetable(Table, Fields, EquipmentList):
     '''
     Function that takes a nested list for a particular table
-    and inserts new rows into that table.  Only the GlobalIDs
-    will not match between the source and destination tables.
+    and inserts new rows into that table from the nested list.
+    Only the GlobalIDs will not match between the source and
+    destination tables.
     '''
     # Set editing environment for versioned table
     workspace = env.workspace = r"Database Connections/IAMUW-FS_CEO.sde"

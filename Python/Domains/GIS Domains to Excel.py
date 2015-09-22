@@ -28,13 +28,13 @@ import arcpy
 ### *Make sure to leave the 'r' infront of all file paths
 
 # ESRI Geodatabase that contains the domains you want to export
-DomainDatabase = r"Database Connections\IAMUW-FS_MAC.sde"
+DomainDatabase = r"Database Connections\IAMUW-FS_CEO.sde"
 # Domain Name filter, keyword in domain name used to filter domains out from script
 DomainFilter = "DOMAIN"
 # ESRI Geodatabase where the domains will be made into individual tables
-IntermediateDatabase = r"C:\Users\jamesd26\Desktop\AM Domains\DomainTables_2_23.gdb"
+IntermediateDatabase = r"C:\Users\jamesd26\Desktop\Domain Updates\AM Domains.gdb"
 # Folder location on computer/network drive
-OutputFolder = r"Z:\IAMUW GIS DOMAINS\1.23.15"
+OutputFolder = r"Z:\IAMUW GIS DOMAINS\Domains_AUX"
 
 
 #############################################################################  
@@ -59,8 +59,9 @@ def DomainToTable(DomainLocation, NameFilter, TableLocation):
         for Domain in Domains:
                 if NameFilter in Domain:
                         print Domain
-                        Table = os.path.join(export_db, domain)
+                        Table = os.path.join(TableLocation, Domain)
                         arcpy.DomainToTable_management(DomainLocation, Domain, Table,'Code','Description')
+        print 'done exporting domains'
 
 def TableToExcel(TableLocation, OutputFolder):
         '''
@@ -74,7 +75,8 @@ def TableToExcel(TableLocation, OutputFolder):
                 OutputExcel = Table + ".xls"
                 OutputPath = os.path.join(OutputFolder, OutputExcel)
                 print OutputPath
-                arcpy.TableToExcel_conversion(table, Output_XLS)
+                arcpy.TableToExcel_conversion(Table, OutputPath)
+        print 'done creating Excel files'
 	
 if __name__ == "__main__":
     main(DomainDatabase, DomainFilter, IntermediateDatabase, OutputFolder)

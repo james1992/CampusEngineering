@@ -1,18 +1,22 @@
 ############################################################################# 
-### Jay Dahlstrom
-### Campus Engineering, University of Washington
-### June 9, 2014
-###
+### Author: Jay Dahlstrom
+### Entity: Campus Engineering, University of Washington
+### Python Version: 2.7.8
+### Date Created: June 9, 2015
+### Last Modified Date: September 21, 2015
+### 
 
 ############################################################################# 
 ### Description: This script takes the Master  Equipment Excel file that
 ### is updated by Michael Flanagan and converts it first to an ESRI table.
-### With that table the script is able to extract the entries and place them 
-### into the relevent tables in SQL which power the web maps.  If the EIO for 
-### the row is already in the table, then it is skipped.  The function is run
-### after an an alert is sent from SharePoint that the document has been updated.
+### With that table the script is then able to extract the entries and place them 
+### into the relevent tables in SQL which power web maps.  If the piece of 
+### equipment already has an entry in GIS then it skipped by this procedure.
+### The function is run after an an alert is sent from SharePoint that
+### the document has been updated.
 ###
-
+### Note: The equipment updates script should be run following this script
+###
 
 ############################################################################# 
 ### Libraries
@@ -28,24 +32,24 @@ import arcpy
 Workspace = r"Database Connections\IAMUW_REPLICATION.sde"
 
 # Location of Master Excel file
-Excel = r"C:\Users\jamesd26\Desktop\Full_TS_Equipment_List.xlsx"
+Excel = r"C:\Users\jamesd26\Desktop\TEST\SharePoint\Michael Flanagan\EIO MASTER\EIO MASTER.xlsx"
 
 # Sheet to be used in Excel file
-Sheet = "Transportation Svcs."
+Sheet = "Sheet1"
 
-# Table to be created from Excel File
-OutputExcelTable = r"C:\Users\jamesd26\Desktop\Temp\zEquipmentInventory.gdb\EIO"
+# Temporary table to be created from Excel File
+OutputExcelTable = r"C:\Users\jamesd26\Desktop\Domain Updates\zEquipmentInventory.gdb\EIO"
 
 # Fields to be extracted from Excel table for equipment descriptions
-DescriptionFieldInputs = ["Inventory_Tag__", "Equipment_Description", "Manufacturer", "Model", "Serial__", "Budget"]
+DescriptionFieldInputs = ["Asset", "Description", "Manufacturer", "Model", "Serial_", "Budget"]
 
-# Equipment description table, used for web map
+# Equipment description table in SQL Server, used for web map
 DescriptionTable = r"Database Connections\IAMUW_REPLICATION.sde\CEO_EQUIPMENT_INVENTORY_AUX"
 
 # Fields to be extracted from Excel table for equipment locations
-LocationFieldInputs = ["Inventory_Tag__", "Building", "Wing", "Room", "Other_Location", "Current_Custodian"]
+LocationFieldInputs = ["Asset", "Building", "Wing", "Room", "Other_Loc", "Custodian"]
 
-# Equipment location table, used for web map
+# Equipment location table in SQL Server, used for web map
 LocationTable = r"Database Connections\IAMUW_REPLICATION.sde\CEO_EQUIPMENT_INVENTORY_AUX_LOCATION"
 
 #############################################################################  
@@ -53,6 +57,8 @@ LocationTable = r"Database Connections\IAMUW_REPLICATION.sde\CEO_EQUIPMENT_INVEN
 ###
 
 def main(ProductionWorkspace, ExcelDoc, ExcelSheet, OutputTable, DescriptionFields, EquipmentDescriptionTable, LocationFields, EquipmentLocationTable):
+    print 'First I will add any new pieces of equipment.  Here are the rows that have been added:'
+
     # Create table from Excel
     ExcelToTable(ExcelDoc, ExcelSheet, OutputTable)
 
@@ -76,7 +82,8 @@ def ExcelToTable(ExcelFile, SheetName, TableName):
     row for column names and then the rest should be rows
     containing data.
     '''
-    arcpy.env.workspace = r"C:\Users\jamesd26\Desktop\Temp\zEquipmentInventory.gdb"
+    # Location of File GDB
+    arcpy.env.workspace = r"C:\Users\jamesd26\Desktop\Domain Updates\zEquipmentInventory.gdb"
     #Remove existing table
     arcpy.env.overwriteOutput = True
     arcpy.ExcelToTable_conversion(ExcelFile, TableName, SheetName)
@@ -84,7 +91,7 @@ def ExcelToTable(ExcelFile, SheetName, TableName):
 def IdentifyExistingEquipment(InputTable):
     '''
     Given an input table this function iterates through each
-    row and grabs the EIO number from each and returns them
+    row and grabs each EIO number and returns them
     as a list.  This is used to check if a record for that
     equipment already exists.
     '''
@@ -92,7 +99,6 @@ def IdentifyExistingEquipment(InputTable):
     with arcpy.da.SearchCursor(InputTable, ['EIO']) as cursor:
         for row in cursor:
             EioList.append(row[0])
-    del row
     del cursor
     return EioList
 
@@ -100,7 +106,9 @@ def ExtractEquipmentDescription(TableName, FieldNames):
     '''
     Function that given a table and a list of columns (as string)
     iterates through each row of the table and puts those
-    values into a nested list.
+    values into a nested list.  That nested list is returned.
+    The function is used on the ESRI table that was created
+    in the Excel To Table function for description data.
     '''
     EquipmentList = []
     with arcpy.da.SearchCursor(TableName, FieldNames) as cursor:
@@ -109,7 +117,6 @@ def ExtractEquipmentDescription(TableName, FieldNames):
             BudgetNumber = row[5].replace('-', '')
             # Create nested lists for each row
             EquipmentList.append([row[0], row[1], row[2], row[3], row[4], BudgetNumber])
-    del row
     del cursor
     return EquipmentList
 
@@ -127,10 +134,12 @@ def InsertEquipmentDescription(Workspace, DescriptionTable, EquipmentDescription
     edit.startOperation()
     with arcpy.da.InsertCursor(DescriptionTable, ('EIO', 'EQUIPMENT_DESCRIPTION', 'MANUFACTURE', 'MODEL', 'SERIAL_NUMBER', 'BUDGET_NUMBER')) as DescriptionInsert:
         for entry in EquipmentDescriptionList:
+            print entry
             # If equipment is already inventoried then skip
             if str(entry[0]) in ExistingDescriptions:
                 pass
             else:
+                print entry
                 DescriptionInsert.insertRow(entry)
     edit.stopOperation()
     # Stop editing and save edits
@@ -140,12 +149,14 @@ def ExtractEquipmentLocationInformation(TableName, FieldNames):
     '''
     Function that given a table and a list of columns (as string)
     iterates through each row of the table and puts those
-    values into a nested list.
+    values into a nested list.  That nested list is returned.
+    The function is used on the ESRI table that was created
+    in the Excel To Table function for location data.
     '''
     EquipmentLocationList = []
     with arcpy.da.SearchCursor(TableName, FieldNames) as cursor:
         for row in cursor:
-            # Create nested lists for each row
+            # Create nested lists for each row, add entry status that 'CURRENT' for status for view
             EquipmentLocationList.append([row[0], row[1], row[2], row[3], row[4], row[5]])
     del row
     del cursor
@@ -163,7 +174,7 @@ def InsertEquipmentLocationInformation(Workspace, LocationTable, EquipmentLocati
     edit = arcpy.da.Editor(Workspace)
     edit.startEditing(False, True)
     edit.startOperation()
-    with arcpy.da.InsertCursor(LocationTable, ('EIO', 'FACNAME', 'WING', 'ROOM_NUMBER', 'LOCATION_DESCRIPTION', 'CUSTODIAN')) as DescriptionInsert:
+    with arcpy.da.InsertCursor(LocationTable, ('EIO', 'FACNAME', 'WING', 'ROOM_NUMBER', 'LOCATION_DESCRIPTION', 'CUSTODIAN', 'LOCATION_STATUS')) as DescriptionInsert:
         for entry in EquipmentLocationList:
             if str(entry[0]) in ExistingEquipment:
                 # If equipment is already inventoried then skip
