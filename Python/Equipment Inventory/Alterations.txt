@@ -1,0 +1,199 @@
+-- November 3rd
+
+-Adds
+
+[u'1280587', u'TRASH COMPACTOR', u'MARATHON', u'RJ100SC30', u'2011071', u'043577']
+[u'1313479', u'COMPUTER', u'DELL', u'PRECISION TOWER 1790', u'6W96W52', u'043567']
+[u'1331748', u'BIG BRUTE JETTER', u'BIG BRUT', u'3NW2809-SO', u'6022105AND150-CONT', u'043544']
+[u'1331749', u'GENIE LIFT', u'GENIE', u'GR-20', u'GR16-40479', u'043548']
+[u'1331825', u'COMBUSTION ANALYZER KIT', u'TESTO', u'330-1G-KITH', u'02672325', u'043543']
+[u'1280587', u'1028-Bryants Building', u'', u'102', u'', u'NEWCOMER, EMILY']
+[u'1313479', u'4593-UW Tower Building T', u'', u'121', u'', u'SWANSON, TROY']
+[u'1331748', u'1148-Plant Services Building', u'', u'253', u'STORES PO 106555PS', u'BRIHAGEN, ERIK']
+[u'1331749', u'1242-Physics-Astronomy Buildin', u'', u'', u'PARKING GARAGE', u'BAXMANN, DALE']
+[u'1331825', u'1113-SW Maintenance Bldg', u'', u'129', u'STORES PO 105799SW', u'YAGER, JIM']
+
+-Updates
+
+['1307161', u'1148-Plant Services Building', u'', u'122', u'95554PS00', u'MEEKER, BRAD']
+['1029153', u'1225-Magnuson Health Sciences', u'E', u'107', u'SH 58 FRANKENHAUSER', u'FRANKENHAUSER, AL']
+['1307166', u'1148-Plant Services Building', u'', u'122', u'', u'MEEKER, BRAD']
+['1029074', u'1148-Plant Services Building', u'', u'222', u'6 A8', u"O'CONNOR, JOSEPH"]
+['1029114', u'1148-Plant Services Building', u'', u'222', u'', u"O'CONNOR, JOSEPH"]
+['1331709', u'1328-Magnuson Health Sciences', u'D', u'124C', u'STORES PO 101571HS', u'WECHSELBERGER, ROY']
+['1307156', u'1148-Plant Services Building', u'', u'121', u'WAREHOUSE 77801PS', u'MEEKER, BRAD']
+['1307162', u'1148-Plant Services Building', u'', u'121', u'WAREHOUSE 77801PS', u'MEEKER, BRAD']
+['1313478', u'1026-Plant Operations Annex 6', u'', u'101A', u'', u'ESCOBAR, CESAR']
+['1212872', u'C17-KING COUNTY', u'', u'', u'VEHICLE 420', u'CHOE, SOOK YANG']
+['1250502', u'4173-Corp Yard Container 2', u'', u'', u'', u'BRIHAGEN, ERIK']
+['1250532', u'1148-Plant Services Building', u'', u'151B', u'SH 15', u'STEELE, TOM']
+['1250533', u'1148-Plant Services Building', u'', u'251B', u'SH 15MECH', u'STEELE, TOM']
+['1207641', u'1148-Plant Services Building', u'', u'122', u'', u'MEEKER, BRAD']
+['1207644', u'1148-Plant Services Building', u'', u'122', u'', u'MEEKER, BRAD']
+['1250622', u'1328-Magnuson Health Sciences', u'D', u'124', u'STORES PO 81775SH', u'HUBBELL, JOSEPH']
+['1250648', u'1148-Plant Services Building', u'', u'231A', u'PO 98853PS', u'ECKHOUSE, JOHN']
+['740751', u'1148-Plant Services Building', u'', u'222', u'TOOL ROOM', u"O'CONNOR, JOSEPH"]
+['1105889', u'4593-UW Tower Building T', u'', u'13', u'LOWER LEVEL', u'SWANSON, TROY']
+['1159844', u'4593-UW Tower Building T', u'', u'13', u'LOWER LEVEL', u'SWANSON, TROY']
+['1159865', u'4593-UW Tower Building T', u'H', u'13', u'LOWER LEVEL', u'SWANSON,TROY']
+['1159866', u'4593-UW Tower Building T', u'', u'13', u'LOWER LEVEL', u'SWANSON, TROY']
+['1159867', u'4593-UW Tower Building T', u'', u'13', u'LOWER LEVEL', u'SWANSON, TROY']
+['1307167', u'1148-Plant Services Building', u'', u'122', u'', u'MEEKER, BRAD']
+['1161512', u'1028-Bryants Building', u'', u'10', u'BRYANT SHED', u'JOHNSON, ERIC']
+['1207601', u'1028-Bryants Building', u'', u'103', u'', u'NEWCOMER, EMILY']
+['1207624', u'1028-Bryants Building', u'', u'', u'OUTDOOR SHED', u'NEWCOMER, EMILY']
+['1207638', u'1028-Bryants Building', u'', u'10', u'SHED', u'SEAMAN, DEAN']
+['1207646', u'1028-Bryants Building', u'', u'', u'OUTDOOR SHED', u'NEWCOMER, EMILY']
+['1207647', u'1028-Bryants Building', u'', u'', u'OUTDOOR SHED', u'NEWCOMER, EMILY']
+['1272154', u'1028-Bryants Building', u'', u'', u'OUTDOOR SHED', u'NEWCOMER, EMILY']
+['1272155', u'1028-Bryants Building', u'', u'', u'OUTDOOR SHED', u'NEWCOMER, EMILY']
+['1304601', u'1125-Odegaard Undergraduate Li', u'', u'', u'N SIDE OF BLDG, RED SQUARE', u'NEWCOMER, EMILY']
+['1304602', u'1125-Odegaard Undergraduate Li', u'', u'', u'S SIDE OF BLDG, RED SQUARE', u'NEWCOMER, EMILY']
+['1304603', u'1164-Gerberding Hall', u'', u'', u'BY BLDG, RED SQUARE', u'NEWCOMER, EMILY']
+['1304604', u'1276-Kane Hall', u'', u'', u'SE SIDE OF BLDG, RED SQUARE', u'NEWCOMER, EMILY']
+['1304605', u'1276-Kane Hall', u'', u'', u'RED SQUARE/SPOKANE LANE', u'NEWCOMER, EMILY']
+['1304606', u'1273-Portage Bay Parking Facil', u'', u'', u'NW SIDE OF BLDG', u'NEWCOMER, EMILY']
+['1304607', u'1126-Meany Hall', u'', u'', u'BY BLDG RED SQUARE', u'NEWCOMER, EMILY']
+['1304608', u'1193-Suzzallo Library', u'', u'', u'OUTSIDE MAIN ENTRANCE', u'NEWCOMER, EMILY']
+['1304609', u'1153-Student Union Building', u'', u'', u'OUTSIDE MAIN ENTRANCE', u'NEWCOMER, EMILY']
+['1304610', u'1153-Student Union Building', u'', u'', u'NORTH ENTRANCE OUTSIDE', u'NEWCOMER, EMILY']
+['1304611', u'1153-Student Union Building', u'', u'', u'SW ENTRANCE OUTSIDE', u'NEWCOMER, EMILY']
+['1304612', u'1153-Student Union Building', u'', u'', u'OUTSIDE BIKE RACK', u'NEWCOMER, EMILY']
+['1304613', u'1153-Student Union Building', u'', u'', u'HUB BUS STOP', u'NEWCOMER, EMILY']
+['1304614', u'1145-More Hall Annex', u'', u'', u'COURTYARD BY BIKE RACKS', u'NEWCOMER, EMILY']
+['1304615', u'1022-Wilson Annex', u'', u'', u'NEAR MONTLAKE TRIANGLE PED ARE', u'NEWCOMER, EMILY']
+['1304616', u'1151-Winkenwerder Forest Scien', u'', u'', u'ALONG RAINIER VISTA WALKWAY', u'NEWCOMER, EMILY']
+['1304617', u'1022-Wilson Annex', u'', u'', u'RAINIER VISTA WALKWAY', u'NEWCOMER, EMILY']
+['131516', u'1302-Hutchinson Hall', u'', u'', u'NORTHEAST OF BUILDING ENTRANCE', u'NEWCOMER, EMILY']
+['1318501', u'3991-Paul G. Allen Center for', u'', u'', u'OUTSIDE ENTRANCE', u'NEWCOMER, EMILY']
+['1318503', u'1125-Odegaard Undergraduate Li', u'', u'', u'OUTSIDE BY GEORGE ENTRANCE', u'NEWCOMER, EMILY']
+['1318504', u'1242-Physics-Astronomy Buildin', u'B', u'', u'ENTRANCE TO COURTYARD', u'NEWCOMER, EMILY']
+['1318505', u'1278-Burke Memorial-Washington', u'', u'', u'ENTRANCE OF RETRO CAFE', u'NEWCOMER, EMILY']
+['1318506', u'1136-Padelford Hall', u'', u'', u'NEXT TO BUS STOP', u'NEWCOMER, EMILY']
+['1318507', u'4057-William H. Foege Bioengin', u'', u'', u'NORTH BUILDING ENTRANCE', u'NEWCOMER, EMILY']
+['1318508', u'1179-Parrington Hall', u'', u'', u'MEMORIAL WAY BUS STOP', u'NEWCOMER, EMILY']
+['1318509', u'1351-Anderson Hall', u'', u'', u'BUS STOP', u'NEWCOMER, EMILY']
+['1318510', u'1347-Mechanical Engineering Bu', u'', u'', u'OUTSIDE OF WEST ENTRANCE', u'NEWCOMER, EMILY']
+['1318511', u'1299-Music Building', u'', u'', u'OUTSIDE OF ENTRANCE', u'NEWCOMER, EMILY']
+['1318512', u'1206-Bagley Hall', u'', u'', u'IN FRONT OF OUTDOOR STEPS LEAD', u'NEWCOMER, EMILY']
+['1318513', u'1327-Savery Hall', u'', u'', u'OUTSIDE OF EAST ENTRANCE', u'NEWCOMER, EMILY']
+['1318514', u'1192-Miller Hall', u'', u'', u'ON CORNER OF SMITH AND PIERCE', u'NEWCOMER, EMILY']
+['1318515', u'1161-Communications Building', u'', u'', u'BY BUS STOP', u'NEWCOMER, EMILY']
+['1318517', u'1156-Mackenzie Hall', u'', u'', u'NORTHEAST CORNER OF BUILDING', u'NEWCOMER, EMILY']
+['1318518', u'1332-Sieg Hall', u'', u'', u'ENTRANCE FACING DRUMHELLER FOU', u'NEWCOMER, EMILY']
+['1318519', u'1197-Mary Gates Hall', u'', u'', u'TOP OF STAIRS ON GRANT LANE LE', u'RECYCLING & SOLID WA']
+['1318520', u'1200-Johnson Hall', u'', u'', u'ENTRANCE FACING RAINIER VISTA', u'NEWCOMER, EMILY']
+['1318521', u'1198-Guggenheim Hall', u'', u'', u'ENTRANCE LEADING TO DRUMHELLER', u'NEWCOMER, EMILY']
+['1318522', u'1420-William H. Gates Hall', u'', u'', u'CORNER OF MEMORIAL WAY AND CLA', u'NEWCOMER, EMILY']
+['893601', u'1304-Magnuson Health Sciences', u'', u'', u'D DOCK', u'NEWCOMER, EMILY']
+['893602', u'1173-Fialkow Biomedical Scienc', u'', u'', u'K DOCK', u'NEWCOMER, EMILY']
+
+- deletes
+
+1111054
+1202038
+1235298
+1258076
+1251468
+1251480
+1217721
+1258081
+1251496
+1178202
+1202576
+1207645
+1197533
+858057
+1250147
+None
+1197560
+1172963
+1197563
+1197562
+1172963
+1237214
+1197568
+856685
+1172971
+562042
+858284
+858284
+1279795
+1212784
+1279796
+1212786
+1237288
+1212853
+30020942
+12122766
+1197571
+1172973
+1212825
+12122824
+1197558
+1197557
+1197590
+1212854
+1260128
+1260128
+856685
+1279790
+128652
+1279791
+1279792
+1212788
+1279797
+1197599
+858315
+781967
+1286271
+1286272
+1286275
+999999
+1212829
+1172968
+1197552
+1172958
+1172957
+172959
+1237226
+1237248
+1287254
+1212791
+562164
+858321
+1237238
+1237238
+1279729
+119588
+1260135
+1279727
+1212806
+30020945
+85433
+1286268
+858261
+858161
+86042
+781979
+858379
+562430
+858442
+1279759
+1279750
+1260150
+1197585
+1212816
+858394
+1237260
+1279793
+1279794
+1279785
+1197586
+858242
+None
+None
+1322608
+1266071
+1280512
+15259219

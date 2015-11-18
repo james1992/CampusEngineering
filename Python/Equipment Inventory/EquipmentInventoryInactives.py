@@ -38,7 +38,7 @@ OutputExcelTable = r"C:\Users\jamesd26\Desktop\Domain Updates\zEquipmentInventor
 ExcelEio = ['Asset']
 
 # Location of the geometry feature class, used for web maps
-GisGeometryFc = r"Database Connections\IAMUW_REPLICATION.sde\CEO_EQUIPMENT_INVENTORY"
+GisGeometryFc = r"Database Connections\PUB-REPLICATION.sde\CEO_EQUIPMENT_INVENTORY"
 
 # EIO field in geometry
 GisEio = ['FEATURE_ID']
@@ -98,7 +98,7 @@ def UpdateInactiveEquipment(FeatureClass, InactiveList):
     inactive. This is done through an update cursor.
     '''
     # Initialize editing environment
-    edit = arcpy.da.Editor(r"Database Connections\IAMUW_REPLICATION.sde")
+    edit = arcpy.da.Editor(r"Database Connections\PUB-REPLICATION.sde")
     edit.startEditing(False, True)
     edit.startOperation()
     with arcpy.da.UpdateCursor(FeatureClass, ['FEATURE_ID', 'FEATURE_STATUS']) as Cursor:

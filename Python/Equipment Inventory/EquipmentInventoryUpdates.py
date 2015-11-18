@@ -43,13 +43,13 @@ DescriptionFieldsExcel = ['Asset', 'Description', 'Manufacturer', 'Model', 'Seri
 LocationFieldsExcel = ['Asset', 'Building', 'Wing', 'Room', 'Other_Loc', 'Custodian']
 
 # Equipment description table in SQL Server, used for web map
-DescriptionTable = r"Database Connections\IAMUW_REPLICATION.sde\CEO_EQUIPMENT_INVENTORY_AUX"
+DescriptionTable = r"Database Connections\PUB-REPLICATION.sde\CEO_EQUIPMENT_INVENTORY_AUX"
 
 # Field names used in the Description table in SQL Server
 DescriptionFields = ['EIO', 'EQUIPMENT_DESCRIPTION', 'MANUFACTURE', 'MODEL', 'SERIAL_NUMBER', 'BUDGET_NUMBER']
 
 # Equipment location table in SQL Server, used for web map
-LocationTable = r"Database Connections\IAMUW_REPLICATION.sde\CEO_EQUIPMENT_INVENTORY_AUX_LOCATION"
+LocationTable = r"Database Connections\PUB-REPLICATION.sde\CEO_EQUIPMENT_INVENTORY_AUX_LOCATION"
 
 # Field names used in the Location table in SQL Server
 LocationFields = ['EIO', 'FACNAME', 'WING', 'ROOM_NUMBER', 'LOCATION_DESCRIPTION', 'CUSTODIAN']
@@ -85,7 +85,7 @@ def UpdateExistingDescriptions(Table, Fields, DescriptionExcelList):
     at the end of this function.
     '''
     # Initialize editing environment
-    edit = arcpy.da.Editor(r"Database Connections\IAMUW_REPLICATION.sde")
+    edit = arcpy.da.Editor(r"Database Connections\PUB-REPLICATION.sde")
     edit.startEditing(False, True)
     edit.startOperation()
     with arcpy.da.UpdateCursor(Table, Fields) as Cursor:
@@ -110,7 +110,7 @@ def UpdateExistingLocations(Table, Fields, LocationExcelList):
     at the end of this function.
     '''
     # Initialize editing environment
-    edit = arcpy.da.Editor(r"Database Connections\IAMUW_REPLICATION.sde")
+    edit = arcpy.da.Editor(r"Database Connections\PUB-REPLICATION.sde")
     edit.startEditing(False, True)
     edit.startOperation()
     with arcpy.da.UpdateCursor(Table, Fields) as Cursor:

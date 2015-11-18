@@ -27,15 +27,15 @@ from arcpy import env
 ###
 
 # Path to folder that contains files
-FolderLocation = "Z:\GIS-MIGRATION\IAMUW OID\MC_LANDSCAPEPROFILE"
+FolderLocation = "Z:\GIS-MIGRATION\IAMUW OID\CEO_ELECTRICAL_LUMINARE"
 # GIS workspace
-env.workspace = r"Database Connections\IAMUW_REPLICATION.sde"
+env.workspace = r"Database Connections\PUB-REPLICATION.sde"
 # Related Feature Class
-FeatureClass = "MC_LANDSCAPEPROFILE"
+FeatureClass = "CEO_ELECTRICAL_LUMINARE"
 # OID and GlobalID Column Names
 FeatureClassColumns = ["OBJECTID", "GlobalID"]
 # Attachment Table
-AttachmentTable = "MC_LANDSCAPEPROFILE__ATTACH"
+AttachmentTable = "CEO_ELECTRICAL_LUMINARE__ATTACH"
 # Attachment Fields to be updated
 AttachmentField = ["REL_GLOBALID", "CONTENT_TYPE", "ATT_NAME", "DATA"]
 
@@ -44,9 +44,9 @@ AttachmentField = ["REL_GLOBALID", "CONTENT_TYPE", "ATT_NAME", "DATA"]
 ###
 
 def main(Folder, OriginFc, OriginColumns, DestinationTable, DestinationColumns):
-    PictureList = FilesPathsIntoList(Directory)
-    print "The number of attachments in the directory is: " + len(PictureList)
-    RelationshipList = ObjectIDtoGlobalID(OriginColumns, DestinationTable)
+    PictureList = FilesPathsIntoList(Folder)
+    print "The number of attachments in the directory is: " + str(len(PictureList))
+    RelationshipList = ObjectIDtoGlobalID(OriginFc, OriginColumns)
     FinalizedList = MapGlobalIDtoPicture(PictureList, RelationshipList)
     InsertAttachments(FinalizedList, DestinationTable, DestinationColumns)
     print "All attachments have been added to the destination table"
@@ -60,8 +60,8 @@ def FilesPathsIntoList(Directory):
     '''
     FileList = []
     Files = listdir(Directory)
-    for f in files:
-        picture = join(path, f)
+    for f in Files:
+        picture = join(Directory, f)
         FileList.append([f, picture])
     return FileList
 
@@ -79,7 +79,7 @@ def ObjectIDtoGlobalID(FC, Attributes):
         GlobalIdList.append(RowList)
     del row
     del SearchCursor
-    return GlobalIDList
+    return GlobalIdList
 
 def MapGlobalIDtoPicture(PicList, GuidList):
     '''
@@ -111,11 +111,17 @@ def InsertAttachments(FinalList, Table, Attributes):
     directory.  Files are linked to their geometries based on the REL_GLOBALID
     field.  Nothing is returned by this function.
     '''
+    edit = arcpy.da.Editor(r"Database Connections\PUB-REPLICATION.sde")
+    edit.startEditing(False, True)
+    edit.startOperation()
     with arcpy.da.InsertCursor(Table, Attributes) as AttachmentInsert:
         for item in FinalList:
             PicBinary = open(item[2], "rb").read()
             AttachmentInsert.insertRow([item[0], "image/jpeg", item[1], PicBinary])
     del AttachmentInsert
+    edit.stopOperation()
+    # Stop editing and save edits
+    edit.stopEditing(True)
 
 if __name__ == "__main__":
     main(FolderLocation, FeatureClass, FeatureClassColumns, AttachmentTable, AttachmentField)

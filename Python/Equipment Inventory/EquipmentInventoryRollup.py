@@ -80,7 +80,7 @@ def ExtractDatabaseRecords(Table, Fields):
     rows in the table, so EIO is first.
     '''
     EquipmentList = []
-    env.workspace = r"Database Connections/IAMUW_REPLICATION.sde"
+    env.workspace = r"Database Connections/PUB-REPLICATION.sde"
     with arcpy.da.SearchCursor(Table, Fields) as Cursor:
         for Row in Cursor:
             # Create a temp list that will work for any number of fields
