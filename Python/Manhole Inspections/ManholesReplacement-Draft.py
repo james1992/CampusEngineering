@@ -326,7 +326,7 @@ def SelectLidToMove(SortedLidsWrongLabel,PairDict):
     be returned as a nested list.
     '''
     NoMatches = []
-    print SortedLidsWrongLabel
+    #print SortedLidsWrongLabel
     #print len(SortedLidsWrongLabel)
     if len(SortedLidsWrongLabel) > 0:
         #print 'start'
@@ -342,12 +342,11 @@ def SelectLidToMove(SortedLidsWrongLabel,PairDict):
                             #print PairDict
                             Count = Count + 1
                             RemoveLidsAlreadySelected(SortedLidsWrongLabel, Choice[0])
+                            RemoveLidsWithMatches(SortedLidsWrongLabel, Rank)
                         else:
-                            pass
-                        RemoveLidsWithMatches(SortedLidsWrongLabel, Rank)
-                #print 'here'
+                            pass 
+                print 'here'
                 UpdatedSortedLidsWrongLabel = PrepareWrongLidsForResort(SortedLidsWrongLabel)
-                #print UpdatedSortedLidsWrongLabel
                 FinalDict = SelectLidToMove(UpdatedSortedLidsWrongLabel,PairDict)
                 break
             elif SortedLidsWrongLabel[Rank] == 'None':
@@ -378,10 +377,8 @@ def RemoveLidsWithMatches(SortedLidsWrongLabels, Rank):
     Takes out the lids with wrong labels that have been matched from the
     dictionary.
     '''                                     
-    print SortedLidsWrongLabels
-    print Rank
     SortedLidsWrongLabels.pop(Rank)
-                                                                                        ##### Error with ranks getting through unsorted
+
 def PrepareWrongLidsForResort(OldSortedLidsWrongLabels):
     '''
     After the dictionary of ranked values has been processed at least
@@ -391,8 +388,10 @@ def PrepareWrongLidsForResort(OldSortedLidsWrongLabels):
     wrong lids need to be reorder which one has the closest remaining
     match.    
     '''
+    print 'now'
     NewDict = {}
     if len(OldSortedLidsWrongLabels) > 0:
+        print 'yes'
         for OldRank in OldSortedLidsWrongLabels:
             for WrongLid in OldSortedLidsWrongLabels[OldRank]:
                 if len(OldSortedLidsWrongLabels[OldRank][WrongLid]) == 0:
@@ -411,10 +410,30 @@ def PrepareWrongLidsForResort(OldSortedLidsWrongLabels):
 # Create Maps and Return Results
 
 
-def ReturnLidsWrongLabelsWithoutMatches():
+def ReturnNewlyIdentifiedLids():
     '''
-    Returns any manholes that have an incorrect label that were not
-    matched to a lid to move.
+                                            ##### Each of these functions will create new feature classes to reflect each scenario.
+                                            ##### Maps will likely need to be made manually.
+    '''
+
+def ReturnLidsThatCouldNotBeFound():
+    '''
+
+    '''
+
+def ReturnMislabeledManholes():
+    '''
+
+    '''
+
+def ReturnMatchedManholes():
+    '''
+
+    '''
+
+def ReturnUnMatchedManholes():
+    '''
+
     '''
 
 
