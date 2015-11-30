@@ -67,8 +67,11 @@ def main():
     StormLidPairs = PerformAnalysis(SortedStormLidsWrongLabel)
     
     # Create end products for Jim, includes maps and feature classes
-    CreateDeliverables(FeatureClass, SewerLidPairs, StormLidPairs)
+    AddFc, UnknownFc, WrongSewerFc, WrongStormFc = CreateDeliverables(FeatureClass, SewerLidPairs, StormLidPairs)
 
+    # Updates the data sources for layers in maps used for reports
+    UpdateMapDataSources(AddFc, UnknownFc, WrongSewerFc, WrongStormFc)    
+    
     # Removes the working geodatabase and folder from the computer.
     RemoveGdbFolder()
 
@@ -446,7 +449,7 @@ def PrepareWrongLidsForResort(OldSortedLidsWrongLabels):
     return NewDict
 
 
-# Create Maps and Return Results
+# Create Feature Classes from Results
 
 
 def CreateDeliverables(FeatureClass, SewerLidMatches, StormLidMatches):
@@ -466,8 +469,8 @@ def CreateDeliverables(FeatureClass, SewerLidMatches, StormLidMatches):
     CreateGuidField(FeatureClass)
 
     # Output feature classes for 'Adds', 'Unknowns' and Wrong Labels
-    ReturnNewlyIdentifiedLids(Date, FeatureClass)
-    ReturnLidsThatCouldNotBeFound(Date, FeatureClass)
+    AddsFeatureClass = ReturnNewlyIdentifiedLids(Date, FeatureClass)
+    UnknownFeatureClass = ReturnLidsThatCouldNotBeFound(Date, FeatureClass)
     WrongFeatureClassSewer = ReturnMislabeledManholes(Date, FeatureClass, 'Sewer')
     WrongFeatureClassStorm = ReturnMislabeledManholes(Date, FeatureClass, 'Storm')
 
@@ -479,6 +482,8 @@ def CreateDeliverables(FeatureClass, SewerLidMatches, StormLidMatches):
     
     WrongLidUpdateCursor(WrongFeatureClassSewer, UpdateFields, SewerLidMatches)
     WrongLidUpdateCursor(WrongFeatureClassStorm, UpdateFields, StormLidMatches)
+
+    return AddsFeatureClass, UnknownFeatureClass, WrongFeatureClassSewer, WrongFeatureClassStorm
 
 def CreateGuidField(LidsDataset):
     '''
@@ -502,6 +507,7 @@ def ReturnNewlyIdentifiedLids(DateToday, Dataset):
     '''
     NewFeatureClass = "Adds" + '_' + DateToday
     arcpy.FeatureClassToFeatureClass_conversion(Dataset, "C:\Users\jamesd26\Desktop\ManholeInspections\ManholeResults.gdb", NewFeatureClass, """ "FieldStatus" = 'Add' """)
+    return NewFeatureClass
 
 def ReturnLidsThatCouldNotBeFound(DateToday, Dataset):
     '''
@@ -510,6 +516,7 @@ def ReturnLidsThatCouldNotBeFound(DateToday, Dataset):
     '''
     NewFeatureClass = "Unknown" + '_' + DateToday
     arcpy.FeatureClassToFeatureClass_conversion(Dataset, "C:\Users\jamesd26\Desktop\ManholeInspections\ManholeResults.gdb", NewFeatureClass, """ "FieldStatus" = 'Unknown' """)
+    return NewFeatureClass
     
 def ReturnMislabeledManholes(DateToday, Dataset, System):
     '''
@@ -572,7 +579,36 @@ def WrongLidUpdateCursor(WrongLidsDataset, Fields, LidMatches):
     del Cursor
     
 
-# Clean up Data
+# Update Links in Maps
+
+def UpdateMapDataSources(AddFeatureClass, UnknownFeatureClass, WrongLabelSewerFeatureClass, WrongLabelStormFeatureClass):
+    '''
+    Takes the pre-existing reporting maps and updates the data sources
+    for man hole layers in the table of contents.  In so doing it will
+    ensure that the most current data is always used in reports.
+    '''
+    ChangeDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\Additions_StormManholes.mxd", 'adds', AddFeatureClass)
+    ChangeDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\Unknowns_StormManholes.mxd",'not located',UnknownFeatureClass)
+    ChangeDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\Wrong_SewerManholes.mxd", 'sewer manholes',WrongLabelSewerFeatureClass)
+    ChangeDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\Wrong_StormManholes.mxd", 'storm manholes',WrongLabelStormFeatureClass)
+
+def ChangeDataSource(MXD, LayerName, FeatureClass):
+    '''
+    Takes an MXD file, a layer name and a new feature class name and
+    updates the layer to point to the new feature class.
+    '''
+    mxd = arcpy.mapping.MapDocument(MXD)
+
+    for Item in arcpy.mapping.ListLayers(mxd):
+        if Item.name.lower() == LayerName:
+            Item.replaceDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\ManholeResults.gdb", "FILEGDB_WORKSPACE", FeatureClass)
+        else:
+            pass
+
+    mxd.save()
+            
+
+# Clean up Desktop, Remove Temp Folder
 
 
 def RemoveGdbFolder():

@@ -25,7 +25,7 @@ from operator import itemgetter
 ###
 
 #Location of Domain tables
-env.workspace = r"Database Connections\IAMUW-FS_CEO_AUX.sde"
+env.workspace = r"Database Connections\PUB_DOMAIN.sde"
 
 #############################################################################  
 ###Script Follows
@@ -53,6 +53,7 @@ def CreateSortedList(Tables):
                     DomainList.append([row[0], row[1]])
         DomainList.sort(key=itemgetter(1))
         DomainList.insert(0, [0, u'Undefined'])
+        print DomainList
         RepopulateTable(DomainTable, DomainList)
 
 def TruncateTable(Table):
@@ -60,7 +61,12 @@ def TruncateTable(Table):
     Takes a single ESRI table stored in  SQL server and removes all of its
     rows (truncating the table).  Table schema and metadata are left intact.
     '''
-    arcpy.TruncateTable_management(Table)
+    DatasetVersioned = arcpy.Describe(Table).isVersioned
+    if DatasetVersioned == True:
+        arcpy.UnregisterAsVersioned_management(Table)
+        arcpy.TruncateTable_management(Table)
+    else:
+        arcpy.TruncateTable_management(Table)
 
 def RepopulateTable(Table, DomainList):
     '''
@@ -87,14 +93,14 @@ def ReplaceEsriDomains(Tables):
     for Table in Tables:
         if 'CEO' or 'TS' in Table:
             for Domain in ExistingCeoDomains:
-                #print Table
-                #print Domain.name
                 if Domain.name in Table:
                     arcpy.TableToDomain_management(Table, 'Code', 'Description', r"Database Connections\IAMUW-FS_CEO.sde",Table, '', 'REPLACE')
         if 'MC' in Table:
             for Domain in ExistingMcDomains:
                 if Domain.name in Table:
                     arcpy.TableToDomain_management(Table, 'Code', 'Description', r"Database Connections\IAMUW-FS_MAC.sde",Table, '', 'REPLACE')
+    for Table in Tables:
+        arcpy.TableToDomain_management(Table, 'Code', 'Description', r"Database Connections\PUB_DOMAIN.sde",Table, '', 'REPLACE')
 
 	
 if __name__ == "__main__":
