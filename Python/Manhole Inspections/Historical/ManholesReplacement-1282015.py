@@ -67,7 +67,7 @@ def main():
     StormLidPairs = PerformAnalysis(SortedStormLidsWrongLabel)
 
     print SewerLidPairs
-    print StormLidPairs
+    #print StormLidPairs
     
     # Create end products for Jim, includes maps and feature classes
     AddFc, UnknownFc, WrongSewerFc, WrongStormFc = CreateDeliverables(FeatureClass, SewerLidPairs, StormLidPairs)
@@ -303,16 +303,17 @@ def CreateSortedDistanceLists(LidDictionary):
     '''
     SortedList = []
     for Lid in LidDictionary:
-        if LidDictionary[Lid] == 'None':
-            return LidDictionary
-        else:
-            PairsList = LidDictionary[Lid]
-            if type(PairsList) == type(dict()):
-                pass
-            # Use itemgetter to sort on the distance value
-            PairsList.sort(key=itemgetter(1))
-            # Append the dictionary key and value pair to a nested list
-            SortedList.append([[Lid], PairsList])
+        PairsList = LidDictionary[Lid]
+        #print 'Ran Sort'
+        #print ''
+        #print PairsList
+        #print ''
+        if type(PairsList) == type(dict()):
+            pass
+        # Use itemgetter to sort on the distance value
+        PairsList.sort(key=itemgetter(1))
+        # Append the dictionary key and value pair to a nested list
+        SortedList.append([[Lid], PairsList])
     SortedDictionary = CreateSortedDictionaryList(SortedList)
     return SortedDictionary
 
@@ -361,31 +362,49 @@ def SelectLidToMove(SortedLidsWrongLabel,PairDict):
     incorrect label.  The pair of wrong label to label to move will
     be returned as a dictionary key and value pair.
     '''
-    Count = len(SortedLidsWrongLabel.keys())
-    while Count > 0:
+    NoMatches = []
+    # Conditional used to exit recursive loop when all values have been matched
+    if len(SortedLidsWrongLabel) > 0:
         for Rank in SortedLidsWrongLabel:
+            # Only match pairs if the rank of the wrong lid is first.  This
+            # way only the shortest possible distances will be selected
             if Rank == 1:
                 for Lid in SortedLidsWrongLabel[Rank]:
                     MoveLidOptions = SortedLidsWrongLabel[Rank][Lid]
-                    PairCount = 0
+                    Count = 0
                     for Choice in MoveLidOptions:
-                        if PairCount == 0:
+                        # Only proceed with the shortest distance
+                        if Count == 0:
                             PairDict[Lid] = [Choice[0], Choice[1]]
+                            Count = Count + 1
+                            # Remove the Lid to Move that was selected from all remaining
+                            # key and value pairs
                             RemoveLidsAlreadySelected(SortedLidsWrongLabel, Choice[0])
+                            # Remove the dictionary entry for the wrong label lid that was
+                            # used in this iteration
                             RemoveLidsWithMatches(SortedLidsWrongLabel, Rank)
-                            PairCount = PairCount + 1
                         else:
                             pass
-                TempSortedLidsWrongLabel = PrepareWrongLidsForResort(SortedLidsWrongLabel)
-                SortedLidsWrongLabel = CreateSortedDistanceLists(TempSortedLidsWrongLabel)
+                # Resort the dictionary now that the lids used in the previous pass were removed
+                print SortedLidsWrongLabel
+                UpdatedSortedLidsWrongLabel = PrepareWrongLidsForResort(SortedLidsWrongLabel)
+                # Re-run this function on the updated ranked dictionary.
+                # Do this until all matches have been
+                print Lid
+                print ''
+                print UpdatedSortedLidsWrongLabel
+                FinalDict = SelectLidToMove(UpdatedSortedLidsWrongLabel,PairDict)
+                break
+            # If there is not a rank assigned then append these default values
             elif SortedLidsWrongLabel[Rank] == 'None':
                 PairDict[Rank] = ['None', 'N/A']
-                RemoveLidsWithMatches(SortedLidsWrongLabel, Rank)
             else:
                 pass
-            break
-        Count = Count - 1
-            
+        # Return an arbitrary values to conclude the recursive loop
+        return 'x'
+    else:
+        # Return an arbitrary values to conclude the recursive loop
+        return 'x'
 
 def RemoveLidsAlreadySelected(SortedLidsWrongLabels, LidMoved):
     '''
@@ -394,16 +413,15 @@ def RemoveLidsAlreadySelected(SortedLidsWrongLabels, LidMoved):
     Each lid can only be moved once so they need to be removed from the
     list of available options.
     '''
-    for Rank in SortedLidsWrongLabels:
-        for Lid in SortedLidsWrongLabels[Rank]:
-            MoveLidList = SortedLidsWrongLabels[Rank][Lid]
-            for Item in MoveLidList:
-                if Item[0] == LidMoved:
-                    MoveLidList.remove(Item)
-                else:
-                    pass
+    for Lid in SortedLidsWrongLabels:
+        MoveLidList = SortedLidsWrongLabels[Lid]
+        for Item in MoveLidList:
+            if Item[0] == LidMoved:
+                MoveLidList.remove(Item)
+            else:
+                pass
         # Update the key value pair to omit the selected value
-            SortedLidsWrongLabels[Rank][Lid] = MoveLidList
+        SortedLidsWrongLabels[Lid] = MoveLidList
 
 def RemoveLidsWithMatches(SortedLidsWrongLabels, Rank):
     '''
@@ -424,6 +442,9 @@ def PrepareWrongLidsForResort(OldSortedLidsWrongLabels):
     remaining match.    
     '''
     NewDict = {}
+    #print 'start'
+    #print NewDict
+    #print ''
     # Only if the dictionary has 
     if len(OldSortedLidsWrongLabels) > 0:
         for OldRank in OldSortedLidsWrongLabels:
@@ -431,13 +452,21 @@ def PrepareWrongLidsForResort(OldSortedLidsWrongLabels):
                 # If there are no more possible matches then append
                 # a value of 'None' to the lid with the wrong label
                 if len(OldSortedLidsWrongLabels[OldRank][WrongLid]) == 0:
+                    NewDict = {}
                     NewDict[WrongLid] = 'None'
                 # If there are still values remaining then run the resort
                 else:
                     NewMoveOptions = OldSortedLidsWrongLabels[OldRank][WrongLid]
+                    #print [WrongLid][0]
+                    NewDict = {}
                     NewDict[[WrongLid][0]] = []
+                    #print NewDict
                     for Item in NewMoveOptions:
                         NewDict[[WrongLid][0]].append(Item)
+                    #print 'resort'
+                    #print NewDict
+                    #print ''
+                    NewDict = CreateSortedDistanceLists(NewDict)
     else:
         pass
     return NewDict

@@ -1,0 +1,26 @@
+New Equipment That was Added:
+
+[u'1331750', u'SCALE REMOVAL SYSTEM', u'GOODWAY', u'GDS-15-PH', u'GDS010400', u'043535']
+[u'1331824', u'SOLID SURFACE OVEN', u'SCHULTZ FORMING PRODUCTS', u'SSO8', u'NONE', u'143510']
+[u'1331750', u'1168-Magnuson Health Sciences', u'T', u'730', u'STORES PO 103873HS', u'CARON, DAN']
+[u'1331824', u'1148-Plant Services Building', u'', u'203', u'STORES PO 107737PS', u'MCKINLEY, ED']
+
+Updates to Existing Equipment:
+
+['1251538', u'STAIR CLIMBER', u'LECKRO TRUCK', u'LTA6512E', u'11/1/3310', u'043563']
+['1331825', u'COMBUSTION ANALYZER', u'TESTO', u'330-1G-KITH', u'2672325', u'043543']
+['1212872', u'C17-KING COUNTY', u'', u'', u'VEHICLE 420', u'CHOE, YANG SOOK']
+['1250480', u'1225-Magnuson Health Sciences', u'E', u'107E', u'SH 17 MECH', u'WECHSELBERGER, ROY']
+['1250481', u'1148-Plant Services Building', u'', u'256A', u'SH 15', u'TURNER, JIM']
+['1250506', u'1355-Corporation Yard Building', u'', u'', u'SH 35', u'CORPUZ, REX']
+['1250512', u'1228-Magnuson Health Sciences', u'H', u'760', u'SH 17', u'WECHSELBERGER, ROY']
+['1286273', u'1308-South Campus Center', u'', u'123', u'', u'CHOE, YANG SOOK']
+['1286274', u'1308-South Campus Center', u'', u'123', u'', u'CHOE, YANG SOOK']
+['1029194', u'1148-Plant Services Building', u'', u'222', u'SH 32', u"O'CONNOR, JOSEPH"]
+['1159865', u'4593-UW Tower Building T', u'H', u'13', u'LOWER LEVEL', u'SWANSON, TROY']
+['1318519', u'1197-Mary Gates Hall', u'', u'', u'TOP OF STAIRS ON GRANT LANE LE', u'NEWCOMER, EMILY']
+['1331825', u'1113-SW Maintenance Bldg', u'', u'129', u'', u'YAGER, JIM']
+
+Equipment that was Turned Inactive:
+
+NONE

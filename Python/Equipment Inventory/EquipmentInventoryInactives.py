@@ -87,7 +87,6 @@ def IdentifyInactiveEquipment(ExcelList, GisList):
         if Equipment in ExcelList:
             pass
         else:
-            print Equipment
             InactiveEioList.append(Equipment)
     return InactiveEioList
 
@@ -104,8 +103,12 @@ def UpdateInactiveEquipment(FeatureClass, InactiveList):
     with arcpy.da.UpdateCursor(FeatureClass, ['FEATURE_ID', 'FEATURE_STATUS']) as Cursor:
         for GisRow in Cursor:
             if GisRow[0] in InactiveList:
-                GisRow[1] = 2
-                Cursor.updateRow(GisRow)
+                if GisRow[1] == 2:
+                    pass
+                else:
+                    GisRow[1] = 2
+                    Cursor.updateRow(GisRow)
+                    print GisRow[0]
     del GisRow
     del Cursor
     edit.stopOperation()
