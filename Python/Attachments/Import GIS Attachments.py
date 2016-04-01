@@ -27,15 +27,15 @@ from arcpy import env
 ###
 
 # Path to folder that contains files
-FolderLocation = "Z:\GIS-MIGRATION\IAMUW OID\CEO_ELECTRICAL_LUMINARE"
+FolderLocation = "Z:\GIS-MIGRATION\IAMUW OID\MC_BOLLARD"
 # GIS workspace
 env.workspace = r"Database Connections\PUB-REPLICATION.sde"
 # Related Feature Class
-FeatureClass = "CEO_ELECTRICAL_LUMINARE"
+FeatureClass = "MC_BOLLARD"
 # OID and GlobalID Column Names
 FeatureClassColumns = ["OBJECTID", "GlobalID"]
 # Attachment Table
-AttachmentTable = "CEO_ELECTRICAL_LUMINARE__ATTACH"
+AttachmentTable = "MC_BOLLARD__ATTACH"
 # Attachment Fields to be updated
 AttachmentField = ["REL_GLOBALID", "CONTENT_TYPE", "ATT_NAME", "DATA"]
 

@@ -1,0 +1,80 @@
+First I will add any new pieces of equipment.  Here are the rows that have been added:
+--Descriptions
+[u'1318476', u'ABOVE GROUND SCISSOR LIFT', u'HUNTER', u'RX16T-PS', u'AACC2600', u'149474']
+[u'1331716', u'HOIST SYSTEM', u'CAPITAL SAFETY USA', u'8518040', u'1650078', u'043541']
+--Locations
+[u'1318476', u'1101-Transportation Services B', u'', u'', u'SHOP', u'KAVANAGH, JOSH']
+[u'1331716', u'3916-LIFT STATION AT COLUMBIA', u'', u'', u'LOCKED TRAILER', u'STEINER, CRAIG']
+
+now I am updating existing rows.  Here are the rows that have been updated:
+--Descriptions
+[u'710488', u'LAWN TOP DRESSER', u'JOHN DEERE', u'MODEL 84', u'TD84N110', u'043544']
+[u'710490', u'TRACTOR 4WHL DRIVE', u'DEERE', u'970', u'M00970B103729', u'043544']
+[u'710491', u'LOADER, QUICK TATCH', u'DEERE', u'80', u'M00080X009912', u'043544']
+[u'710493', u'TRACTOR, 4 WHL DRIVE', u'DEERE', u'955', u'M00955D105319', u'043544']
+[u'710495', u'PREFAB STORAGE BLDG', u'SAFETY', u'NONE', u'NONE', u'043544']
+[u'792735', u'MOWER, LAWN ROTARY', u'RANSOMS', u'M36-11B', u'13856', u'043544']
+[u'1250488', u'TURF DECOMPACTOR', u'EARTHQUAKE TURFCARE', u'T100', u'05T100-000098', u'043544']
+[u'1250578', u'UTILITY VEHICLE', u'TORO', u'WORKMAN MDE', u'310000240', u'743544']
+[u'1250579', u'UTILITY VEHICLE', u'TORO', u'WORKMAN MDE', u'310000239', u'743544']
+[u'1250580', u'UTILITY VEHICLE', u'TORO', u'WORKMAN MDE', u'310000237', u'743544']
+[u'1250583', u'SAND SPREADER', u'EPOKE', u'ITM35', u'15010975', u'043544']
+[u'1250623', u'BRUSH CHIPPER', u'BANDIT INDUSTRIES', u'990XP', u'4FMUS1315ER001998', u'043544']
+[u'1250628', u"MOWER, 36'' WALK BEHIND", u'FERRIS', u'CCWKAV1536', u'2013452671', u'043544']
+[u'1250645', u'DEBRIS LOADER W/TRAILER', u'BILLY GOAT', u'DL3500V', u'102014440', u'043544']
+[u'C3860412', u'TIME FRAME', u'GILLMAN,S', u"7.5X22X11'", u'SCULPTURE,BASA', u'744915']
+[u'C3860413', u'BENCH FOR MEDITATION', u'GOLDBLOOM', u"2'X6'X12'", u'BLACKGRANITE', u'744915']
+[u'C480251', u'GREAT LAW GIVERS OF', u'ELLIOTT', u'', u'PROFILESINME', u'744915']
+[u'C480323', u'BLANK', u"O'HIGGINS", u"7' X 60'", u'FRESCOIN13P', u'744915']
+[u'C480428', u'FOUNTAIN OF REFLECTI', u'TSUTAKAWA', u"37'' X 44''", u'BRNZFOUNTAIN', u'744915']
+[u'C480471', u'JAMES J. HILL', u'FROLICH', u"13' HIGH", u'BRONZEBUST', u'744915']
+[u'C480472', u'EDVARD GRIEG', u'FROLICH', u"13' 6'' HIGH", u'BRONZEBUSTON', u'744915']
+[u'C480473', u'BROKEN OBELISK', u'NEWMAN', u"20' HIGH", u'SCULPTURE', u'744915']
+[u'C480474', u'GEORGE WASHINGTON', u'TAFT', u"15' HIGH", u'BRONZESTATUE', u'744915']
+[u'C480475', u'DANCER WITH FLAT HAT', u'LEVINE', u"6'6'' HIGH", u'SCULPTURE', u'744915']
+
+['1251538', u'STAIR CLIMBER', u'LECKRO TRUCK', u'LTA6512E', u'11/1/3310', u'043563']
+['1307157', u'COMPUTER', u'APPLE', u'MACPRO A1481', u'F5KNV0MAF9VM', u'149476']
+['1307161', u'FLOOR SCRUBBER', u'TENNANT', u'MV-5700-0002', u'5700-10733610', u'149476']
+['1307163', u'SKID LIFTER', u'DAYTON', u'11K275', u'GS1210011', u'043574']
+['635422', u'SAFE', u'ALLIED', u'AL4030', u'', u'149651']
+--Locations
+[u'710488', u'1184-Plant Operations Annex 4', u'', u'', u'GROUNDS SHOP', u'GEYEN, CLARENCE']
+[u'710490', u'1184-Plant Operations Annex 4', u'', u'', u'GROUNDS SHOP', u'GEYEN, CLARENCE']
+[u'710491', u'1039-Plant Operations Annex 3', u'', u'0', u'GROUNDS SHOP', u'GEYEN, CLARENCE']
+[u'710493', u'1355-Corporation Yard Building', u'', u'', u'GROUNDS SHOP', u'GEYEN, CLARENCE']
+[u'710495', u'1039-Plant Operations Annex 3', u'', u'0', u'GROUNDS SHOP', u'GEYEN, CLARENCE']
+[u'792735', u'1039-Plant Operations Annex 3', u'', u'0', u'ANNEX 3', u'GEYEN, CLARENCE']
+[u'1250488', u'1355-Corporation Yard Building', u'', u'', u'SH 10 GEYEN', u'GEYEN, CLARENCE']
+[u'1250578', u'1184-Plant Operations Annex 4', u'', u'108A', u'', u'GEYEN, CLARENCE']
+[u'1250579', u'1184-Plant Operations Annex 4', u'', u'108A', u'', u'GEYEN, CLARENCE']
+[u'1250580', u'1184-Plant Operations Annex 4', u'', u'108A', u'', u'GEYEN, CLARENCE']
+[u'1250583', u'1026-Plant Operations Annex 6', u'', u'108A', u'', u'GEYEN, CLARENCE']
+[u'1250623', u'4208-Corp Yard Area #1 (has co', u'', u'', u'80063PS, STORES PO', u'GEYEN, CLARENCE']
+[u'1250628', u'1184-Plant Operations Annex 4', u'', u'108A', u'STORES PO 84783PS', u'GEYEN, CLARENCE']
+[u'1250645', u'1184-Plant Operations Annex 4', u'', u'', u'PO 95142PS', u'GEYEN, CLARENCE']
+[u'C3860412', u'1121-Social Work/Speech and He', u'', u'', u'OUTSIDE SOCIAL WORK BLDG', u'FLANAGAN, MICHAEL']
+[u'C3860413', u'1121-Social Work/Speech and He', u'', u'', u'OUTSIDE SOCIAL WORK BLDG', u'FLANAGAN, MICHAEL']
+[u'C480251', u'1201-Gowen Hall', u'', u'', u'ON OUTSIDE OF GOWEN HALL', u'FLANAGAN, MICHAEL']
+[u'C480323', u'1276-Kane Hall', u'', u'', u'2ND FLOOR LOBBY IN KANE', u'FLANAGAN, MICHAEL']
+[u'C480428', u'1156-Mackenzie Hall', u'', u'', u'OUTSIDE MACKENZIE HALL', u'FLANAGAN, MICHAEL']
+[u'C480471', u'1171-More Hall', u'', u'', u'OUTSIDE MORE HALL', u'FLANAGAN, MICHAEL']
+[u'C480472', u'C17-KING COUNTY', u'', u'', u'GRIEG GARDEN OUTSIDE THOMSON', u'FLANAGAN, MICHAEL']
+[u'C480473', u'C17-KING COUNTY', u'', u'', u'RED SQUARE OUTSIDE KANE', u'FLANAGAN, MICHAEL']
+[u'C480474', u'C17-KING COUNTY', u'', u'', u'RED SQUARE OUTSIDE ODEGAARD', u'FLANAGAN, MICHAEL']
+[u'C480475', u'C17-KING COUNTY', u'', u'', u'BRIDGE OUTSIDE SCHMITZ HALL', u'FLANAGAN, MICHAEL']
+
+['1307158', u'1148-Plant Services Building', u'', u'101', u'', u'JACKSON, STEPHEN']
+['1235291', u'1328-Magnuson Health Sciences', u'F', u'116', u'SHOP 17 CARP-SECURE CAGE', u'FYFE, STEWARD']
+['1235294', u'1176-Facilities Services Admin', u'', u'114O', u'', u'NATSUME, LORI']
+['1207649', u'1148-Plant Services Building', u'', u'122', u'SURPLUS WAREHOUSE', u'SMITH, CEDAR']
+['1313464', u'1176-Facilities Services Admin', u'', u'110', u'', u'HALBERG, ALICIA']
+['1307153', u'1148-Plant Services Building', u'', u'122', u'', u'SMITH, CEDAR']
+['1307154', u'1148-Plant Services Building', u'', u'122', u'', u'SMITH, CEDAR']
+['1307157', u'1148-Plant Services Building', u'', u'121', u'SURPLUS - LAPTOP ROOM', u'SMITH, CEDAR']
+
+now I am turning equipment that has been removed from OASIS to inactive.  Those EIO numbers are:
+1188582
+1105889
+
+All scripts have been run successfully and production tables are now synced

@@ -38,7 +38,7 @@ Excel = r"C:\Users\jamesd26\Desktop\OASIS Equipment List for FS.xlsx"
 Sheet = "Sheet1"
 
 # Temporary table to be created from Excel File
-OutputExcelTable = r"C:\Users\jamesd26\Desktop\Domain Updates\zEquipmentInventory.gdb\EIO"
+OutputExcelTable = r"C:\Users\jamesd26\Desktop\Domains\EquipmentInventory.gdb\EIO"
 
 # Fields to be extracted from Excel table for equipment descriptions
 DescriptionFieldInputs = ["Asset", "Description", "Manufacturer", "Model", "Serial_", "Budget"]

@@ -28,15 +28,15 @@ import arcpy
 
 # File path to attachment table (typically in Geodatabase)
 # Don't forget to put 'r' before file paths
-ImageTable         = 
+ImageTable         = r"Database Connections\PUB-FMC.sde\BACKFLOW_PREVENTER__ATTACH"
 # The Blob field that contains the attachment information
-ImageDataField     = 
+ImageDataField     = "DATA"
 # The field that contains the attachment name
-ImageNameField     = 
+ImageNameField     = "ATT_NAME"
 # Field that contains the OID of related geometry
-ImageRelationalOIDField = 
+ImageRelationalOIDField = "REL_OBJECTID"
 # Folder where attachments will be saved, need to create first
-OutputFolder       = 
+OutputFolder       = r"C:\Users\jamesd26\Desktop\Backflow Images"
 
 #############################################################################  
 ###Script Follows

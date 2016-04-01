@@ -66,8 +66,16 @@ def main():
     SewerLidPairs = PerformAnalysis(SortedSewerLidsWrongLabel)
     StormLidPairs = PerformAnalysis(SortedStormLidsWrongLabel)
 
-    print SewerLidPairs
-    print StormLidPairs
+    print 'here are the sewer lids'
+    for key in SewerLidPairs:
+        print key
+        print SewerLidPairs[key]
+        print ''
+    print 'here are the storm lids'
+    for key in StormLidPairs:
+        print key
+        print StormLidPairs[key]
+        print ''
     
     # Create end products for Jim, includes maps and feature classes
     AddFc, UnknownFc, WrongSewerFc, WrongStormFc = CreateDeliverables(FeatureClass, SewerLidPairs, StormLidPairs)
@@ -362,6 +370,8 @@ def SelectLidToMove(SortedLidsWrongLabel,PairDict):
     be returned as a dictionary key and value pair.
     '''
     Count = len(SortedLidsWrongLabel.keys())
+    # Use a while loop to ensure the function runs only when there
+    # are remaining rows in the dataset.
     while Count > 0:
         for Rank in SortedLidsWrongLabel:
             if Rank == 1:
@@ -581,8 +591,8 @@ def UpdateMapDataSources(AddFeatureClass, UnknownFeatureClass, WrongLabelSewerFe
     for man hole layers in the table of contents.  In so doing it will
     ensure that the most current data is always used in reports.
     '''
-    ChangeDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\Additions_StormManholes.mxd", 'adds', AddFeatureClass)
-    ChangeDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\Unknowns_StormManholes.mxd",'not located',UnknownFeatureClass)
+    ChangeDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\Additions.mxd", 'adds', AddFeatureClass)
+    ChangeDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\Unknowns.mxd",'not located',UnknownFeatureClass)
     ChangeDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\Wrong_SewerManholes.mxd", 'sewer manholes',WrongLabelSewerFeatureClass)
     ChangeDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\Wrong_StormManholes.mxd", 'storm manholes',WrongLabelStormFeatureClass)
 

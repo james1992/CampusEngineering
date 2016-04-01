@@ -34,7 +34,7 @@ import EquipmentInventoryAdditions
 ###
 
 # Location of the ESRI table created in the Additions script
-OutputExcelTable = r"C:\Users\jamesd26\Desktop\Domain Updates\zEquipmentInventory.gdb\EIO"
+OutputExcelTable = r"C:\Users\jamesd26\Desktop\Domains\EquipmentInventory.gdb\EIO"
 
 # Fields to be extracted from Excel table for equipment descriptions 
 DescriptionFieldsExcel = ['Asset', 'Description', 'Manufacturer', 'Model', 'Serial_', 'Budget']
