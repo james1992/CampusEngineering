@@ -3,7 +3,7 @@
 ### Entity: Campus Engineering, University of Washington
 ### Python Version: 2.7.8
 ### Date Created: June 9, 2015
-### Last Modified Date: September 21, 2015
+### Last Modified Date: July 6, 2016
 ### 
 
 ############################################################################# 
@@ -29,28 +29,28 @@ import arcpy
 ###
 
 # Location of SQL Tables
-Workspace = r"Database Connections\PUB-REPLICATION.sde"
+Workspace = r"Database Connections\FS_CEO.sde"
 
 # Location of Master Excel file
-Excel = r"C:\Users\jamesd26\Desktop\OASIS Equipment List for FS.xlsx"
+Excel = r"C:\Users\jamesd26.NETID\Desktop\OASIS Equipment List for FS.xlsx"
 
 # Sheet to be used in Excel file
 Sheet = "Sheet1"
 
 # Temporary table to be created from Excel File
-OutputExcelTable = r"C:\Users\jamesd26\Desktop\Domains\EquipmentInventory.gdb\EIO"
+OutputExcelTable = r"C:\Users\jamesd26.NETID\Desktop\Domains\EquipmentInventory.gdb\EIO"
 
 # Fields to be extracted from Excel table for equipment descriptions
 DescriptionFieldInputs = ["Asset", "Description", "Manufacturer", "Model", "Serial_", "Budget"]
 
 # Equipment description table in SQL Server, used for web map
-DescriptionTable = r"Database Connections\PUB-REPLICATION.sde\CEO_EQUIPMENT_INVENTORY_AUX"
+DescriptionTable = r"Database Connections\FS_CEO.sde\CEO_EQUIPMENT_INVENTORY_AUX"
 
 # Fields to be extracted from Excel table for equipment locations
 LocationFieldInputs = ["Asset", "Building", "Wing", "Room", "Other_Loc", "Custodian"]
 
 # Equipment location table in SQL Server, used for web map
-LocationTable = r"Database Connections\PUB-REPLICATION.sde\CEO_EQUIPMENT_INVENTORY_AUX_LOCATION"
+LocationTable = r"Database Connections\FS_CEO.sde\CEO_EQUIPMENT_INVENTORY_AUX_LOCATION"
 
 #############################################################################  
 ###Script Follows
@@ -83,7 +83,7 @@ def ExcelToTable(ExcelFile, SheetName, TableName):
     containing data.
     '''
     # Location of File GDB
-    arcpy.env.workspace = r"C:\Users\jamesd26\Desktop\Domain Updates\zEquipmentInventory.gdb"
+    arcpy.env.workspace = r"C:\Users\jamesd26.NETID\Desktop\Domain Updates\zEquipmentInventory.gdb"
     #Remove existing table
     arcpy.env.overwriteOutput = True
     arcpy.ExcelToTable_conversion(ExcelFile, TableName, SheetName)
@@ -127,7 +127,7 @@ def InsertEquipmentDescription(Workspace, DescriptionTable, EquipmentDescription
     that piece of equipment already exists then that row is
     skipped.
     '''
-    ExistingDescriptions = IdentifyExistingEquipment(r"Database Connections\PUB-REPLICATION.sde\CEO_EQUIPMENT_INVENTORY_AUX")
+    ExistingDescriptions = IdentifyExistingEquipment(r"Database Connections\FS_CEO.sde\CEO_EQUIPMENT_INVENTORY_AUX")
     # Set editing environment for versioned table
     edit = arcpy.da.Editor(Workspace)
     edit.startEditing(False, True)
@@ -168,7 +168,7 @@ def InsertEquipmentLocationInformation(Workspace, LocationTable, EquipmentLocati
     that piece of equipment already exists then that row is
     skipped.
     '''
-    ExistingEquipment = IdentifyExistingEquipment(r"Database Connections\PUB-REPLICATION.sde\CEO_EQUIPMENT_INVENTORY_AUX_LOCATION")
+    ExistingEquipment = IdentifyExistingEquipment(r"Database Connections\FS_CEO.sde\CEO_EQUIPMENT_INVENTORY_AUX_LOCATION")
     # Set editing environment for versioned table
     edit = arcpy.da.Editor(Workspace)
     edit.startEditing(False, True)

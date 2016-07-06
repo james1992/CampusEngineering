@@ -3,7 +3,7 @@
 ### Entity: Campus Engineering, University of Washington
 ### Python Version: 2.7.8
 ### Date Created: September 21, 2015
-### Last Modified Date: September 21, 2015
+### Last Modified Date: July 6, 2016
 
 ############################################################################# 
 ### Description: The purpose of this script is to turn any pieces of equipment
@@ -32,13 +32,13 @@ import arcpy
 ###
 
 # Location of the ESRI table created in the Additions script
-OutputExcelTable = r"C:\Users\jamesd26\Desktop\Domains\EquipmentInventory.gdb\EIO"
+OutputExcelTable = r"C:\Users\jamesd26.NETID\Desktop\Domains\EquipmentInventory.gdb\EIO"
 
 # EIO field in Excel
 ExcelEio = ['Asset']
 
 # Location of the geometry feature class, used for web maps
-GisGeometryFc = r"Database Connections\PUB-REPLICATION.sde\CEO_EQUIPMENT_INVENTORY"
+GisGeometryFc = r"Database Connections\FS_CEO.sde\CEO_EQUIPMENT_INVENTORY"
 
 # EIO field in geometry
 GisEio = ['FEATURE_ID']
@@ -97,7 +97,7 @@ def UpdateInactiveEquipment(FeatureClass, InactiveList):
     inactive. This is done through an update cursor.
     '''
     # Initialize editing environment
-    edit = arcpy.da.Editor(r"Database Connections\PUB-REPLICATION.sde")
+    edit = arcpy.da.Editor(r"Database Connections\FS_CEO.sde")
     edit.startEditing(False, True)
     edit.startOperation()
     with arcpy.da.UpdateCursor(FeatureClass, ['FEATURE_ID', 'FEATURE_STATUS']) as Cursor:

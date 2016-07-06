@@ -31,18 +31,20 @@ import arcpy
 DomainCeoDatabase = r"Database Connections\IAMUW-FS_CEO.sde"
 # ESRI Geodatabase FS-FMC that contains domains that need to be moved to tables
 DomainFmcDatabase = r"Database Connections\IAMUW-FS_MAC.sde"
+#
+DomainPubDatabase = r"Database Connections\PUB-REPLICATION.sde"
 # Domain Name filter, keyword in domain name used to filter domains out from script
 DomainFilter = "DOMAIN"
 # ESRI Geodatabase where the domains will be made into individual tables on IAMUW
 OutputDatabaseIamuw = r"Database Connections\IAMUW-FS_CEO_AUX.sde"
 # ESRI Geodatabase where the domains will be made into individual tables on PUB
-OutputDatabasePub = r"Database Connections\PUB_DOMAIN.sde"
+OutputDatabasePub = r"Database Connections\FS_VIEW.sde"
 
 #############################################################################  
 ###Script Follows
 ###
 
-def main(CeoDomains, FmcDomains, NameFilter, IamuwDatabaseLocation, PubDatabaseLocation):
+def main(CeoDomains, FmcDomains, PubDomains, NameFilter, IamuwDatabaseLocation, PubDatabaseLocation):
         TablesInPub = StripTableNames(PubDatabaseLocation)
         print 'Existing tables have been identified'
         
@@ -54,8 +56,12 @@ def main(CeoDomains, FmcDomains, NameFilter, IamuwDatabaseLocation, PubDatabaseL
         DomainToTablePub(FmcDomains, DomainFilter, PubDatabaseLocation, TablesInPub)
         print 'All FMC domains have been exported to the output database'
 
-        EnableEditing(PubDatabaseLocation)
-        print 'Editing has been enabled on the domain tables in the PUB database'
+        DomainToTableIamuw(PubDomains, DomainFilter, IamuwDatabaseLocation)
+        DomainToTablePub(PubDomains, DomainFilter, PubDatabaseLocation, TablesInPub)
+        print 'All PUB domains have been exported to the output database'
+
+        #EnableEditing(PubDatabaseLocation)
+        #print 'Editing has been enabled on the domain tables in the PUB database'
 
 def DomainToTablePub(DomainLocation, NameFilter, TableDatabase, ExistingTables):
         '''
@@ -69,6 +75,7 @@ def DomainToTablePub(DomainLocation, NameFilter, TableDatabase, ExistingTables):
         Description = arcpy.Describe(DomainLocation)
         Domains = Description.domains
         for Domain in Domains:
+                print Domain
                 if NameFilter in Domain:
                         if Domain not in ExistingTables:
                                 Table = os.path.join(TableDatabase, Domain)
@@ -88,6 +95,7 @@ def DomainToTableIamuw(DomainLocation, NameFilter, TableDatabase):
         Description = arcpy.Describe(DomainLocation)
         Domains = Description.domains
         for Domain in Domains:
+                print Domain
                 if NameFilter in Domain:
                         Table = os.path.join(TableDatabase, Domain)
                         arcpy.DomainToTable_management(DomainLocation, Domain, Table,'Code','Description')
@@ -125,4 +133,4 @@ def EnableEditing(PubDomainDatabase):
 
         
 if __name__ == "__main__":
-    main(DomainCeoDatabase, DomainFmcDatabase, DomainFilter, OutputDatabaseIamuw, OutputDatabasePub)
+    main(DomainCeoDatabase, DomainFmcDatabase, DomainPubDatabase, DomainFilter, OutputDatabaseIamuw, OutputDatabasePub)
