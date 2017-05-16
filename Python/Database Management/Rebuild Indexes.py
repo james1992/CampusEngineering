@@ -23,7 +23,7 @@ from arcpy import env
 ### Parameters
 ###
 
-DatabaseConnections = [r"Database Connections\IAMUW-FS_CEO.sde", r"Database Connections\IAMUW-FS_MAC.sde"]
+DatabaseConnections = [r"Database Connections\FS_CEO.sde", r"Database Connections\FS_MAC.sde", r"Database Connections\FS_CEO_EXTINGUISHER.sde", r"Database Connections\PUB-FMC.sde"]
 
 #############################################################################  
 ###Script Follows

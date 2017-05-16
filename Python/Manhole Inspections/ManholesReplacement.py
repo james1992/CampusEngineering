@@ -55,7 +55,7 @@ def main():
 
     # Extract data required for analysis from the feature class for
     # use in the next section of this script
-    FeatureClass = "C:\Users\jamesd26\Desktop\GDB\Manhole.gdb\Data"
+    FeatureClass = r"C:\Users\jamesd26.NETID\Desktop\GDB\Manhole.gdb\Data"
     SewerLidsWrongLabel, StormLidsWrongLabel, SewerLidsMove, StormLidsMove = ExtractData(FeatureClass)
 
     # Calculate the distances between points to move and lids with
@@ -94,7 +94,7 @@ def CreateWorkingArea():
     Function that creates a folder and file geodatabase that will be
     used as the working area for this script
     '''
-    OutFolder = r"C:\Users\jamesd26\Desktop\GDB"
+    OutFolder = r"C:\Users\jamesd26.NETID\Desktop\GDB"
     OutName = "Manhole"
     
     os.makedirs(OutFolder)
@@ -125,10 +125,10 @@ def ExportView():
     that is running this script.
     '''
     # Location that contains the spatial view
-    env.workspace = r"Database Connections\PUB-REPLICATION.sde"
+    env.workspace = r"Database Connections\FS_VIEW.sde"
     
     InFeatureClass = "VIEW_CIVIL_MANHOLE_INSPECTION"
-    OutLocation = r"C:\Users\jamesd26\Desktop\GDB\Manhole.gdb"
+    OutLocation = r"C:\Users\jamesd26.NETID\Desktop\GDB\Manhole.gdb"
     OutFeatureClass = "Data"
     
     arcpy.FeatureClassToFeatureClass_conversion(InFeatureClass, OutLocation, OutFeatureClass)
@@ -461,7 +461,7 @@ def CreateDeliverables(FeatureClass, SewerLidMatches, StormLidMatches):
     Runs all of the functions to create deliverables that will be
     used in maps and reports for the manhole inspection project.
     '''
-    env.workspace = "C:\Users\jamesd26\Desktop\ManholeInspections\ManholeResults.gdb"
+    env.workspace = r"C:\Users\jamesd26.NETID\Desktop\ManholeInspections\ManholeResults.gdb"
     env.overwriteOutput = True
 
     # Determine today's date, this will be used to name the output feature classes.
@@ -510,7 +510,7 @@ def ReturnNewlyIdentifiedLids(DateToday, Dataset):
     that were not on Jim's list but were located by the field team.                                     
     '''
     NewFeatureClass = "Adds" + '_' + DateToday
-    arcpy.FeatureClassToFeatureClass_conversion(Dataset, "C:\Users\jamesd26\Desktop\ManholeInspections\ManholeResults.gdb", NewFeatureClass, """ "FieldStatus" = 'Add' """)
+    arcpy.FeatureClassToFeatureClass_conversion(Dataset, r"C:\Users\jamesd26.NETID\Desktop\ManholeInspections\ManholeResults.gdb", NewFeatureClass, """ "FieldStatus" = 'Add' """)
     return NewFeatureClass
 
 def ReturnLidsThatCouldNotBeFound(DateToday, Dataset):
@@ -519,7 +519,7 @@ def ReturnLidsThatCouldNotBeFound(DateToday, Dataset):
     but that the field team was unable to locate.
     '''
     NewFeatureClass = "Unknown" + '_' + DateToday
-    arcpy.FeatureClassToFeatureClass_conversion(Dataset, "C:\Users\jamesd26\Desktop\ManholeInspections\ManholeResults.gdb", NewFeatureClass, """ "FieldStatus" = 'Unknown' """)
+    arcpy.FeatureClassToFeatureClass_conversion(Dataset, r"C:\Users\jamesd26.NETID\Desktop\ManholeInspections\ManholeResults.gdb", NewFeatureClass, """ "FieldStatus" = 'Unknown' """)
     return NewFeatureClass
     
 def ReturnMislabeledManholes(DateToday, Dataset, System):
@@ -528,7 +528,7 @@ def ReturnMislabeledManholes(DateToday, Dataset, System):
     this was done based on Jim's storm and sanitary sewer maps.
     '''
     NewFeatureClass = System + "Wrong" + '_' + DateToday
-    arcpy.FeatureClassToFeatureClass_conversion(Dataset, "C:\Users\jamesd26\Desktop\ManholeInspections\ManholeResults.gdb", NewFeatureClass, """ "CorrectLabel" = 'No' """)
+    arcpy.FeatureClassToFeatureClass_conversion(Dataset, r"C:\Users\jamesd26.NETID\Desktop\ManholeInspections\ManholeResults.gdb", NewFeatureClass, """ "CorrectLabel" = 'No' """)
     return NewFeatureClass
 
 def CreateUnmatchFields(WrongLidsDataset):
@@ -591,10 +591,10 @@ def UpdateMapDataSources(AddFeatureClass, UnknownFeatureClass, WrongLabelSewerFe
     for man hole layers in the table of contents.  In so doing it will
     ensure that the most current data is always used in reports.
     '''
-    ChangeDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\Additions.mxd", 'adds', AddFeatureClass)
-    ChangeDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\Unknowns.mxd",'not located',UnknownFeatureClass)
-    ChangeDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\Wrong_SewerManholes.mxd", 'sewer manholes',WrongLabelSewerFeatureClass)
-    ChangeDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\Wrong_StormManholes.mxd", 'storm manholes',WrongLabelStormFeatureClass)
+    ChangeDataSource(r"C:\Users\jamesd26.NETID\Desktop\ManholeInspections\Additions.mxd", 'adds', AddFeatureClass)
+    ChangeDataSource(r"C:\Users\jamesd26.NETID\Desktop\ManholeInspections\Unknowns.mxd",'not located',UnknownFeatureClass)
+    ChangeDataSource(r"C:\Users\jamesd26.NETID\Desktop\ManholeInspections\Wrong_SewerManholes.mxd", 'sewer manholes',WrongLabelSewerFeatureClass)
+    ChangeDataSource(r"C:\Users\jamesd26.NETID\Desktop\ManholeInspections\Wrong_StormManholes.mxd", 'storm manholes',WrongLabelStormFeatureClass)
 
 def ChangeDataSource(MXD, LayerName, FeatureClass):
     '''
@@ -605,7 +605,7 @@ def ChangeDataSource(MXD, LayerName, FeatureClass):
 
     for Item in arcpy.mapping.ListLayers(mxd):
         if Item.name.lower() == LayerName:
-            Item.replaceDataSource("C:\Users\jamesd26\Desktop\ManholeInspections\ManholeResults.gdb", "FILEGDB_WORKSPACE", FeatureClass)
+            Item.replaceDataSource(r"C:\Users\jamesd26.NETID\Desktop\ManholeInspections\ManholeResults.gdb", "FILEGDB_WORKSPACE", FeatureClass)
         else:
             pass
 
@@ -621,8 +621,8 @@ def RemoveGdbFolder():
     of this script.  Once the script has successfully run they are no
     longer needed.
     '''
-    arcpy.Delete_management(r"C:\Users\jamesd26\Desktop\GDB\Manhole.gdb")
-    os.rmdir(r"C:\Users\jamesd26\Desktop\GDB")
+    arcpy.Delete_management(r"C:\Users\jamesd26.NETID\Desktop\GDB\Manhole.gdb")
+    os.rmdir(r"C:\Users\jamesd26.NETID\Desktop\GDB")
 	
 if __name__ == "__main__":
     main()
