@@ -57,6 +57,7 @@ def main(TreeView, TreeViewFields, MemorialFC, MemorialFCFields, MemorialFCField
     TreeList = []
     TreeViewSearchCursor(TreeView, TreeViewFields, TreeList)
     
+    MemorialTreeInsertCursor(MemorialFC, MemorialFCFields, TreeList)
     #List to keep track of previously used file names
     ImageList = list()
     # If file name is a duplicate a number will be added to ensure uniqueness
