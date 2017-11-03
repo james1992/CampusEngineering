@@ -28,15 +28,15 @@ import arcpy
 
 # File path to attachment table (typically in Geodatabase)
 # Don't forget to put 'r' before file paths
-ImageTable         = r"Database Connections\FS_MAC.sde\MC_TREE__ATTACH"
+ImageTable         = r'Database Connections\FS_CEO.sde\CEO_FIRE_PROTECTION_CONFIDENCE_TESTS_AUX__ATTACH'
 # The Blob field that contains the attachment information
 ImageDataField     = "DATA"
 # The field that contains the attachment name
 ImageNameField     = "ATT_NAME"
 # Field that contains the OID of related geometry
-ImageRelationalOIDField = "REL_GLOBALID"
+ImageRelationalOIDField = 'REL_OBJECTID'
 # Folder where attachments will be saved, need to create first
-OutputFolder       = r"C:\Users\jamesd26.NETID\Desktop\Trees"
+OutputFolder       = r'C:\Users\jamesd26.NETID\Desktop\new'
 
 #############################################################################  
 ###Script Follows
@@ -64,7 +64,8 @@ def SearchCursor(TableLocation, BlobData, ImageName, GeomOID, FolderLocation, Im
 			BinaryData = row[2]
 			FileName = StringGeomOID + '@' + row[1]
 			print FileName
-			JPEGCreator(FileName, BinaryData, FolderLocation, ImageList, DuplicateCount)
+			print StringGeomOID, BinaryData, FileName
+			JPEGCreator(FileName, BinaryData, FolderLocation, ImageList, DuplicateCount) 
 	# Remove schema lock on table
 	del row
 	del cursor
