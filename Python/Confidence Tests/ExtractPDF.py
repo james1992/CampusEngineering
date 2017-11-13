@@ -104,7 +104,11 @@ def FileCreator(AttachmentName, BinaryInfo, FacNum, FolderLocation):
         # If the FacNums match
         if FacNum == SplitFolder[1]:
             DocumentPath = os.path.join(FolderLocation, Folder)
-            open(DocumentPath + os.sep + AttachmentName, 'wb').write(BinaryInfo.tobytes())
+            Files = os.listdir(DocumentPath)
+            if AttachmentName in Files:
+                pass
+            else:
+                open(DocumentPath + os.sep + AttachmentName, 'wb').write(BinaryInfo.tobytes())
 	
 if __name__ == "__main__":
     main(ImageTable, ImageDataField, ImageNameField, ImageRelationalOIDField, AuxTable, AuxAttributes, GeomTable, GeomAttributes, OutputFolder)
