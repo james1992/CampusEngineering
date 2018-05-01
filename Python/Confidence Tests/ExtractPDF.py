@@ -23,19 +23,19 @@ import arcpy
 
 # File path to attachment table (typically in Geodatabase)
 # Don't forget to put 'r' before file paths
-ImageTable          = r'Database Connections\FS_CEO.sde\CEO_FIRE_PROTECTION_CONFIDENCE_TESTS_AUX__ATTACH'
+ImageTable          = r'Database Connections\CampusEngineeringOperations.sde\ConfidenceTestsInspections__ATTACH'
 # The Blob field that contains the attachment information
 ImageDataField      = "DATA"
 # The field that contains the attachment name
 ImageNameField      = "ATT_NAME"
 # Field that contains the OID of related geometry
-ImageRelationalOIDField = 'REL_OBJECTID'
+ImageRelationalOIDField = 'REL_GLOBALID'
 # Table that contains the specific test data (used to link back to system in Geom)
-AuxTable            = r'Database Connections\FS_CEO.sde\CEO_FIRE_PROTECTION_CONFIDENCE_TESTS_AUX'
-AuxAttributes       = ['OBJECTID', 'REL_GUID']
+AuxTable            = r'Database Connections\CampusEngineeringOperations.sde\ConfidenceTestsInspections'
+AuxAttributes       = ['GlobalID', 'REL_GlobalID']
 # Feature class that contains information on system that was tested
-GeomTable           = r'Database Connections\FS_CEO.sde\CEO_FIRE_PROTECTION_CONFIDENCE_TESTS'
-GeomAttributes      = ['GlobalID', 'FACNUM']
+GeomTable           = r'Database Connections\CampusEngineeringOperations.sde\ConfidenceTests'
+GeomAttributes      = ['GlobalID', 'FacNum']
 # Folder where attachments will be saved, need to create first
 OutputFolder        = r'C:\Users\jamesd26.NETID\SharePoint\Confidence Tests - Confidence Tests'
 
