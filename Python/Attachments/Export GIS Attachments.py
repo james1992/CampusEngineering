@@ -28,13 +28,13 @@ import arcpy
 
 # File path to attachment table (typically in Geodatabase)
 # Don't forget to put 'r' before file paths
-ImageTable         = r'Database Connections\FS_CEO.sde\CEO_FIRE_PROTECTION_CONFIDENCE_TESTS_AUX__ATTACH'
+ImageTable         = r'Database Connections\FS_MAC.sde\MC_LANDSCAPEPROFILE__ATTACH'
 # The Blob field that contains the attachment information
 ImageDataField     = "DATA"
 # The field that contains the attachment name
 ImageNameField     = "ATT_NAME"
 # Field that contains the OID of related geometry
-ImageRelationalOIDField = 'REL_OBJECTID'
+ImageRelationalOIDField = 'REL_GLOBALID'
 # Folder where attachments will be saved, need to create first
 OutputFolder       = r'C:\Users\jamesd26.NETID\Desktop\new'
 
@@ -62,7 +62,7 @@ def SearchCursor(TableLocation, BlobData, ImageName, GeomOID, FolderLocation, Im
 		for row in cursor:
 			StringGeomOID = str(row[0])
 			BinaryData = row[2]
-			FileName = StringGeomOID + '@' + row[1]
+			FileName = row[1]
 			print FileName
 			print StringGeomOID, BinaryData, FileName
 			JPEGCreator(FileName, BinaryData, FolderLocation, ImageList, DuplicateCount) 
