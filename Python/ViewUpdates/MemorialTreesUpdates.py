@@ -99,7 +99,7 @@ def TreeViewSearchCursor(FC, Fields, TreeList):
     with arcpy.da.SearchCursor(FC, Fields) as cursor:
         for row in cursor:             
             TreeList.append([row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]])
-
+    print "Number of trees being copied to memorial layer is: " + len(TreeList)
     del row
     del cursor
 
