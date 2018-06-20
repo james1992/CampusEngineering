@@ -58,7 +58,7 @@ EditableTreeImageNameField     = "ATT_NAME"
 EditableTreeImageRelationalGuidField = "REL_GLOBALID"
 
 # Folder where attachments will be saved before they are loaded into new table
-TempImageFolder       = r"C:\Users\jamesd26.NETID\Desktop\TreesPhotos"
+TempImageFolder       = r"C:\Users\John Chapman\Desktop\TreesPhotos"
 
 ############################################################################# 
 ### Script
@@ -99,7 +99,7 @@ def TreeViewSearchCursor(FC, Fields, TreeList):
     with arcpy.da.SearchCursor(FC, Fields) as cursor:
         for row in cursor:             
             TreeList.append([row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]])
-    print "Number of trees being copied to public layer is: " + len(TreeList)
+    print "Number of trees being copied to public layer is: " + str(len(TreeList))
     del row
     del cursor
 
