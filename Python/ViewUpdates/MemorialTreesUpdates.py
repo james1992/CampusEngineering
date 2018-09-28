@@ -58,7 +58,7 @@ EditableTreeImageNameField     = "ATT_NAME"
 EditableTreeImageRelationalGuidField = "REL_GLOBALID"
 
 # Folder where attachments will be saved before they are loaded into new table
-TempImageFolder       = r"C:\Users\John Chapman\Desktop\TreesPhotos"
+TempImageFolder       = r"C:\Users\jamesd26\Desktop\TreesPhotos"
 
 ############################################################################# 
 ### Script

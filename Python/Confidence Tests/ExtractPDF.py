@@ -37,7 +37,7 @@ AuxAttributes       = ['GlobalID', 'REL_GlobalID']
 GeomTable           = r'Database Connections\CampusEngineeringOperations.sde\ConfidenceTests'
 GeomAttributes      = ['GlobalID', 'FacNum']
 # Folder where attachments will be saved, need to create first
-OutputFolder        = r'C:\Users\John Chapman\UW\Confidence Tests - Confidence Tests'
+OutputFolder        = r'C:\Users\jamesd26\UW\Confidence Tests - Confidence Tests'
 
 #############################################################################  
 ###Script Follows
