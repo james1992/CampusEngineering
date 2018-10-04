@@ -103,7 +103,7 @@ def FileCreator(AttachmentName, BinaryInfo, FacNum, FolderLocation):
         SplitFolder = Folder.split('-')
         # If the FacNums match
         if FacNum == SplitFolder[1]:
-            DocumentPath = os.path.join(FolderLocation, Folder)
+            DocumentPath = os.path.join(FolderLocation, Folder, 'Annual')
             Files = os.listdir(DocumentPath)
             if AttachmentName in Files:
                 pass
