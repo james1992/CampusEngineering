@@ -74,9 +74,11 @@ BEGIN
 	VALUES (@TreeNumber, @FinalAssessedValue, @ValueNotes)
 
 	-- Console Log the insert values for error checking if needed
-	/* PRINT cast(@TreeNumber AS NCHAR(50)) 
+	/*
+	PRINT cast(@TreeNumber AS NCHAR(50)) 
 	PRINT cast(@FinalAssessedValue AS NCHAR(50))
-	PRINT @ValueNotes */
+	PRINT @ValueNotes
+	*/
 	FETCH NEXT FROM @TreeValueCursor INTO @TreeNumber, @DSH, @TreeType, @SpeciesRating, @Condition, @Contribution, @Placement;
 END
 
