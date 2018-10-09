@@ -40,13 +40,13 @@ CREATE TABLE WaterTreatment.dbo.WaterTreatmentClosedLoopsWaterTests
 	Notes varchar(500),
 	DataEntryUser varchar(50),
 	SurveyDate date NOT NULL,
-	CreateDate date,
+	CreateDate date NOT NULL,
 	Createdby varchar(50),
 
 
 PRIMARY KEY (UniqueID),
  FOREIGN KEY (Leaks) REFERENCES WaterTreatment.dbo.WaterTreatmentDomainsLeaks(Leaks) ON UPDATE CASCADE ON DELETE CASCADE
 );
-
+--Alter Table function makes the CreateDate feature grab the current date as a default.
 ALTER TABLE WaterTreatment.dbo.WaterTreatmentClosedLoopsWaterTests ADD  CONSTRAINT [DF_EXAMPLE_date]  DEFAULT (getdate()) FOR CreateDate
 GO
