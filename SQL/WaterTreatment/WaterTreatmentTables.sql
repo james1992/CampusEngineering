@@ -9,56 +9,43 @@
 CREATE DATABASE WaterTreatment;
 	GO
 
---Creates sub-tables in the WaterTreatment Database
-CREATE TABLE WaterTreatment.dbo.DROPDOWNONE
-(
-ID int NOT NULL IDENTITY,
-Training varchar(100) NOT NULL,
-UNIQUE (Training),
-
-PRIMARY KEY (ID)
-);
-
-CREATE TABLE WaterTreatment.dbo.DROPDOWNTWO
+--Creates sub-table in the WaterTreatment Database
+CREATE TABLE WaterTreatment.dbo.WaterTreatmentDomainsLeaks
 	(
 	ID int NOT NULL IDENTITY,
-	Equipment varchar(100) NOT NULL,
+	Leaks varchar(10) NOT NULL,
 
-	UNIQUE (Equipment),
+	UNIQUE (Leaks),
 	PRIMARY KEY (ID)
 		);
 --Creates main table
-CREATE TABLE WaterTreatment.dbo.WaterTreatmentChilledWaterTests
+CREATE TABLE WaterTreatment.dbo.WaterTreatmentClosedLoopsWaterTests
 	(
 	UniqueID int NOT NULL IDENTITY,
-	FacNum int(5) NOT NULL,
-	FacName varchar(100) NOT NULL,
+	FacNum varchar(5) NOT NULL,
 	LoopType varchar(100) NOT NULL,
 	EntryGroup varchar (10) NOT NULL,
-	Conductivity int(4) NOT NULL,
-	pH decimal(2,1) NOT NULL,
-	MolybDate decimal(3,1) NOT NULL,
-	Nitrite int(3) NOT NULL, 
+	Conductivity int(4),
+	pH decimal(2,1),
+	MolybDate decimal(3,3),
+	Nitrite int(3), 
 	Azole decimal(2,1),
 	Copper decimal(1,5),
-	Iron decimal(3,2) NOT NULL,
+	Iron decimal(3,3),
 	TotalBacteria int(3),
-	MakeupMeter decimal(6,2),
+	MakeupMeter decimal(6,3),
 	MildCopperCorrosionRate decimal,
 	MildSteelCorrosionRate decimal,
 	Leaks varchar(50),
 	Notes varchar(500),
 	DataEntryUser varchar(50),
-	SurveyDate date(GETDATE()) NOT NULL, --may need to change
-	UpdateChilledWaterDetails varchar(300),
-	Title varchar(50),
-	ItemType varchar(50),
-	Path varchar(300) NOT NULL,
+	SurveyDate date() NOT NULL,
+	CreatedDate date(GETDATE()) NOT NULL,
+	Createdby varchar(50)
 
 
 
 
 	PRIMARY KEY (UniqueID),
-	--FOREIGN KEY (Equipment) REFERENCES DROPDOWNONE(Equipment) ON UPDATE CASCADE ON DELETE CASCADE,
-	--FOREIGN KEY (TrainingType) REFERENCES DROPDOWNTWO(Training) ON UPDATE CASCADE ON DELETE CASCADE
+ FOREIGN KEY (Leaks) REFERENCES WaterTreatment.dbo.WaterTreatmentDomainsLeaks(Leaks) ON UPDATE CASCADE ON DELETE CASCADE
 		);
