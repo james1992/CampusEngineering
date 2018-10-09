@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------------------------------------
 --Written by Yurika Harada
---Date: October 9, 2018
---This code creates customized for Trees Project managed by Sara Shores.
+--Date Created: October 9, 2018
+--This code creates customized tables for Trees Project managed by Sara Shores.
 --These tables are meant to record what kind of training employees need and when the training is happening.
 ------------------------------------------------------------------------------------------------------------
 
