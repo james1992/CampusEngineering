@@ -18,6 +18,14 @@ CREATE TABLE WaterTreatment.dbo.WaterTreatmentDomainsLeaks
 	UNIQUE (Leaks),
 	PRIMARY KEY (ID)
 		);
+
+--Adds 1 value into the above table
+INSERT INTO WaterTreatment.dbo.WaterTreatmentDomainsLeaks (Leaks)
+VALUES ('Leaks' );
+--Adds another value into the above table
+INSERT INTO WaterTreatment.dbo.WaterTreatmentDomainsLeaks (Leaks)
+VALUES ('No Leaks' );
+
 --Creates main table
 CREATE TABLE WaterTreatment.dbo.WaterTreatmentClosedLoopsWaterTests
 	(
@@ -41,7 +49,7 @@ CREATE TABLE WaterTreatment.dbo.WaterTreatmentClosedLoopsWaterTests
 	DataEntryUser varchar(50),
 	SurveyDate date NOT NULL,
 	CreateDate date NOT NULL,
-	Createdby varchar(50),
+	CreatedBy varchar(50),
 
 
 PRIMARY KEY (UniqueID),
