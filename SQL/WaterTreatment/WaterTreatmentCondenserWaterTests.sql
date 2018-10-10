@@ -109,6 +109,7 @@ VALUES ('Poor' );
 --Creates main table
 CREATE TABLE [dbo].[WaterTreatmentCondenserWaterTests](
 	[UniqueID] [int] NOT NULL,
+	[FacNum] [varchar](5) NOT NULL,
 	[ContentType] [varchar](50) NOT NULL,
 	[LoopType] [varchar](50) NOT NULL,
 	[EntryGroup] [varchar](50) NOT NULL,
