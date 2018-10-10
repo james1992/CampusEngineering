@@ -19,6 +19,17 @@ UNIQUE (Training),
 PRIMARY KEY (ID)
 );
 
+--Adds 1 value into the above table
+INSERT INTO Trees.dbo.GroundsTrainingType (Training)
+VALUES ('Manual' );
+--Adds another value into the above table
+INSERT INTO Trees.dbo.GroundsTrainingType (Training)
+VALUES ('Class' );
+--Adds a third value into the above table
+INSERT INTO Trees.dbo.GroundsTrainingType (Training)
+VALUES ('Field' );
+
+
 CREATE TABLE Trees.dbo.GroundsTrainingEquipment
 	(
 	ID int NOT NULL IDENTITY,
@@ -27,6 +38,24 @@ CREATE TABLE Trees.dbo.GroundsTrainingEquipment
 	UNIQUE (Equipment),
 	PRIMARY KEY (ID)
 		);
+
+--Adds 1 value into the above table
+INSERT INTO Trees.dbo.GroundsTrainingEquipment (Equipment)
+VALUES ('Chainsaw' );
+--Adds another value into the above table
+INSERT INTO Trees.dbo.GroundsTrainingEquipment (Equipment)
+VALUES ('Chipper' );
+--Adds a third value into the above table
+INSERT INTO Trees.dbo.GroundsTrainingEquipment (Equipment)
+VALUES ('Genie' );
+--Adds another value into the above table
+INSERT INTO Trees.dbo.GroundsTrainingEquipment (Equipment)
+VALUES ('Ground Crew' );
+--Adds another value into the above table
+INSERT INTO Trees.dbo.GroundsTrainingEquipment (Equipment)
+VALUES ('JLG' );
+INSERT INTO Trees.dbo.GroundsTrainingEquipment (Equipment)
+VALUES ('Hi Ranger' );
 
 CREATE TABLE Trees.dbo.GroundsTraining 
 	(
