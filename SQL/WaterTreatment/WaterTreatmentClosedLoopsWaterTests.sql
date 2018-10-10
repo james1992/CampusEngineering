@@ -47,8 +47,8 @@ CREATE TABLE WaterTreatment.dbo.WaterTreatmentClosedLoopsWaterTests
 	Leaks varchar(10),
 	Notes varchar(500),
 	DataEntryUser varchar(50),
-	SurveyDate date NOT NULL,
-	CreateDate date NOT NULL,
+	SurveyDate datetime NOT NULL,
+	CreateDate datetime NOT NULL,
 	CreatedBy varchar(50),
 
 

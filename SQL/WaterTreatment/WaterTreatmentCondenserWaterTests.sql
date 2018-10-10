@@ -113,7 +113,7 @@ CREATE TABLE [dbo].[WaterTreatmentCondenserWaterTests](
 	[ContentType] [varchar](50) NOT NULL,
 	[LoopType] [varchar](50) NOT NULL,
 	[EntryGroup] [varchar](50) NOT NULL,
-	[SurveyDate] [date] NOT NULL,
+	[SurveyDate] [datetime] NOT NULL,
 	[Conductivity] [int] NULL,
 	[TRASAR] [decimal](3, 3) NULL,
 	[pH] [decimal](3, 3) NULL,
@@ -143,7 +143,7 @@ CREATE TABLE [dbo].[WaterTreatmentCondenserWaterTests](
 	[ChemicalInventory] [varchar](50) NULL,
 	[Notes] [varchar](500) NULL,
 	[DataEntryUser] [varchar](50) NULL,
-	[CreateDate] [date] NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
 	[CreatedBy] [varchar](50) NOT NULL,
 
 FOREIGN KEY (ChemicalInventory) REFERENCES WaterTreatment.dbo.WaterTreatmentDomainsChemicalInventory(ChemicalInventory) ON UPDATE CASCADE ON DELETE CASCADE,
