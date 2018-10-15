@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+<style>
+/* quick reset */
+* {
+  margin: 0;
+  padding: 50;
+  border: 0;
+}
+
+/* relevant styles */
+.img__wrap {
+  position: relative;
+  height: 400px;
+  width: 300px;
+}
+
+.img__description {
+  position: center;
+  text-align: center;
+  text-decoration: none
+  top: 0;
+  bottom: 0;
+  background: rgb(211, 211, 211);
+  color: #000000;
+  visibility: hidden;
+  opacity: 0;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.img__wrap:hover .img__description {
+  visibility: visible;
+  opacity: 1;
+}
+</style>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Facilities GIS</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/full.css">
+
+        <link rel="shortcut icon" href="assets/img/W.PNG">
+        <script src="//uw.edu/assets/uw.js"></script>
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js?ver=1.9.1'></script>
+		<script type='text/javascript' src='https://www.washington.edu/wp-includes/js/underscore.min.js?ver=1.6.0'></script>
+		<script type='text/javascript' src='https://www.washington.edu/wp-includes/js/backbone.min.js?ver=1.1.2'></script>
+		<script type='text/javascript' src='https://www.washington.edu/wp-content/themes/uw-2014/js/site.dev.js'></script>
+
+        <!--[if lt IE 9]>
+            <script src="js/html5shiv.js" type="text/javascript"></script>
+            <script src="js/respond.js" type="text/javascript"></script>
+            <link rel='stylesheet' href='css/ie.css' type='text/css' media='all' />
+        <![endif]-->
+
+    </head>
+<body>
+
+
+
+
+<div id="uw-container">
+                <h1>BUILDINGNAME-FACNUM</h1>
+				<table border="0" align="center">
+        <td><a href="https://www.w3schools.com"><div class="img__wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAb1BMVEUsJbT///+Fgp7V1O7n5vYrJJUdFGUrJLQfFLM7NLkwKbWLh9ZxbM02L7gcFGOBfpyysMJ+e57k4+sKAFQcFGkAAHLU0+UqJIEUBqIqI55TTcP7+v3q6vfj4vSHgtWWktprZsx+e652cs5AObgaEX3l+OOhAAABcUlEQVR4nO3PS1JTARRF0QgE5ROigpIACoLzH6MTsKxHg3LfsHb3dM5afTj0Vv/7wJtHOD/C+RHOj3B+hPMjnB/h/Ajn9xfh/cPDydCOTxYJf/x8vJjZ0+7XIuHx3fPz5chefm+XCT+9nG0mdr4/PVooPDv/mG31j2n9CuFqZISE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjJOxHSNiPkLAfIWE/QsJ+hIT9CAn7ERL2IyTsR0jYj5CwHyFhP0LCfoSE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjJOxHSNiPkLAfIWE/QsJ+hIT9CAn7ERL2IyTsR0jYj5CwHyFhP0LCfoSE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjfE/CzaELd/v1zG6vlgm/f7s5vZrZ9XaR8OuXo6ltPy8SHliE8yOcH+H8COdHOD/C+RHOj3B+hy/8A7mjjGLaNkd7AAAAAElFTkSuQmCC" alt="" border=0 height=300 width=300></img>
+		<p class="img__description">Datadash Board</p>
+</a></div></th>
+        <td><a href="https://www.w3schools.com"><div class="img__wrap"><div class="img__wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAb1BMVEUsJbT///+Fgp7V1O7n5vYrJJUdFGUrJLQfFLM7NLkwKbWLh9ZxbM02L7gcFGOBfpyysMJ+e57k4+sKAFQcFGkAAHLU0+UqJIEUBqIqI55TTcP7+v3q6vfj4vSHgtWWktprZsx+e652cs5AObgaEX3l+OOhAAABcUlEQVR4nO3PS1JTARRF0QgE5ROigpIACoLzH6MTsKxHg3LfsHb3dM5afTj0Vv/7wJtHOD/C+RHOj3B+hPMjnB/h/Ajn9xfh/cPDydCOTxYJf/x8vJjZ0+7XIuHx3fPz5chefm+XCT+9nG0mdr4/PVooPDv/mG31j2n9CuFqZISE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjJOxHSNiPkLAfIWE/QsJ+hIT9CAn7ERL2IyTsR0jYj5CwHyFhP0LCfoSE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjJOxHSNiPkLAfIWE/QsJ+hIT9CAn7ERL2IyTsR0jYj5CwHyFhP0LCfoSE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjfE/CzaELd/v1zG6vlgm/f7s5vZrZ9XaR8OuXo6ltPy8SHliE8yOcH+H8COdHOD/C+RHOj3B+hy/8A7mjjGLaNkd7AAAAAElFTkSuQmCC" alt="" border=0 height=300 width=300></img>
+		<p class="img__description">Photos</p></a></div></th>
+        <td><a href="https://www.w3schools.com" target="_blank"><div class="img__wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAb1BMVEUsJbT///+Fgp7V1O7n5vYrJJUdFGUrJLQfFLM7NLkwKbWLh9ZxbM02L7gcFGOBfpyysMJ+e57k4+sKAFQcFGkAAHLU0+UqJIEUBqIqI55TTcP7+v3q6vfj4vSHgtWWktprZsx+e652cs5AObgaEX3l+OOhAAABcUlEQVR4nO3PS1JTARRF0QgE5ROigpIACoLzH6MTsKxHg3LfsHb3dM5afTj0Vv/7wJtHOD/C+RHOj3B+hPMjnB/h/Ajn9xfh/cPDydCOTxYJf/x8vJjZ0+7XIuHx3fPz5chefm+XCT+9nG0mdr4/PVooPDv/mG31j2n9CuFqZISE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjJOxHSNiPkLAfIWE/QsJ+hIT9CAn7ERL2IyTsR0jYj5CwHyFhP0LCfoSE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjJOxHSNiPkLAfIWE/QsJ+hIT9CAn7ERL2IyTsR0jYj5CwHyFhP0LCfoSE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjfE/CzaELd/v1zG6vlgm/f7s5vZrZ9XaR8OuXo6ltPy8SHliE8yOcH+H8COdHOD/C+RHOj3B+hy/8A7mjjGLaNkd7AAAAAElFTkSuQmCC" alt="" border=0 height=300 width=300></img>
+		<p class="img__description">Reports</p>
+</a></div></th>
+    </tr>
+    <tr>
+        <td><a href="https://www.w3schools.com"><div class="img__wrap"><div class="img__wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAb1BMVEUsJbT///+Fgp7V1O7n5vYrJJUdFGUrJLQfFLM7NLkwKbWLh9ZxbM02L7gcFGOBfpyysMJ+e57k4+sKAFQcFGkAAHLU0+UqJIEUBqIqI55TTcP7+v3q6vfj4vSHgtWWktprZsx+e652cs5AObgaEX3l+OOhAAABcUlEQVR4nO3PS1JTARRF0QgE5ROigpIACoLzH6MTsKxHg3LfsHb3dM5afTj0Vv/7wJtHOD/C+RHOj3B+hPMjnB/h/Ajn9xfh/cPDydCOTxYJf/x8vJjZ0+7XIuHx3fPz5chefm+XCT+9nG0mdr4/PVooPDv/mG31j2n9CuFqZISE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjJOxHSNiPkLAfIWE/QsJ+hIT9CAn7ERL2IyTsR0jYj5CwHyFhP0LCfoSE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjJOxHSNiPkLAfIWE/QsJ+hIT9CAn7ERL2IyTsR0jYj5CwHyFhP0LCfoSE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjfE/CzaELd/v1zG6vlgm/f7s5vZrZ9XaR8OuXo6ltPy8SHliE8yOcH+H8COdHOD/C+RHOj3B+hy/8A7mjjGLaNkd7AAAAAElFTkSuQmCC" alt="" border=0 height=300 width=300></img>
+		<p class="img__description">SDS</p>
+</a></div></th>
+        <td><a href="https://www.w3schools.com"><div class="img__wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAb1BMVEUsJbT///+Fgp7V1O7n5vYrJJUdFGUrJLQfFLM7NLkwKbWLh9ZxbM02L7gcFGOBfpyysMJ+e57k4+sKAFQcFGkAAHLU0+UqJIEUBqIqI55TTcP7+v3q6vfj4vSHgtWWktprZsx+e652cs5AObgaEX3l+OOhAAABcUlEQVR4nO3PS1JTARRF0QgE5ROigpIACoLzH6MTsKxHg3LfsHb3dM5afTj0Vv/7wJtHOD/C+RHOj3B+hPMjnB/h/Ajn9xfh/cPDydCOTxYJf/x8vJjZ0+7XIuHx3fPz5chefm+XCT+9nG0mdr4/PVooPDv/mG31j2n9CuFqZISE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjJOxHSNiPkLAfIWE/QsJ+hIT9CAn7ERL2IyTsR0jYj5CwHyFhP0LCfoSE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjJOxHSNiPkLAfIWE/QsJ+hIT9CAn7ERL2IyTsR0jYj5CwHyFhP0LCfoSE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjfE/CzaELd/v1zG6vlgm/f7s5vZrZ9XaR8OuXo6ltPy8SHliE8yOcH+H8COdHOD/C+RHOj3B+hy/8A7mjjGLaNkd7AAAAAElFTkSuQmCC" alt="" border=0 height=300 width=300></img>
+		<p class="img__description">Test Proc</p>
+</a></div></th>
+        <td><a href="https://www.w3schools.com"><div class="img__wrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAb1BMVEUsJbT///+Fgp7V1O7n5vYrJJUdFGUrJLQfFLM7NLkwKbWLh9ZxbM02L7gcFGOBfpyysMJ+e57k4+sKAFQcFGkAAHLU0+UqJIEUBqIqI55TTcP7+v3q6vfj4vSHgtWWktprZsx+e652cs5AObgaEX3l+OOhAAABcUlEQVR4nO3PS1JTARRF0QgE5ROigpIACoLzH6MTsKxHg3LfsHb3dM5afTj0Vv/7wJtHOD/C+RHOj3B+hPMjnB/h/Ajn9xfh/cPDydCOTxYJf/x8vJjZ0+7XIuHx3fPz5chefm+XCT+9nG0mdr4/PVooPDv/mG31j2n9CuFqZISE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjJOxHSNiPkLAfIWE/QsJ+hIT9CAn7ERL2IyTsR0jYj5CwHyFhP0LCfoSE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjJOxHSNiPkLAfIWE/QsJ+hIT9CAn7ERL2IyTsR0jYj5CwHyFhP0LCfoSE/QgJ+xES9iMk7EdI2I+QsB8hYT9Cwn6EhP0ICfsREvYjfE/CzaELd/v1zG6vlgm/f7s5vZrZ9XaR8OuXo6ltPy8SHliE8yOcH+H8COdHOD/C+RHOj3B+hy/8A7mjjGLaNkd7AAAAAElFTkSuQmCC" alt="" border=0 height=300 width=300></img>
+		<p class="img__description">Training Videos</p>
+</a></div></th>
+    </tr>
+</table>
+    </body>
+</html>
