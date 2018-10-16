@@ -6,11 +6,11 @@
 ------------------------------------------------------------------------------------------------------------
 
 --Creates a database named Trees
-CREATE DATABASE Trees;
+USE FacilitiesMaintenance;
 	GO
 
 --Creates 3 tables in the Tree Database
-CREATE TABLE Trees.dbo.GroundsTrainingType
+CREATE TABLE dbo.GroundsTrainingType
 (
 ID int NOT NULL IDENTITY,
 Training varchar(100) NOT NULL,
@@ -20,17 +20,17 @@ PRIMARY KEY (ID)
 );
 
 --Adds 1 value into the above table
-INSERT INTO Trees.dbo.GroundsTrainingType (Training)
+INSERT INTO dbo.GroundsTrainingType (Training)
 VALUES ('Manual' );
 --Adds another value into the above table
-INSERT INTO Trees.dbo.GroundsTrainingType (Training)
+INSERT INTO dbo.GroundsTrainingType (Training)
 VALUES ('Class' );
 --Adds a third value into the above table
-INSERT INTO Trees.dbo.GroundsTrainingType (Training)
+INSERT INTO dbo.GroundsTrainingType (Training)
 VALUES ('Field' );
 
 
-CREATE TABLE Trees.dbo.GroundsTrainingEquipment
+CREATE TABLE dbo.GroundsTrainingEquipment
 	(
 	ID int NOT NULL IDENTITY,
 	Equipment varchar(100) NOT NULL,
@@ -40,27 +40,27 @@ CREATE TABLE Trees.dbo.GroundsTrainingEquipment
 		);
 
 --Adds 1 value into the above table
-INSERT INTO Trees.dbo.GroundsTrainingEquipment (Equipment)
+INSERT INTO .dbo.GroundsTrainingEquipment (Equipment)
 VALUES ('Chainsaw' );
 --Adds another value into the above table
-INSERT INTO Trees.dbo.GroundsTrainingEquipment (Equipment)
+INSERT INTO .dbo.GroundsTrainingEquipment (Equipment)
 VALUES ('Chipper' );
 --Adds a third value into the above table
-INSERT INTO Trees.dbo.GroundsTrainingEquipment (Equipment)
+INSERT INTO .dbo.GroundsTrainingEquipment (Equipment)
 VALUES ('Genie' );
 --Adds another value into the above table
-INSERT INTO Trees.dbo.GroundsTrainingEquipment (Equipment)
+INSERT INTO .dbo.GroundsTrainingEquipment (Equipment)
 VALUES ('Ground Crew' );
 --Adds another value into the above table
-INSERT INTO Trees.dbo.GroundsTrainingEquipment (Equipment)
+INSERT INTO .dbo.GroundsTrainingEquipment (Equipment)
 VALUES ('JLG' );
-INSERT INTO Trees.dbo.GroundsTrainingEquipment (Equipment)
+INSERT INTO .dbo.GroundsTrainingEquipment (Equipment)
 VALUES ('Hi Ranger' );
 
-CREATE TABLE Trees.dbo.GroundsTraining 
+CREATE TABLE .dbo.GroundsTraining 
 	(
 	UniqueID int NOT NULL IDENTITY,
-	FullName varchar(50) NOT NULL,
+	FullName varchar(100) NOT NULL,
 	Equipment varchar(100) NOT NULL,
 	TrainingType varchar(100) NOT NULL,
 	TrainingDate date NOT NULL,
