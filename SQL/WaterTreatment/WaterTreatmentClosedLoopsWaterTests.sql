@@ -6,11 +6,11 @@
 ------------------------------------------------------------------------------------------------------------
 
 --Creates a database named WaterTreatment
-CREATE DATABASE WaterTreatment;
+USE FacilitiesMaintenance;
 	GO
 
 --Creates sub-table in the WaterTreatment Database
-CREATE TABLE WaterTreatment.dbo.WaterTreatmentDomainsLeaks
+CREATE TABLE FacilitiesMaintenance.dbo.WaterTreatmentDomainsLeaks
 	(
 	ID int NOT NULL IDENTITY,
 	Leaks varchar(10) NOT NULL,
@@ -20,14 +20,14 @@ CREATE TABLE WaterTreatment.dbo.WaterTreatmentDomainsLeaks
 		);
 
 --Adds 1 value into the above table
-INSERT INTO WaterTreatment.dbo.WaterTreatmentDomainsLeaks (Leaks)
+INSERT INTO FacilitiesMaintenance.dbo.WaterTreatmentDomainsLeaks (Leaks)
 VALUES ('Leaks' );
 --Adds another value into the above table
-INSERT INTO WaterTreatment.dbo.WaterTreatmentDomainsLeaks (Leaks)
+INSERT INTO FacilitiesMaintenance.dbo.WaterTreatmentDomainsLeaks (Leaks)
 VALUES ('No Leaks' );
 
 --Creates main table
-CREATE TABLE WaterTreatment.dbo.WaterTreatmentClosedLoopsWaterTests
+CREATE TABLE FacilitiesMaintenance.dbo.WaterTreatmentClosedLoopsWaterTests
 	(
 	UniqueID int NOT NULL IDENTITY,
 	FacNum varchar(5) NOT NULL,
@@ -53,8 +53,8 @@ CREATE TABLE WaterTreatment.dbo.WaterTreatmentClosedLoopsWaterTests
 
 
 PRIMARY KEY (UniqueID),
- FOREIGN KEY (Leaks) REFERENCES WaterTreatment.dbo.WaterTreatmentDomainsLeaks(Leaks) ON UPDATE CASCADE ON DELETE CASCADE
+ FOREIGN KEY (Leaks) REFERENCES FacilitiesMaintenance.dbo.WaterTreatmentDomainsLeaks(Leaks) ON UPDATE CASCADE ON DELETE CASCADE
 );
 --Alter Table function makes the CreateDate feature grab the current date as a default.
-ALTER TABLE WaterTreatment.dbo.WaterTreatmentClosedLoopsWaterTests ADD  CONSTRAINT [DF_EXAMPLE_date]  DEFAULT (getdate()) FOR CreateDate
+ALTER TABLE FacilitiesMaintenance.dbo.WaterTreatmentClosedLoopsWaterTests ADD  CONSTRAINT [DF_EXAMPLE_date]  DEFAULT (getdate()) FOR CreateDate
 GO
