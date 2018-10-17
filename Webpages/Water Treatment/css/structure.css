@@ -79,6 +79,7 @@ button {
   position: center;
   height: 80%;
   width: 80%;
+  
 }
 
 .img__description {
@@ -113,7 +114,7 @@ button {
 }
 
 /* Create three equal columns that floats next to each other */
-.column {
+/*.column {
     float: left;
     width: 33.33%;
     padding: 10px;
@@ -121,10 +122,25 @@ button {
 }
 
 /* Clear floats after the columns */
-.row:after {
+/*.row:after {
     content: "";
     display: table;
     clear: both;
+}*/
+  .container {
+        margin: 0 40px;
+    }
+    .row {
+        margin-left: -3%;
+    }
+    [class*="span"] {
+        display: inline;
+        float: left;
+        margin-left: 3%;
+    }
+@media only screen and (min-width: 768px) {
+    .span-one-third {
+        width: 30%;
+    }
 }
-  
 }

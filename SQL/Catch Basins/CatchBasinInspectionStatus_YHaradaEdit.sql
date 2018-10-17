@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------------------------------------
 --Written by Yurika Harada
 --DateCreated: October 12, 2018
---DateEdited: October 12, 2018
+--DateEdited: October 17, 2018
 --This code creates a view for the Catch Basin Project. 
 --The view is meant to hold the Inspection Status Column which will determine the map symbols on ArcGIS.
 ------------------------------------------------------------------------------------------------------------
@@ -52,28 +52,48 @@ SELECT			dbo.GROUNDSCATCHBASINS.OBJECTID,
 				  THEN 'Supplemental Work and Cleaning Required'
 
 				  --Supplemental Work only
-				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'Yes' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'Yes' 
+				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'Yes'
 				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'No' 
 				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'No' 
 				  THEN 'Supplemental Work Required'
+				  
+				    --Cleaning Required
+				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'No' 
+				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'Yes' 
+				  OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'Yes' 
+				  THEN 'Cleaning Required'
 
 				  --Supplemental Work Done and Cleaning Needed
 				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'Done' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'No' 
 				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'Yes' 
 				  OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'Yes' 
 				  THEN 'Supplemental Work Finished but Cleaning Required'
-
-				  --Cleaning Required
-				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'No' 
-				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'Yes' 
-				  OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'Yes' 
-				  THEN 'Cleaning Required'
+				  
+				  --Cleaning Done but Supplemental Work NEEDED
+				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'Yes' 
+				  THEN 'Supplemental Work Required but Cleaning Done'
+				  
+				   --Supplemental Work Needed and Cleaning Done
+				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'Yes' 
+				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'No' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'No' 
+				  OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'No' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'No' 
+				  THEN 'Supplemental Work Required but Cleaning Done'
+				  
+				   --Year CASE WHEN statements
+				  WHEN YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) + 1 = YEAR(GETDATE()) THEN 'Inspection Due this Year'
+				  WHEN YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) + 2 <= YEAR(GETDATE()) THEN 'Has Not Been Inspected Within 2 Years or More'
 
 				  --Supplemental Work and Cleaning Done
-				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'Done' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'Done' 
-				  OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'No'
-				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'No' 
+				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'Done' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'Yes' 
 				  THEN 'Supplemental Work and Cleaning Done'
+				  
+				   --Cleaning Done but Supplemental Work NEEDED
+				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'Done' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'No' 
+				  THEN 'Supplemental Work Done and Cleaning Not Needed'
+				  
+				  --Inspected this year, cleaning not needed
+				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'No' AND YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) = YEAR(GETDATE())
+				  THEN 'Inspected this Year, No Cleaning Required'
 
 				  --Cleaned and Inspected this year
 				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'No' 
@@ -81,10 +101,6 @@ SELECT			dbo.GROUNDSCATCHBASINS.OBJECTID,
 				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'No' AND YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) = YEAR(GETDATE())
 				  THEN 'Cleaned and Inspected this Year'
 
-				  --Year CASE WHEN statements
-				  WHEN YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) + 1 = YEAR(GETDATE()) THEN 'Inspection Due this Year'
-				  WHEN YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) + 2 <= YEAR(GETDATE()) THEN 'Has Not Been Inspected Within 2 Years or More'
-				
 				  END AS InspectionStatus
 
 
