@@ -116,10 +116,35 @@ button {
 	grid-template-columns: repeat(12, 1fr);
 }
 
-/* Create three equal columns that floats next to each other */
+
+/* ...mobile styles here... */ 
+@media screen and (min-width: 600px) {
+
+.column {
+    float: left;
+    width: 100%;
+    padding: 10px;
+}
+
+
+/* ...tablet styles here... */ 
+@media screen and (min-width: 800px) {
+	
+.column {
+    float: left;
+    width: 50%;
+    padding: 0px;
+}
+
+
+/* ...desktop styles here...*/ 
+@media screen and (min-width: 1300px) {
+
 .column {
     float: left;
     width: 33.33%;
     padding: 10px;
 	
-}}
+}
+}
+}
