@@ -47,27 +47,31 @@ SELECT			dbo.GROUNDSCATCHBASINS.OBJECTID,
 
 				--Supplemental Work and Cleaning Required
 				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'Yes' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'No' 
-				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'Yes' 
-				  OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'Yes' 
+				  AND (dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'Yes' 
+				  OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'Yes' OR 
+				  dbo.ViewGroundsCatchBasinInspectionsMostRecent.SedimentSumpFilled60Percent = 'Yes') 
 				  THEN 'Supplemental Work and Cleaning Required'
 
 				  --Supplemental Work only
 				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'Yes'
 				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'No' 
-				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'No' 
+				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'No' AND 
+				  dbo.ViewGroundsCatchBasinInspectionsMostRecent.SedimentSumpFilled60Percent = 'No'
 				  THEN 'Supplemental Work Required'
 				  
 				    --Cleaning Required
 				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'No' 
-				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'Yes' 
-				  OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'Yes' 
+				  AND (dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'Yes' 
+				  OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'Yes' OR 
+				  dbo.ViewGroundsCatchBasinInspectionsMostRecent.SedimentSumpFilled60Percent = 'Yes') 
 				  THEN 'Cleaning Required'
 
 				  --Supplemental Work Done and Cleaning Needed
 				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'Done' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'No' 
-				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'Yes' 
-				  OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'Yes' 
-				  THEN 'Supplemental Work Finished but Cleaning Required'
+				  AND (dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'Yes' 
+				  OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'Yes' OR dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'Yes' OR 
+				  dbo.ViewGroundsCatchBasinInspectionsMostRecent.SedimentSumpFilled60Percent = 'Yes') 
+				  THEN 'Supplemental Work Done but Cleaning Required'
 				  
 				  --Cleaning Done but Supplemental Work NEEDED
 				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'Yes' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'Yes' 
@@ -84,21 +88,25 @@ SELECT			dbo.GROUNDSCATCHBASINS.OBJECTID,
 				   --Work done, no cleaning needed.
 				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'Done' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'No' 
 				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'No' 
-				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'No'
-				  THEN 'Supplemental Work Done and Cleaning Required'
-				  
-				  --Inspected this year, cleaning not needed
-				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'Yes' 
-				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'Yes' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'Yes' 
-				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'Yes' AND YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) = YEAR(GETDATE())
-				  THEN 'Inspected this Year, No Cleaning Required'
+				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.SedimentSumpFilled60Percent = 'No'
+				  THEN 'Supplemental Work Done'
 
 				  --Cleaning Done, No Supplemental Work Required
 				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'Yes' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'No' 
-				  THEN 'Cleaning Done, No Supplemental Work Required'
+				  THEN 'Cleaning Done'
+				  
+				  --Inspected this year, no follow up
+				  WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'No' 
+				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'No' 
+				  AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.SedimentSumpFilled60Percent = 'No' 
+				  AND YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) = YEAR(GETDATE())
+				  THEN 'Inspected this Year, No Follow up'
+
+				  ELSE 'Previous Inspection Not Recorded'
 
 				  END AS InspectionStatus
 
 
 FROM            dbo.ViewGroundsCatchBasinInspectionsMostRecent RIGHT OUTER JOIN
                          dbo.GROUNDSCATCHBASINS ON dbo.ViewGroundsCatchBasinInspectionsMostRecent.REL_GLOBALID = dbo.GROUNDSCATCHBASINS.GlobalID
+WHERE OBJECTID = 3118
