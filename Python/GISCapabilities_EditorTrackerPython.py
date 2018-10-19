@@ -21,10 +21,11 @@ import arcpy
 ###
 #prints everything, is not currently correct.
 print("script started")
-... fc = "C:\Users\ymharada\Desktop\FacilitiesMaintenance.gdb\AdaAccessPoints"
-... field = ["last_edited_date"]
-... with arcpy.da.SearchCursor(fc, field) as cursor:
-... 	for row in cursor:
-... 		if [2018-03-01 > field]:
-... 		    print "Last Edited datetime = {0}".format(row[0])
-... print("script finished")
+fc = "C:\Users\ymharada\Desktop\FacilitiesMaintenance.gdb\AdaAccessPoints"
+field = ["last_edited_date"]
+date = "2018-03-01"
+with arcpy.da.SearchCursor(fc, field) as cursor:
+	for row in cursor:
+ 		if [date >= row[0]]:
+		    print "Last Edited datetime = {0}".format(row[0])           
+print("script finished")
