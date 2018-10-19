@@ -1,3 +1,12 @@
+/*@import url("structure.css");*/
+
+@font-face {
+  font-family: 'Encode Sans Compressed';
+  src: url('../assets/fonts/encodesanscompressed-600-semibold-webfont.eot');
+  src: url('../assets/fonts/encodesanscompressed-600-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('../assets/fonts/encodesanscompressed-600-semibold-webfont.woff') format('woff'), url('../assets/fonts/encodesanscompressed-600-semibold-webfont.ttf') format('truetype'), url('../assets/fonts/encodesanscompressed-600-semibold-webfont.svg#encodesanscompressed-600-semibold-webfont') format('svg');
+  font-weight: 600;
+font-style: normal;}
+
 /*  SECTIONS  */
 .section {
 	clear: both;
@@ -40,14 +49,14 @@
 
 
 /*  GO FULL WIDTH BELOW 480 PIXELS */
-@media only screen and (max-width: 1080px) {
+@media only screen and (max-width: 700px) {
 	.col {  margin: 1% 0 1% 0%; }
-	.span_3_of_3, .span_2_of_3, .span_1_of_3 { width: 50%; }
+	.span_3_of_3, .span_2_of_3, .span_1_of_3 { width: 80%; }
 }
 
 
 /*  GO FULL WIDTH BELOW 480 PIXELS */
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 1200px) {
 	.col {  margin: 1% 0 1% 0%; }
 	.span_3_of_3, .span_2_of_3, .span_1_of_3 { width: 100%; }
 }
