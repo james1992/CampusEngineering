@@ -19,15 +19,12 @@ import arcpy
 ############################################################################# 
 ### Parameters
 ###
-
+#prints everything, is not currently correct.
 print("script started")
-
-fc = "C:\Users\ymharada\Documents\GitHub\CampusEngineering\FacilitiesMaintenance.gdb\GroundsBollard"
-field = "Material"
-cursor = arcpy.SearchCursor(fc,fields="Material;last_edited_date")
-row = cursor.next()
-while row:
-    print(row.getValue(field))
-    row = cursor.next()
-	
-print("script finished")
+... fc = "C:\Users\ymharada\Desktop\FacilitiesMaintenance.gdb\AdaAccessPoints"
+... field = ["last_edited_date"]
+... with arcpy.da.SearchCursor(fc, field) as cursor:
+... 	for row in cursor:
+... 		if [2018-03-01 > field]:
+... 		    print "Last Edited datetime = {0}".format(row[0])
+... print("script finished")
