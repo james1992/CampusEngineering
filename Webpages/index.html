@@ -4,62 +4,6 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
-      <!-- Global site tag (gtag.js) - Google Analytics All Pages-->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127220532-4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-127220532-4');
-</script>
-
-<!-- Global site tag (gtag.js) - Google Analytics Single Page-->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127220532-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-127220532-1');
-</script>
-<style>
-/* quick reset */
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-/* relevant styles */
-.img__wrap {
-  position: relative;
-  height: 400px;
-  width: 300px;
-}
-
-.img__description {
-  position: center;
-  text-align: center;
-  text-decoration: none
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgb(211, 211, 211);
-  color: #000000;
-  visibility: hidden;
-  opacity: 0;
-
-  /* transition effect. not necessary */
-  transition: opacity .2s, visibility .2s;
-}
-
-.img__wrap:hover .img__description {
-  visibility: visible;
-  opacity: 1;
-}
-</style>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,44 +11,49 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/full.css">
-
-        <link rel="shortcut icon" href="assets/img/W.PNG">
+        <link rel="stylesheet" href="C:/Users/ymharada/Documents/GitHub/CampusEngineering/Webpages/Water Treatment/css/mini2.css">
+		
+		<link rel="shortcut icon" href="assets/img/W.PNG">
         <script src="//uw.edu/assets/uw.js"></script>
 		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js?ver=1.9.1'></script>
 		<script type='text/javascript' src='https://www.washington.edu/wp-includes/js/underscore.min.js?ver=1.6.0'></script>
 		<script type='text/javascript' src='https://www.washington.edu/wp-includes/js/backbone.min.js?ver=1.1.2'></script>
 		<script type='text/javascript' src='https://www.washington.edu/wp-content/themes/uw-2014/js/site.dev.js'></script>
 
+
         <!--[if lt IE 9]>
             <script src="js/html5shiv.js" type="text/javascript"></script>
             <script src="js/respond.js" type="text/javascript"></script>
             <link rel='stylesheet' href='css/ie.css' type='text/css' media='all' />
         <![endif]-->
-
     </head>
     <body>
 
-
-
-<div id='uwsearcharea' aria-hidden="true" class="uw-search-bar-container"></div>
-<div id="uw-container">
-
     <div id="uw-container-inner">
         <header class="uw-thinstrip">
-
-            <div class='align-right'>
             <nav class="uw-thin-strip-nav">
                 <ul class="uw-thin-links">
                     <li>
-                        <a title="Home Page" href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/">UW Facilities GIS Home</a>
+                        <a href="http://myuw.washington.edu" title=
+                        "MyUW">MyUW</a>
+                    </li>
+
+                    <li>
+                        <a href="http://uw.edu/calendar" title=
+                        "UW Calendar">Calendar</a>
+                    </li>
+
+                    <li>
+                        <a href="http://uw.edu/maps" title=
+                        "UW Maps">Maps</a>
+                    </li>
+
+                    <li>
+                        <a href="http://uw.edu/directory" title=
+                        "UW Directories">Directories</a>
                     </li>
                 </ul>
             </nav>
-            <nav aria-label="search and quick links" id="search-quicklinks" role="navigation">
-                <button class='uw-quicklinks' aria-haspopup="true" aria-expanded="false">Quick Links<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15.63px" height="69.13px" viewBox="0 0 15.63 69.13" enable-background="new 0 0 15.63 69.13" xml:space="preserve"><polygon fill="#FFFFFF" points="12.8,7.776 12.803,7.773 5.424,0 3.766,1.573 9.65,7.776 3.766,13.98 5.424,15.553 12.803,7.78"></polygon><polygon fill="#FFFFFF" points="9.037,61.351 9.036,61.351 14.918,55.15 13.26,53.577 7.459,59.689 1.658,53.577 0,55.15 5.882,61.351 5.882,61.351 5.884,61.353 0,67.557 1.658,69.13 7.459,63.019 13.26,69.13 14.918,67.557 9.034,61.353"></polygon></svg></button>
-            </nav>
-            </div>
 
             <div class="container">
                 <a class="uw-patch" href="http://uw.edu" tabindex="-1" title=
@@ -114,132 +63,71 @@
             </div>
         </header>
 
-        <nav id="dawgdrops">
-            <div class="dawgdrops-inner container">
-                <ul class="dawgdrops-nav" id="menu-brand-menu">
-                    <li class="dawgdrops-item">
-                        <a class="dropdown-toggle"
-                           id="189" title="fs-apps">UW Facilities</a>
-
-                        <ul class="dawgdrops-menu" id="menu-189">
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/fs"
-                                   id="492" tabindex="-1" title="fs">All FS</a>
-                            </li>
-
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/ceo"
-                                   id="488" tabindex="-1" title="ceo">Campus Engineering & Operations</a>
-                            </li>
-
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/es"
-                                   id="488" tabindex="-1" title="es">Engineering Services</a>
-                            </li>
-
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/fmc_grounds"
-                                   id="488" tabindex="-1" title="fmc-grounds">Facilities Maintenance & Construction - Grounds</a>
-                            </li>
-
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/fabs_eio"
-                                   id="488" tabindex="-1" title="fabs-eio">Finance & Business Services - EIO</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="dawgdrops-item">
-                        <a href="https://facilities.uw.edu/" target="_blank"
-                           id="193" title="fs-home">UW Facilities Home</a>
-                    </li>
-
-                </ul>
-            </div>
-        </nav>
-        <div id="content">
-            <div id="gistext">
-                <font face="Open Sans" color="#4b2e83"><h1>Welcome to the UW Facilities GIS Dashboard</h1>
-				<h2>Public Pages</h2>
-				<div id="uw-container">
-<div class="row" align="center">
-  <div class="column" style="background-color:#585858;">
-    <a href="datadash.html"><div class="img__wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ski_trail_rating_symbol-blue_square.svg/600px-Ski_trail_rating_symbol-blue_square.svg.png" alt="Dashboard" border=0 width=50%></img>
-		<p class="img__description">Benches</p></a></div>
-  </div>
-  <div class="column" style="background-color:#DCDCDC;">
-  <a href="photo.html"><div class="img__wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ski_trail_rating_symbol-blue_square.svg/600px-Ski_trail_rating_symbol-blue_square.svg.png" alt="Photos" border=0 width=50%></img>
-		<p class="img__description">Bike Lockers</p></div></a>
-  </div>
-  <div class="column" style="background-color:#585858;">
-   <div class="grid-item"><a href="reports.html"><div class="img__wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ski_trail_rating_symbol-blue_square.svg/600px-Ski_trail_rating_symbol-blue_square.svg.png" alt="Reports" border=0 width=50%></img>
-		<p class="img__description">Bike Rooms</p></div></a>
-  </div>
-</div>
-<div class="row">
-  <div class="column" style="background-color:#DCDCDC;">
-  <a href="SDS.html"><div class="img__wrap"><div class="img__wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ski_trail_rating_symbol-blue_square.svg/600px-Ski_trail_rating_symbol-blue_square.svg.png" alt="SDS" border=0 width=63%></img>
-		<p class="img__description">Buildings</p></div></div></a>
-  </div>
-  <div class="column" style="background-color:#585858;">
-    <a href="testingprocedures.html"><div class="img__wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ski_trail_rating_symbol-blue_square.svg/600px-Ski_trail_rating_symbol-blue_square.svg.png" alt="" border=0 width=50%></img>
-		<p class="img__description">Campus Memorials</p></div></a>
-  </div>
-  <div class="column" style="background-color:#DCDCDC;">
-  <a href="trainingvideos.html"><div class="img__wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ski_trail_rating_symbol-blue_square.svg/600px-Ski_trail_rating_symbol-blue_square.svg.png" alt="Training Videos" border=0 width=50%></img>
-		<p class="img__description">Charging Stations</p></div></a>
-  </div>
-</div></div>
-
-<div class="row" align="center">
-  <div class="column" style="background-color:#585858;">
-    <a href="datadash.html"><div class="img__wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ski_trail_rating_symbol-blue_square.svg/600px-Ski_trail_rating_symbol-blue_square.svg.png" alt="Dashboard" border=0 width=50%></img>
-		<p class="img__description">Dial a Ride</p></a></div>
-  </div>
-  <div class="column" style="background-color:#DCDCDC;">
-  <a href="photo.html"><div class="img__wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ski_trail_rating_symbol-blue_square.svg/600px-Ski_trail_rating_symbol-blue_square.svg.png" alt="Photos" border=0 width=50%></img>
-		<p class="img__description">Loading Zones</p></div></a>
-  </div>
-  <div class="column" style="background-color:#585858;">
-   <div class="grid-item"><a href="reports.html"><div class="img__wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ski_trail_rating_symbol-blue_square.svg/600px-Ski_trail_rating_symbol-blue_square.svg.png" alt="Reports" border=0 width=50%></img>
-		<p class="img__description">Motorcycle Parking</p></div></a>
-  </div>
-</div>
-<div class="row">
-  <div class="column" style="background-color:#DCDCDC;">
-  <a href="SDS.html"><div class="img__wrap"><div class="img__wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ski_trail_rating_symbol-blue_square.svg/600px-Ski_trail_rating_symbol-blue_square.svg.png" alt="SDS" border=0 width=63%></img>
-		<p class="img__description">Snow Removal</p></div></div></a>
-  </div>
-  <div class="column" style="background-color:#585858;">
-    <a href="testingprocedures.html"><div class="img__wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ski_trail_rating_symbol-blue_square.svg/600px-Ski_trail_rating_symbol-blue_square.svg.png" alt="" border=0 width=50%></img>
-		<p class="img__description">Trees</p></div></a>
-  </div>
-  <div class="column" style="background-color:#DCDCDC;">
-  <a href="trainingvideos.html"><div class="img__wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Ski_trail_rating_symbol-blue_square.svg/600px-Ski_trail_rating_symbol-blue_square.svg.png" alt="Training Videos" border=0 width=50%></img>
-		<p class="img__description">Trees: Salvage Wood Program</p></div></a>
-  </div>
-</div></div></font>
-                <h2>How to use this site</h2>
-                <p><b>Public/Greater University Community:</b> UW Facilities makes certain maps and data available to the public.  These maps include among others the location of bike racks, buildings and trees.  Hover over the Public dropdown at the top of the page (underneath the W) to view publicly available maps.</p>
-                <p><b>UW Facilities Staff:</b> If you are part of a department that completed a GIS project with the FS GIS team you will find your maps by hovering over UW Facilities dropdown.  You will then see a list of departments, select your department from the list.  Even if you don’t have a department specific project, clicking All Facilities will provide you with access to maps that are available to the entire organization.</p>
-                <p>The last link, Facilities Home, will take you to the UW Facilities homepage. From there you can submit a request for service and view other services and tools provided by UW Facilities. </p>
-                <p>In the top right corner of every page of this dashboard, you will find a link labelled Facilities GIS Home. That link will take you back to this page.</p>
-                
-                <h2>What is GIS (Geographic Information System)?</h2>
-
-                <p>A Geographic Information System (GIS) lets us visualize, question, analyze, and interpret data to understand relationships, patterns, and trends.</p>
-                <p>GIS is widely used to optimize maintenance schedules and better inform decision makers by providing actionable spatial information.  If you want to learn more about GIS, please use this link to go to the <a href="http://www.esri.com/what-is-gis" target="_blank">ESRI</a> web page on the topic.</p>
-
-                <h2>Why does UW Facilities use GIS?</h2>
-
-                <p>With GIS, it is possible to develop spatial tools and applications that effectively support the core business activities of University of Washington Facilities through high quality spatial data and integration with other business systems.</p>
-
-                <h2>Questions or Comments?</h2>
-
-                <p>If you have any questions or comments about the maps on this dashboard or if you are interested in starting a GIS project, please send an email to <a href="mailto:fsgis@uw.edu">FS GIS</a> and we will be happy to assist you.</p>
-            </div>
-        </div>
+        
     </div>
 </div>
+
+
+<!--src for pictures need to change when uploaded onto website.-->
+
+<div id="uw-container">
+                <h1><font face="Open Sans" color="#4b2e83"><center>Welcome to FS GIS</center></h1>
+				<h2><color="#4b2e83"><center>Public Maps</center></h2>
+<button class="collapsible">Public Maps</button>				
+<div class="row" align="center">
+ <div class="column"><div class="hovereffect"><a href="" target="_blank"><img class="img-responsive" src="http://www.leapcms.com/images/100pixels1.gif" alt="Chlorine Testing Procedure"><div class="overlay"><h1>Chlorine Testing Procedure</h1></div>
+    </div></a></div>
+	
+  <div class="column"><div class="hovereffect"><a href="" target="_blank"><img class="img-responsive" src="http://www.leapcms.com/images/100pixels1.gif" alt="Conductivity Testing Procedure"><div class="overlay"><h1>Conductivity Testing Procedure</h1></div>
+    </div></a></div>
+	
+  <div class="column"><div class="hovereffect"><a href="" target="_blank"><img class="img-responsive" src="http://www.leapcms.com/images/100pixels1.gif" alt="Dip Slide Testing Procedures"><div class="overlay"><h1>Dip Slide Testing Procedures</h1></div>
+    </div></a></div>
+  
+  <div class="column"><div class="hovereffect"><a href="" target="_blank"><img class="img-responsive" src="http://www.leapcms.com/images/100pixels1.gif" alt="pH and ORP Testing Procedure"><div class="overlay"><h1>pH and ORP Testing Procedure</h1></div>
+    </div></a></div>
+	
+  <div class="column"><div class="hovereffect"><a href="" target="_blank"><img class="img-responsive" src="http://www.leapcms.com/images/100pixels1.gif" alt="TRASAR Testing Procedure"><div class="overlay"><h1>TRASAR Testing Procedure</h1></div>
+    </div></a></div>
+<div class="column"><div class="hovereffect"><a href="" target="_blank"><img class="img-responsive" src="http://www.leapcms.com/images/100pixels1.gif" alt="TRASAR Testing Procedure"><div class="overlay"><h1>TRASAR Testing Procedure</h1></div>
+    </div></a></div>
+	<div class="column"><div class="hovereffect"><a href="" target="_blank"><img class="img-responsive" src="http://www.leapcms.com/images/100pixels1.gif" alt="Chlorine Testing Procedure"><div class="overlay"><h1>Chlorine Testing Procedure</h1></div>
+    </div></a></div>
+	
+  <div class="column"><div class="hovereffect"><a href="" target="_blank"><img class="img-responsive" src="http://www.leapcms.com/images/100pixels1.gif" alt="Conductivity Testing Procedure"><div class="overlay"><h1>Conductivity Testing Procedure</h1></div>
+    </div></a></div>
+	
+  <div class="column"><div class="hovereffect"><a href="" target="_blank"><img class="img-responsive" src="http://www.leapcms.com/images/100pixels1.gif" alt="Dip Slide Testing Procedures"><div class="overlay"><h1>Dip Slide Testing Procedures</h1></div>
+    </div></a></div>
+  
+  <div class="column"><div class="hovereffect"><a href="" target="_blank"><img class="img-responsive" src="http://www.leapcms.com/images/100pixels1.gif" alt="pH and ORP Testing Procedure"><div class="overlay"><h1>pH and ORP Testing Procedure</h1></div>
+    </div></a></div>
+  <div class="column"><div class="hovereffect"><a href="" target="_blank"><img class="img-responsive" src="http://www.leapcms.com/images/100pixels1.gif" alt="TRASAR Testing Procedure"><div class="overlay"><h1>TRASAR Testing Procedure</h1></div>
+    </div></a></div>
+<div class="column"><div class="hovereffect"><a href="" target="_blank"><img class="img-responsive" src="http://www.leapcms.com/images/100pixels1.gif" alt="TRASAR Testing Procedure"><div class="overlay"><h1>TRASAR Testing Procedure</h1></div>
+    </div></a></div>
+	<div class="column"><div class="hovereffect"><a href="" target="_blank"><img class="img-responsive" src="http://www.leapcms.com/images/100pixels1.gif" alt="TRASAR Testing Procedure"><div class="overlay"><h1>TRASAR Testing Procedure</h1></div>
+    </div></a></div></div>
+	
+	</div>
+</font>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
     </body>
 </html>
+
