@@ -90,10 +90,6 @@ button {
   opacity: 1;
 }
 
-/*.centerTable { margin: 0px auto; }*/
-
-
-
 
 /*Added Code for Grids*/
 
@@ -222,26 +218,25 @@ button {
 }
 /*Code for collapsible areas*/
 .collapsible {
-  background-color: #444444;
-  color: #ffffff;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: center;
-  outline: none;
-  font-size: 20px;
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
 }
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .collapsible:hover {
-  background-color: #85754d;
+    background-color: #555;
 }
 
-/* Style the collapsible content.*/
 .content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #ffffff;
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
 }
