@@ -19,10 +19,10 @@ SELECT			dbo.GROUNDSCATCHBASINS.OBJECTID,
 				CASE WHEN --YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) + 1 = YEAR(GETDATE()) THEN 'Inspection Due this Year'
 				  
 				-- Added this statement to satisfy Brian Davis request that points reset at Biennium end July, 2019 --> To be updated on 12/31/2020
-				CAST(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate AS Date) < '01/07/2019' AND CAST(GETDATE() AS DATE) >= '01/07/2019' THEN 'Inspection Due this Year'
-				WHEN YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) + 2 <= YEAR(GETDATE()) THEN 'Has Not Been Inspected Within 2 Years or More'
+				CAST(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate AS Date) < '01/07/2019' AND CAST(GETDATE() AS DATE) >= '01/07/2019' THEN 'Inspection Due'
+				WHEN YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) + 2 <= YEAR(GETDATE()) THEN 'Inspection Due (Prioritize)'
 
-				WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.FollowUpInspectionRequired = 'Yes' THEN 'Follow up Required'
+				WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.FollowUpInspectionRequired = 'Yes' THEN 'Inspection Not Complete, Follow up Required'
 
 				--Supplemental Work and Cleaning Required
 				WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'Yes' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned = 'No' 
@@ -75,9 +75,9 @@ SELECT			dbo.GROUNDSCATCHBASINS.OBJECTID,
 				AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'No' 
 				AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.SedimentSumpFilled60Percent = 'No' 
 				AND YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) = YEAR(GETDATE())
-				THEN 'Inspected this Year, No Follow up'
+				THEN 'Inspected, No Cleaning or Supplemental Work Required'
 
-				ELSE 'Previous Inspection Not Recorded'
+				ELSE 'Inspection Due'
 
 				END AS InspectionStatus,
 				 
@@ -109,7 +109,7 @@ SELECT			dbo.GROUNDSCATCHBASINS.OBJECTID,
 				dbo.ViewGroundsCatchBasinInspectionsMostRecent.OpenGrateLockingMechanism, 
                 dbo.ViewGroundsCatchBasinInspectionsMostRecent.OpenGrateNotInPlace, 
 				dbo.ViewGroundsCatchBasinInspectionsMostRecent.SignsofContaminationOrPollution, 
-                dbo.ViewGroundsCatchBasinInspectionsMostRecent.REL_GLOBALID
+                CAST(dbo.GROUNDSCATCHBASINS.OBJECTID AS INT) AS ID
 
 
 				
