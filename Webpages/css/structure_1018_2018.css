@@ -1,0 +1,147 @@
+
+/* Not in our normal CSS; custom */
+ 
+body #uw-container {
+  font-size: 17px;  
+  line-height: 1.72222;
+}
+body {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+button {
+  line-height: 29px;
+  cursor: pointer;
+}
+
+
+/* Required bootstrap grid */
+
+
+.visible-xs {
+  display: none !important;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (max-width: 767px) {
+  .visible-xs {
+    display: block !important;
+  }
+  .hidden-xs {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+/* Bootstrap Mixin */
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*Added code for tables*/
+/* quick reset */
+/* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}*/
+
+/* relevant styles */
+.img__wrap {
+  height: 80%;
+  width: 80%;
+  
+}
+
+.img__description {
+  position: center;
+  text-align: center;
+  text-decoration: none
+  top: 0;
+  bottom: 0;
+  background: none;
+  color: #000000;
+  visibility: hidden;
+  opacity: 0;
+
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.img__wrap:hover .img__description {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*.centerTable { margin: 0px auto; }*/
+
+
+
+
+/*Added Code for Grids*/
+
+* {
+    box-sizing: border-box;
+    align-items: stretch;
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	grid-template-columns: repeat(12, 1fr);
+}
+
+
+/* ...small styles here... */ 
+@media screen and (min-width: 600px) {
+
+.column {
+    float: left;
+    width: 100%;
+    padding: 10px;
+}
+/* ...medium styles here... */ 
+@media screen and (min-width: 700px) {
+
+.column {
+    float: left;
+    width: 45%;
+    padding: 0px;
+}
+
+/* ...large styles here...*/ 
+@media screen and (min-width: 1300px) {
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+	
+}
+}
+}

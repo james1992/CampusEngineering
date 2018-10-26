@@ -19,7 +19,9 @@ button {
 
 /* Required bootstrap grid */
 
-
+.row {
+	position: center;
+}
 .visible-xs {
   display: none !important;
 }
@@ -88,10 +90,6 @@ button {
   opacity: 1;
 }
 
-/*.centerTable { margin: 0px auto; }*/
-
-
-
 
 /*Added Code for Grids*/
 
@@ -108,16 +106,15 @@ button {
 @media screen and (min-width: 400px) {
 
 .column {
-    float: left;
+    float: center;
     width: 100%;
-    padding: 10px;
 }
 /* ...medium styles here... */ 
 @media screen and (min-width: 700px) {
 
 .column {
     float: left;
-    width: 45%;
+    width: 25%;
     padding: 0px;
 }
 
@@ -126,7 +123,7 @@ button {
 
 .column {
     float: center;
-    width: 33.33%;
+    width: 16.66666%;
     padding: 10px;
 	
 }}
@@ -217,5 +214,30 @@ button {
   filter: alpha(opacity=100);
   -webkit-transform: translate3d(0,0,0);
   transform: translate3d(0,0,0);
+}
+}
+/*Code for collapsible areas*/
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.active, .collapsible:hover {
+    background-color: #555;
+}
+
+.content {  
+  padding: 0 18px;
+  max-height: 0;
+  overflow: visible;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
 }
 }
