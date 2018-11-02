@@ -8,7 +8,7 @@
 ------------------------------------------------------------------------------------------------------------
 
 
-USE [EngineeringServices]
+USE [FacilitiesMaintenance]
 GO
 
 /****** Object:  Table [dbo].[WaterTreatmentCondenserWaterTests]    Script Date: 10/10/2018 7:55:45 AM ******/
@@ -19,7 +19,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 --Creates a sub-table in the WaterTreatment Database
-CREATE TABLE EngineeringServices.dbo.WaterTreatmentDomainsChemicalInventory
+CREATE TABLE FacilitiesMaintenance.dbo.WaterTreatmentDomainsChemicalInventory
 	(
 	ID int NOT NULL IDENTITY,
 	ChemicalInventory varchar(50) NOT NULL,
@@ -29,14 +29,14 @@ CREATE TABLE EngineeringServices.dbo.WaterTreatmentDomainsChemicalInventory
 		);
 
 --Adds 1 value into the above table
-INSERT INTO EngineeringServices.dbo.WaterTreatmentDomainsChemicalInventory (ChemicalInventory)
+INSERT INTO FacilitiesMaintenance.dbo.WaterTreatmentDomainsChemicalInventory (ChemicalInventory)
 VALUES ('Level Okay' );
 --Adds another value into the above table
-INSERT INTO EngineeringServices.dbo.WaterTreatmentDomainsChemicalInventory (ChemicalInventory)
+INSERT INTO FacilitiesMaintenance.dbo.WaterTreatmentDomainsChemicalInventory (ChemicalInventory)
 VALUES ('Needs Filling' );
 
 --Creates another sub-table in the WaterTreatment Database
-CREATE TABLE EngineeringServices.dbo.WaterTreatmentDomainsDebris
+CREATE TABLE FacilitiesMaintenance.dbo.WaterTreatmentDomainsDebris
 	(
 	ID int NOT NULL IDENTITY,
 	Debris varchar(50) NOT NULL,
@@ -46,14 +46,14 @@ CREATE TABLE EngineeringServices.dbo.WaterTreatmentDomainsDebris
 		);
 
 --Adds 1 value into the above table
-INSERT INTO EngineeringServices.dbo.WaterTreatmentDomainsDebris (Debris)
+INSERT INTO FacilitiesMaintenance.dbo.WaterTreatmentDomainsDebris (Debris)
 VALUES ('Clean' );
 --Adds another value into the above table
-INSERT INTO EngineeringServices.dbo.WaterTreatmentDomainsDebris (Debris)
+INSERT INTO FacilitiesMaintenance.dbo.WaterTreatmentDomainsDebris (Debris)
 VALUES ('Dirty' );
 
 --Creates a third sub-table in the WaterTreatment Database
-CREATE TABLE EngineeringServices.dbo.WaterTreatmentDomainsMeteringPumpOperation
+CREATE TABLE FacilitiesMaintenance.dbo.WaterTreatmentDomainsMeteringPumpOperation
 	(
 	ID int NOT NULL IDENTITY,
 	MeteringPumpOperation varchar(50) NOT NULL,
@@ -63,14 +63,14 @@ CREATE TABLE EngineeringServices.dbo.WaterTreatmentDomainsMeteringPumpOperation
 		);
 
 --Adds 1 value into the above table
-INSERT INTO EngineeringServices.dbo.WaterTreatmentDomainsMeteringPumpOperation (MeteringPumpOperation)
+INSERT INTO FacilitiesMaintenance.dbo.WaterTreatmentDomainsMeteringPumpOperation (MeteringPumpOperation)
 VALUES ('Correct' );
 --Adds another value into the above table
-INSERT INTO EngineeringServices.dbo.WaterTreatmentDomainsMeteringPumpOperation (MeteringPumpOperation)
+INSERT INTO FacilitiesMaintenance.dbo.WaterTreatmentDomainsMeteringPumpOperation (MeteringPumpOperation)
 VALUES ('Not Correct' );
 
 --Creates a fourth sub-table in the WaterTreatment Database
-CREATE TABLE EngineeringServices.dbo.WaterTreatmentDomainsPumpSpeedAdjustment
+CREATE TABLE FacilitiesMaintenance.dbo.WaterTreatmentDomainsPumpSpeedAdjustment
 	(
 	ID int NOT NULL IDENTITY,
 	PumpSpeedAdjustment varchar(50) NOT NULL,
@@ -80,17 +80,17 @@ CREATE TABLE EngineeringServices.dbo.WaterTreatmentDomainsPumpSpeedAdjustment
 		);
 
 --Adds 1 value into the above table
-INSERT INTO EngineeringServices.dbo.WaterTreatmentDomainsPumpSpeedAdjustment (PumpSpeedAdjustment)
+INSERT INTO FacilitiesMaintenance.dbo.WaterTreatmentDomainsPumpSpeedAdjustment (PumpSpeedAdjustment)
 VALUES ('Not Adjusted' );
 --Adds another value into the above table
-INSERT INTO EngineeringServices.dbo.WaterTreatmentDomainsPumpSpeedAdjustment (PumpSpeedAdjustment)
+INSERT INTO FacilitiesMaintenance.dbo.WaterTreatmentDomainsPumpSpeedAdjustment (PumpSpeedAdjustment)
 VALUES ('Up' );
 --Adds a third value into the above table
-INSERT INTO EngineeringServices.dbo.WaterTreatmentDomainsPumpSpeedAdjustment (PumpSpeedAdjustment)
+INSERT INTO FacilitiesMaintenance.dbo.WaterTreatmentDomainsPumpSpeedAdjustment (PumpSpeedAdjustment)
 VALUES ('Down' );
 
 --Creates the last sub-table in the WaterTreatment Database
-CREATE TABLE EngineeringServices.dbo.WaterTreatmentDomainsUnitCondition
+CREATE TABLE FacilitiesMaintenance.dbo.WaterTreatmentDomainsUnitCondition
 	(
 	ID int NOT NULL IDENTITY,
 	UnitCondition varchar(50) NOT NULL,
@@ -100,15 +100,15 @@ CREATE TABLE EngineeringServices.dbo.WaterTreatmentDomainsUnitCondition
 		);
 
 --Adds 1 value into the above table
-INSERT INTO EngineeringServices.dbo.WaterTreatmentDomainsUnitCondition (UnitCondition)
+INSERT INTO FacilitiesMaintenance.dbo.WaterTreatmentDomainsUnitCondition (UnitCondition)
 VALUES ('Good' );
 --Adds another value into the above table
-INSERT INTO EngineeringServices.dbo.WaterTreatmentDomainsUnitCondition (UnitCondition)
+INSERT INTO FacilitiesMaintenance.dbo.WaterTreatmentDomainsUnitCondition (UnitCondition)
 VALUES ('Poor' );
 
 --Creates main table
 CREATE TABLE [dbo].[WaterTreatmentCondenserWaterTests](
-	[UniqueID] [int] NOT NULL,
+	[UniqueID] [int] NOT NULL identity,
 	[FacNum] [varchar](5) NOT NULL,
 	[ContentType] [varchar](50) NOT NULL,
 	[LoopType] [varchar](50) NOT NULL,
@@ -148,15 +148,16 @@ CREATE TABLE [dbo].[WaterTreatmentCondenserWaterTests](
 	[Created] [datetime] NOT NULL,
 	[CreatedBy] [varchar](50) NOT NULL,
 
-FOREIGN KEY (ChemicalInventory) REFERENCES EngineeringServices.dbo.WaterTreatmentDomainsChemicalInventory(ChemicalInventory) ON UPDATE CASCADE ON DELETE CASCADE,
+PRIMARY KEY (UniqueID),
+FOREIGN KEY (ChemicalInventory) REFERENCES FacilitiesMaintenance.dbo.WaterTreatmentDomainsChemicalInventory(ChemicalInventory) ON UPDATE CASCADE ON DELETE CASCADE,
 
-FOREIGN KEY (Debris) REFERENCES EngineeringServices.dbo.WaterTreatmentDomainsDebris(Debris) ON UPDATE CASCADE ON DELETE CASCADE,
+FOREIGN KEY (Debris) REFERENCES FacilitiesMaintenance.dbo.WaterTreatmentDomainsDebris(Debris) ON UPDATE CASCADE ON DELETE CASCADE,
 
-FOREIGN KEY (MeteringPumpOperation) REFERENCES EngineeringServices.dbo.WaterTreatmentDomainsMeteringPumpOperation(MeteringPumpOperation) ON UPDATE CASCADE ON DELETE CASCADE,
+FOREIGN KEY (MeteringPumpOperation) REFERENCES FacilitiesMaintenance.dbo.WaterTreatmentDomainsMeteringPumpOperation(MeteringPumpOperation) ON UPDATE CASCADE ON DELETE CASCADE,
 
-FOREIGN KEY (PumpSpeedAdjustment) REFERENCES EngineeringServices.dbo.WaterTreatmentDomainsPumpSpeedAdjustment(PumpSpeedAdjustment) ON UPDATE CASCADE ON DELETE CASCADE,
+FOREIGN KEY (PumpSpeedAdjustment) REFERENCES FacilitiesMaintenance.dbo.WaterTreatmentDomainsPumpSpeedAdjustment(PumpSpeedAdjustment) ON UPDATE CASCADE ON DELETE CASCADE,
 
-FOREIGN KEY (UnitCondition) REFERENCES EngineeringServices.dbo.WaterTreatmentDomainsUnitCondition(UnitCondition) ON UPDATE CASCADE ON DELETE CASCADE
+FOREIGN KEY (UnitCondition) REFERENCES FacilitiesMaintenance.dbo.WaterTreatmentDomainsUnitCondition(UnitCondition) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 ALTER TABLE [dbo].[WaterTreatmentCondenserWaterTests] ADD  CONSTRAINT [DF_WaterTreatmentCondenserWaterTests_Created]  DEFAULT (getdate()) FOR [Created]
