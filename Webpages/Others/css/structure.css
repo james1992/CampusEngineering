@@ -108,7 +108,7 @@ button {
 @media screen and (min-width: 400px) {
 
 .column {
-    float: left;
+    float: center;
     width: 100%;
     padding: 10px;
 }
@@ -116,9 +116,10 @@ button {
 @media screen and (min-width: 700px) {
 
 .column {
-    float: left;
-    width: 45%;
-    padding: 0px;
+    float: center;
+    width: 50%;
+    padding: 10px;
+}
 }
 
 /* ...large styles here...*/ 
@@ -127,7 +128,7 @@ button {
 .column {
     float: center;
     width: 33.33%;
-    padding: 10px;
+    padding: 20px;
 	
 }}
 /* hover effect and dashboard appearance here*/
