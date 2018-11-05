@@ -98,8 +98,6 @@ button {
 * {
     box-sizing: border-box;
     align-items: stretch;
-	grid-column-gap: 0px;
-	grid-row-gap: 10px;
 	grid-template-columns: repeat(12, 1fr);
 }
 
@@ -116,9 +114,8 @@ button {
 @media screen and (min-width: 700px) {
 
 .column {
-    float: left;
-    width: 45%;
-    padding: 10px;
+    float: center;
+    width: 50%;
 }
 
 /* ...large styles here...*/ 
