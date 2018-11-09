@@ -17,6 +17,7 @@
 
 import arcpy
 from datetime import datetime as dt
+import csv
 
 ############################################################################# 
 ### Parameters
@@ -35,14 +36,13 @@ projects = [["Catch Basin Inspections", "Managed", [r'Database Connections\Facil
 
 def main(quarter, year, projects):
     formattedBeginDate, formattedEndDate = DateRangeCalculator(quarter, year)
-    SearchCursor(projects, ["last_edited_date"], formattedBeginDate, formattedEndDate)
+    projectEdits = SearchCursor(projects, ["last_edited_date"], formattedBeginDate, formattedEndDate)
+    ExportToCSV(projectEdits)
 
 def DateRangeCalculator(quarter, year):
     '''
 
     '''
-    beginDate = ''
-    endDate = ''
     if quarter == 1:
         beginDate = "{}/1/1".format(str(year))
         endDate = "{}/3/31".format(str(year))
@@ -78,8 +78,17 @@ def SearchCursor(projects, fields, beginDate, endDate):
                     else:
                         pass
         projectEdits.append([project[0], project[1], countEdits, countRows, round((float(countEdits)/countRows),3)])
-    print projectEdits
+    return projectEdits
 
+def ExportToCSV(projectEdits):
+    '''
+
+    '''
+    with open("editsReport.csv", 'wb') as csvfile:
+        filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        filewriter.writerow(['Project', 'Type', 'CountEdits', 'CountRows', 'PercentEdit'])
+        for row in projectEdits:
+            filewriter.writerow([row[0], row[1], row[2], row[3], row[4]])
 	
 if __name__ == "__main__":
     main(quarter, year, projects)
