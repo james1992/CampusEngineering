@@ -23,7 +23,8 @@ from arcpy import env
 ### Parameters
 ###
 
-DatabaseConnections = [r"Database Connections\FS_CEO.sde", r"Database Connections\FS_MAC.sde", r"Database Connections\FS_CEO_EXTINGUISHER.sde", r"Database Connections\PUB-FMC.sde"]
+DatabaseConnections = [r"Database Connections\BaseComponents.sde",r"Database Connections\CampusEngineeringOperations.sde",r"Database Connections\EngineeringServices.sde",
+                       r"Database Connections\FacilitiesMaintenance.sde", r"Database Connections\FacilitiesServices.sde", r"Database Connections\PublicData.sde", r"Database Connections\TransportationServices.sde"]
 
 #############################################################################  
 ###Script Follows
@@ -41,14 +42,17 @@ def RebuildGisIndexes(Connections):
     '''
     for Connection in Connections:
         env.workspace = Connection
+        arcpy.Compress_management(Connection)
+        print Connection + " was compressed"
         DataList = arcpy.ListTables() + arcpy.ListFeatureClasses()
         GisDataList = []
         for item in DataList:
             # Exclude non-ESRI tables from having indexes updated
             if 'DBO' in item:
                 GisDataList.append(item)
-        arcpy.RebuildIndexes_management(Connection, "NO_SYSTEM", GisDataList, "ALL")
-        print "Indexes for GIS tables in " + Connection + " have been rebuilt"
+        arcpy.RebuildIndexes_management(Connection, "SYSTEM", GisDataList, "ALL")
+        arcpy.AnalyzeDatasets_management(Connection, "SYSTEM", GisDataList, "ANALYZE_BASE","ANALYZE_DELTA","ANALYZE_ARCHIVE")
+        print "Indexes and statistics for GIS tables in " + Connection + " have been rebuilt"
     print "Script ran successfully"
 	
 if __name__ == "__main__":
