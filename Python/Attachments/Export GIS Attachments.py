@@ -28,15 +28,15 @@ import arcpy
 
 # File path to attachment table (typically in Geodatabase)
 # Don't forget to put 'r' before file paths
-ImageTable         = r'Database Connections\FS_MAC.sde\MC_LANDSCAPEPROFILE__ATTACH'
+ImageTable         = r'Database Connections\FacilitiesMaintenance.sde\GroundsCherryTreeBloomObservations__ATTACH'
 # The Blob field that contains the attachment information
 ImageDataField     = "DATA"
 # The field that contains the attachment name
 ImageNameField     = "ATT_NAME"
 # Field that contains the OID of related geometry
-ImageRelationalOIDField = 'REL_GLOBALID'
+ImageRelationalOIDField = 'REL_OBJECTID'
 # Folder where attachments will be saved, need to create first
-OutputFolder       = r'C:\Users\jamesd26.NETID\Desktop\new'
+OutputFolder       = r'C:\Users\jamesd26\Desktop\new'
 
 #############################################################################  
 ###Script Follows
@@ -62,7 +62,7 @@ def SearchCursor(TableLocation, BlobData, ImageName, GeomOID, FolderLocation, Im
 		for row in cursor:
 			StringGeomOID = str(row[0])
 			BinaryData = row[2]
-			FileName = row[1]
+			FileName = StringGeomOID + r'.jpg' # changed for cherry trees.  originally row[1]
 			print FileName
 			print StringGeomOID, BinaryData, FileName
 			JPEGCreator(FileName, BinaryData, FolderLocation, ImageList, DuplicateCount) 
@@ -84,12 +84,13 @@ def JPEGCreator(AttachmentName, BinaryInfo, FolderPath, ImageList, DuplicateCoun
 	if AttachmentName in ImageList:
 		StringDuplicateCount = str(DuplicateCount)
 		FileName = StringDuplicateCount + '_' + AttachmentName
-		open(FolderPath + os.sep + FileName, wb).write(BinaryInfo.tobytes())
+		open(FolderPath + os.sep + FileName, 'wb').write(BinaryInfo.tobytes())
 		# Print adjusted names so they can be easily found and fixed
 		print FileName
 		DuplicateCount = DuplicateCount + 1
 	else:
 		open(FolderPath + os.sep + AttachmentName, 'wb').write(BinaryInfo.tobytes())
+		ImageList.append(AttachmentName)
 	
 if __name__ == "__main__":
     main(ImageTable, ImageDataField, ImageNameField, ImageRelationalOIDField, OutputFolder)
