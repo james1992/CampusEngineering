@@ -42,7 +42,7 @@ projects = [["Catch Basin Inspections", "Managed", [r'Database Connections\Facil
             ["Bollard Inventory","Maintained", [r'Database Connections\FacilitiesMaintenance.sde\GroundsBollard'], ""],
             ["Grounds Fieldwork","Maintained", [r'Database Connections\FacilitiesMaintenance.sde\GroundsFieldwork'], ""],
             ["Irrigation Controllers","Maintained", [r'Database Connections\FacilitiesMaintenance.sde\GroundsIrrigationControllers'], ""],
-            ["Irrigation Controllers","Maintained", [r'Database Connections\FacilitiesMaintenance.sde\GroundsLandscapeEvaluations'], ""],
+            ["Landscape Evaluations","Maintained", [r'Database Connections\FacilitiesMaintenance.sde\GroundsLandscapeEvaluations'], ""],
             ["Invasive Species Management","Maintained", [r'Database Connections\FacilitiesMaintenance.sde\GroundsPesticideApplications', r'Database Connections\FacilitiesMaintenance.sde\GroundsPlantDisease', r'Database Connections\FacilitiesMaintenance.sde\GroundsPlantDiseasePlots', r'Database Connections\FacilitiesMaintenance.sde\GroundsWeedsControlRecommended',
                                                           r'Database Connections\FacilitiesMaintenance.sde\GroundsWeedsEradicationRequired', r'Database Connections\FacilitiesMaintenance.sde\GroundsWeedsMonitorList'], ""],
             ["Snow Removal","Maintained", [r'Database Connections\FacilitiesMaintenance.sde\GroundsSnowRemoval'], ""],

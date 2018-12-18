@@ -1,17 +1,17 @@
 Project,Type,CountEdits,CountRows,PercentEdit,Notes
 Catch Basin Inspections,Managed,1051,1051,1.0,
-Oil Container Inspections,Managed,254,341,0.745,
-Confidence Tests,Managed,247,1870,0.132,Add New Table
-AHU Inventory,Managed,45,50,0.9,
-Tree Inventory,Maintained,944,17427,0.054,
-Fire Extinguishers,Maintained,146,7044,0.021,Check non-ESRI tables
+Oil Container Inspections,Managed,265,352,0.753,
+Confidence Tests,Managed,643,1890,0.34,Add New Table
+AHU Inventory,Managed,53,58,0.914,
+Tree Inventory,Maintained,1093,17505,0.062,
+Fire Extinguishers,Maintained,223,7044,0.032,Check non-ESRI tables
 Access Guide,Maintained,36,6140,0.006,
-Site Lighting,Maintained,127,5740,0.022,
+Site Lighting,Maintained,130,5740,0.023,
 Bench Inventory,Maintained,45,1099,0.041,
 Bollard Inventory,Maintained,48,2048,0.023,
-Grounds Fieldwork,Maintained,100,1036,0.097,
+Grounds Fieldwork,Maintained,119,1050,0.113,
 Irrigation Controllers,Maintained,0,116,0.0,
-Irrigation Controllers,Maintained,37,571,0.065,
+Irrigation Controllers,Maintained,67,601,0.111,
 Invasive Species Management,Maintained,39,501,0.078,
 Snow Removal,Maintained,157,474,0.331,
 Bike Inventory,Maintained,2,1461,0.001,
