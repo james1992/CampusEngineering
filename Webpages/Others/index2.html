@@ -78,12 +78,7 @@
     </div>
 </div>
 
-
-<!--src for pictures need to change when uploaded onto website.-->
-
 <div id="uw-container">
-                <h1><font face="Open Sans" color="#4b2e83"><center>Welcome to FS GIS</center></h1></font>
-				<p class="container">Welcome to the FS GIS page. Below are the linked images to the Public Maps and Employee access maps. To get started, open up the buttons below to open up the selection screen.</p>
 				<h2><font face="Open Sans" color="#4b2e83"><color="#4b2e83"><center>Public Maps</center></h2></font>
 <button class="collapsible">Public Maps</button>
 <div class="content">
@@ -176,11 +171,11 @@ for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
     } else {
-      content.style.display = "block";
-    }
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
   });
 }
 </script>
