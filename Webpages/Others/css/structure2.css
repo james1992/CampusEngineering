@@ -15,6 +15,7 @@ a {
 button {
   line-height: 29px;
   cursor: pointer;
+  color: #4b2e83;
 }
 
 
@@ -100,14 +101,14 @@ button {
 	grid-row-gap: 0px;
 	grid-template-columns: repeat(12, 1fr);
 }
-
-
 /* ...small styles here... */ 
 @media screen and (min-width: 400px) {
 
 .column {
     float: center;
-    width: 100%;
+width: 100%;}
+.collapsible {
+}
 }
 /* ...medium styles here... */ 
 @media screen and (min-width: 700px) {
@@ -118,6 +119,18 @@ button {
     padding: 10px;
 }
 
+.collapsible {
+  background-color: #4b2e83;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 80%;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  text-align: center;
+}
+}
 /* ...large styles here...*/ 
 @media screen and (min-width: 1300px) {
 
@@ -126,6 +139,17 @@ button {
     width: 20%;
     padding: 10px;
 	
+}
+.collapsible {
+  background-color: #4b2e83;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 80%;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  text-align: center;
 }}
 /* hover effect and dashboard appearance here*/
 .hovereffect {
@@ -215,18 +239,7 @@ button {
   -webkit-transform: translate3d(0,0,0);
   transform: translate3d(0,0,0);
 }
-/*Code for collapsible areas*/
-.collapsible {
-  background-color: #4b2e83;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 80%;
-  border: none;
-  outline: none;
-  font-size: 15px;
-  text-align: center;
-}
+/*Code for all collapsible areas*/
 
 .active, .collapsible:hover {
   background-color: #85754d;
