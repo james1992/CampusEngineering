@@ -8,6 +8,7 @@ body #uw-container {
 body {
   margin: 0;
 }
+
 a {
   text-decoration: none;
 }
@@ -27,10 +28,9 @@ button {
 }
 
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  padding-right: 10%;
+  padding-left: 10%;
+  margin:auto;
 }
 @media (max-width: 767px) {
   .visible-xs {
@@ -131,7 +131,7 @@ button {
 .hovereffect {
   width: 90%;
   height: 90%;
-  float: left;
+  float: center;
   overflow: hidden;
   position: relative;
   text-align: center;
@@ -221,9 +221,8 @@ button {
   color: white;
   cursor: pointer;
   padding: 18px;
-  width: 100%;
+  width: 80%;
   border: none;
-  text-align: left;
   outline: none;
   font-size: 15px;
   text-align: center;
