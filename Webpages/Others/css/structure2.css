@@ -114,8 +114,8 @@ button {
 
 .column {
     float: left;
-    width: 25%;
-    padding: 0px;
+    width: 33.33%;
+    padding: 10px;
 }
 
 /* ...large styles here...*/ 
@@ -123,7 +123,7 @@ button {
 
 .column {
     float: center;
-    width: 16.66666%;
+    width: 20%;
     padding: 10px;
 	
 }}

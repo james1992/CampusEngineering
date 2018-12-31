@@ -85,6 +85,23 @@
   display: none;
 }
 
+.inner
+{
+    display: inline-block;
+}
+
+.button {
+  background-color: #4b2e83; 
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor:pointer;
+}
+
 /* Small Devices, Tablets */
 @media only screen and (max-width: 767px) {
 
@@ -112,6 +129,7 @@
     left: 63px;
     top: 15px;
     background-size: 697px;
+	display: inline-block;
   }
   .uw-thinstrip ul.uw-thin-links {
     height: 50px;
