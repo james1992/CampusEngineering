@@ -26,12 +26,12 @@ import csv
 
 print "The script will only work from 2018-Q4 forward, previous quarters and years lack sufficient data."
 year = input("What year do you want to review?")
-quarter = input("What quarter in the provided year do you want to review?")
+quarter = input("What quarter (1,2,3,4) in the provided year do you want to review?")
 
 # Project list formatted project name, type, [nested list of tables], notes
 projects = [["Catch Basin Inspections", "Managed", [r'Database Connections\FacilitiesMaintenance.sde\GroundsCatchBasins', r'Database Connections\FacilitiesMaintenance.sde\GroundsCatchBasinsInspectionForm'], ""],
             ["Oil Container Inspections","Managed",[r'Database Connections\EngineeringServices.sde\EnvironmentalOilSpillPrevention', r'Database Connections\EngineeringServices.sde\EnvironmentalOilSpillPreventionInspections'], ""],
-            ["Confidence Tests","Managed",[r'Database Connections\CampusEngineeringOperations.sde\ConfidenceTests', r'Database Connections\CampusEngineeringOperations.sde\ConfidenceTestsInspections'], "Add New Table"],
+            ["Confidence Tests","Managed",[r'Database Connections\CampusEngineeringOperations.sde\ConfidenceTests', r'Database Connections\CampusEngineeringOperations.sde\ConfidenceTestsInspections', r'Database Connections\CampusEngineeringOperations.sde\ConfidenceTestsMaintenance'], ""],
             ["AHU Inventory","Managed",[r'Database Connections\CampusEngineeringOperations.sde\AirHandlingUnits', r'Database Connections\CampusEngineeringOperations.sde\AirHandlingUnitsInspections'], ""],
             ["Tree Inventory", "Maintained",[r'Database Connections\FacilitiesMaintenance.sde\GroundsTrees', r'Database Connections\FacilitiesMaintenance.sde\GroundsTreesDesignation',r'Database Connections\FacilitiesMaintenance.sde\GroundsTreesMaintenance', r'Database Connections\FacilitiesMaintenance.sde\GroundsTreesSalvage'], ""],
             ["Fire Extinguishers","Maintained",[r'Database Connections\CampusEngineeringOperations.sde\FireExtinguishers'],"Check non-ESRI tables"],
