@@ -1,0 +1,10 @@
+# Facilities Services Internal, ES Lighting Control
+
+AuthType Shibboleth
+ShibCompatWith24 on 
+ShibRequireSession on
+ShibRequestSetting redirectToSSL 443
+require shib-attr isMemberOf urn:mace:washington.edu:groups:u_uwes_gis_web_site_host_es
+
+RewriteEngine on
+RewriteRule ^(.*)$ https://depts.washington.edu/ceogis/FacilitiesServicesGIS/Departments/ES/ [R=301,L]

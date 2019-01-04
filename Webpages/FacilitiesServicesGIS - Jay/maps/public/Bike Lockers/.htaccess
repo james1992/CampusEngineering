@@ -1,0 +1,4 @@
+# Public Map Redirect
+
+RewriteEngine on
+RewriteRule ^(.*)$ https://depts.washington.edu/ceogis/FacilitiesServicesGIS/public.html [R=301,L]
