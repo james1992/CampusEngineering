@@ -9876,11 +9876,46 @@ pre.prettyprint ol.linenums li {
         border: 1px solid #ddd!important
     }
 }
+
+div#uw-container div#uw-container-inner div#content{
+    text-align:center;
+    font-family: "Encode Sans Compressed";
+}
+
+div#uw-container div#uw-container-inner div#content div#gistext{
+    display:inline-block;
+    text-align:left;
+    width:50%;
+}
+
+@media (max-width: 768px) {
+  div#uw-container div#uw-container-inner div#content div#gistext {
+    width:95%;
+  }
+  .department-table, .public-table {
+    width: 100%; 
+  }
+}
+
+h1, h2{
+  color:#4b2e83;
+}
+
+p{
+  color:#404040;
+  font-family: "Open Sans";
+  font-size: 20px;
+}
+
 .department-table {
   width: 80%;
   margin: auto;
 }
 .public-table {
-  width: 50%;
+  width: 60%;
   margin: auto;
+  margin-bottom: 30px;
+}
+.public-table td {
+  font-size: 25px;
 }
