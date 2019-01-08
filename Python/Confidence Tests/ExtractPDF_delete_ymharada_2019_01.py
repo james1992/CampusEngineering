@@ -23,7 +23,7 @@ import arcpy
 
 # File path to attachment table (typically in Geodatabase)
 # Don't forget to put 'r' before file paths
-ImageTable          = r'Database Connections\CampusEngineeringOperations.sde\ConfidenceTestsInspections__ATTACH'
+ImageTable          = r'C:\Users\ymharada\Documents\GitHub\CampusEngineering\Python\Confidence Tests\ConfidenceTest1.gdb\ConfidenceTestsInspections__ATTACH'
 # The Blob field that contains the attachment information
 ImageDataField      = "DATA"
 # The field that contains the attachment name
@@ -31,13 +31,13 @@ ImageNameField      = "ATT_NAME"
 # Field that contains the OID of related geometry
 ImageRelationalOIDField = 'REL_GLOBALID'
 # Table that contains the specific test data (used to link back to system in Geom)
-AuxTable            = r'Database Connections\CampusEngineeringOperations.sde\ConfidenceTestsInspections'
+AuxTable            = r'C:\Users\ymharada\Documents\GitHub\CampusEngineering\Python\Confidence Tests\ConfidenceTest1.gdb\ConfidenceTestsInspections'
 AuxAttributes       = ['GlobalID', 'REL_GlobalID']
 # Feature class that contains information on system that was tested
-GeomTable           = r'Database Connections\CampusEngineeringOperations.sde\ConfidenceTests'
+GeomTable           = r'C:\Users\ymharada\Documents\GitHub\CampusEngineering\Python\Confidence Tests\ConfidenceTest1.gdb\ConfidenceTests'
 GeomAttributes      = ['GlobalID', 'FacNum']
 # Folder where attachments will be saved, need to create first
-OutputFolder        = r'C:\Users\jamesd26\UW\Confidence Tests - Confidence Tests'
+OutputFolder        = r'C:\Users\ymharada\Documents\GitHub\CampusEngineering\Python\Confidence Tests\Files'
 
 #############################################################################  
 ###Script Follows
@@ -76,7 +76,7 @@ def SearchCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttri
     del row
     del cursor
     
-    with arcpy.da.SearchCursor(TableLocation, [GeomOID, ImageName, BlobData]) as cursor:
+    with arcpy.da.SearchCursor(AuxTable, [GeomOID, ImageName, BlobData]) as cursor:
         for row in cursor:
             for data in AuxList:
                 # If the OID matches the REL_OBJECTID
@@ -85,9 +85,7 @@ def SearchCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttri
                     BinaryData = row[2]
                     FacNum = data[1]
                     # Call the File creator with each iteration
-                    FileCreator(FileName, BinaryData, FacNum, FolderLocation) 
-					#delete the file when code is done running.
-					cursor.deleteRow()
+                    FileCreator(FileName, BinaryData, FacNum, FolderLocation)
     # Remove schema lock on table
     del row
     del cursor
@@ -113,7 +111,21 @@ def FileCreator(AttachmentName, BinaryInfo, FacNum, FolderLocation):
             else:
                 open(DocumentPath + os.sep + AttachmentName, 'wb').write(BinaryInfo.tobytes())
 
-		
-	
+
+def UpdateCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttributes, GeomTable, GeomAttributes, FolderLocation):
+     with arcpy.da.UpdateCursor(AuxTable, [GeomOID, ImageName, BlobData]) as cursor:
+        for row in cursor:
+            for data in AuxList:
+                # If the OID matches the REL_OBJECTID
+                if data[0] == row[0]:
+                    FileName = row[1]
+                    BinaryData = row[2]
+                    FacNum = data[1]
+                    # Delete the rows
+                    deleteRow (data)
+    # Delete the cursor                
+        del cursor
+
+    
 if __name__ == "__main__":
     main(ImageTable, ImageDataField, ImageNameField, ImageRelationalOIDField, AuxTable, AuxAttributes, GeomTable, GeomAttributes, OutputFolder)
