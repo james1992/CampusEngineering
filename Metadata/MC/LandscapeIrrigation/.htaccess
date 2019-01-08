@@ -1,0 +1,7 @@
+# Landscape Irrigation
+
+AuthType Shibboleth
+ShibCompatWith24 on 
+ShibRequireSession on
+ShibRequestSetting redirectToSSL 443
+require shib-attr isMemberOf urn:mace:washington.edu:groups:u_uwes_gis_web_map_landscape_irrigation

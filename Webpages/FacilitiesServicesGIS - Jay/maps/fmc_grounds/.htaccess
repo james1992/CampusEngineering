@@ -1,0 +1,10 @@
+# Facilities Services Internal, FMC Grounds Home
+
+AuthType Shibboleth
+ShibCompatWith24 on 
+ShibRequireSession on
+ShibRequestSetting redirectToSSL 443
+require shib-attr isMemberOf urn:mace:washington.edu:groups:u_uwes_gis_web_site_host_fmc_grounds
+
+RewriteEngine on
+RewriteRule ^(.*)$ https://depts.washington.edu/ceogis/FacilitiesServicesGIS/Departments/FMC-Grounds [R=301,L]

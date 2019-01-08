@@ -1,0 +1,7 @@
+# Record Links
+
+AuthType Shibboleth
+ShibCompatWith24 on 
+ShibRequireSession on
+ShibRequestSetting redirectToSSL 443
+require shib-attr isMemberOf urn:mace:washington.edu:groups:uw_org_supervisoryorg_fs_000329
