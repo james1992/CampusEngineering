@@ -110,6 +110,20 @@ def FileCreator(AttachmentName, BinaryInfo, FacNum, FolderLocation):
                 pass
             else:
                 open(DocumentPath + os.sep + AttachmentName, 'wb').write(BinaryInfo.tobytes())
+                
+def UpdateCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttributes):
+     with arcpy.da.UpdateCursor(AuxTable, [GeomOID, ImageName, BlobData]) as cursor:
+        for row in cursor:
+            for data in AuxList:
+                # If the OID matches the REL_OBJECTID
+                if data[0] == row[0]:
+                    FileName = row[1]
+                    BinaryData = row[2]
+                    FacNum = data[1]
+                    # Delete the rows
+                    deleteRow (data)
+    # Delete the cursor                
+        del cursor
 	
 if __name__ == "__main__":
     main(ImageTable, ImageDataField, ImageNameField, ImageRelationalOIDField, AuxTable, AuxAttributes, GeomTable, GeomAttributes, OutputFolder)
