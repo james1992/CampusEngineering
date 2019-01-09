@@ -76,7 +76,7 @@ def SearchCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttri
     del row
     del cursor
     
-    with arcpy.da.SearchCursor(AuxTable, [GeomOID, ImageName, BlobData]) as cursor:
+    with arcpy.da.SearchCursor(TableLocation, [GeomOID, ImageName, BlobData]) as cursor:
         for row in cursor:
             for data in AuxList:
                 # If the OID matches the REL_OBJECTID
@@ -85,7 +85,7 @@ def SearchCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttri
                     BinaryData = row[2]
                     FacNum = data[1]
                     # Call the File creator with each iteration
-                    FileCreator(FileName, BinaryData, FacNum, FolderLocation)
+                    FileCreator(FileName, BinaryData, FacNum, FolderLocation) 
     # Remove schema lock on table
     del row
     del cursor
@@ -110,22 +110,6 @@ def FileCreator(AttachmentName, BinaryInfo, FacNum, FolderLocation):
                 pass
             else:
                 open(DocumentPath + os.sep + AttachmentName, 'wb').write(BinaryInfo.tobytes())
-
-
-def UpdateCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttributes, GeomTable, GeomAttributes, FolderLocation):
-     with arcpy.da.UpdateCursor(AuxTable, [GeomOID, ImageName, BlobData]) as cursor:
-        for row in cursor:
-            for data in AuxList:
-                # If the OID matches the REL_OBJECTID
-                if data[0] == row[0]:
-                    FileName = row[1]
-                    BinaryData = row[2]
-                    FacNum = data[1]
-                    # Delete the rows
-                    deleteRow (data)
-    # Delete the cursor                
-        del cursor
-
-    
+	
 if __name__ == "__main__":
     main(ImageTable, ImageDataField, ImageNameField, ImageRelationalOIDField, AuxTable, AuxAttributes, GeomTable, GeomAttributes, OutputFolder)
