@@ -111,30 +111,20 @@ def FileCreator(AttachmentName, BinaryInfo, FacNum, FolderLocation):
             else:
                 open(DocumentPath + os.sep + AttachmentName, 'wb').write(BinaryInfo.tobytes())
                 
-#def UpdateCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttributes):
-#     with arcpy.da.UpdateCursor(AuxTable) as cursor:
-#       for row in cursor:
-#           for data in AuxList:
-#                # If the OID matches the REL_OBJECTID
-#                if data[0] == row[0]:
-#                    FileName = row[1]
-#                    BinaryData = row[2]
-#                    FacNum = data[1]
-#                    # Delete the rows
-#                    cursor.deleteRow()
-#    # Delete the cursor                
-#        del cursor
-
 fields = '*'
-with arcpy.da.UpdateCursor(AuxTable, fields) as cursor:
-    for row in cursor:
-            #print(row)
-                # Delete the rows
+
+def UpdateCursor(AuxTable):
+    print "hello"
+    with arcpy.da.UpdateCursor(AuxTable, fields) as cursor:
+        for row in cursor:
+            #print(row) #check if the file is being looked through.
+    # Delete the rows
             cursor.deleteRow()
-    # Delete the cursor                
+    # Delete the cursor
     del cursor
+
+UpdateCursor(AuxTable)
 	
 if __name__ == "__main__":
     main(ImageTable, ImageDataField, ImageNameField, ImageRelationalOIDField, AuxTable, AuxAttributes, GeomTable, GeomAttributes, OutputFolder)
 
-print "finished"
