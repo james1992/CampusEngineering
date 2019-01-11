@@ -31,7 +31,7 @@ ImageNameField      = "ATT_NAME"
 # Field that contains the OID of related geometry
 ImageRelationalOIDField = 'REL_GLOBALID'
 # Table that contains the specific test data (used to link back to system in Geom)
-AuxTable            = r'C:\Users\ymharada\Documents\GitHub\CampusEngineering\Python\Confidence Tests\ConfidenceTest1.gdb\ConfidenceTestsInspections'
+AuxTable            = r'C:\Users\ymharada\Documents\GitHub\CampusEngineering\Python\Confidence Tests\ConfidenceTest1.gdb\ConfidenceTestsInspections_1'
 AuxAttributes       = ['GlobalID', 'REL_GlobalID']
 # Feature class that contains information on system that was tested
 GeomTable           = r'C:\Users\ymharada\Documents\GitHub\CampusEngineering\Python\Confidence Tests\ConfidenceTest1.gdb\ConfidenceTests'
@@ -73,8 +73,8 @@ def SearchCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttri
                 if geom[0] == row[1]:
                     AuxList.append([row[0], geom[1]])
     # Remove schema lock on table
-    del row
-    del cursor
+            del row
+        del cursor
     
     with arcpy.da.SearchCursor(TableLocation, [GeomOID, ImageName, BlobData]) as cursor:
         for row in cursor:
@@ -110,6 +110,29 @@ def FileCreator(AttachmentName, BinaryInfo, FacNum, FolderLocation):
                 pass
             else:
                 open(DocumentPath + os.sep + AttachmentName, 'wb').write(BinaryInfo.tobytes())
+                
+#def UpdateCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttributes):
+#     with arcpy.da.UpdateCursor(AuxTable) as cursor:
+#       for row in cursor:
+#           for data in AuxList:
+#                # If the OID matches the REL_OBJECTID
+#                if data[0] == row[0]:
+#                    FileName = row[1]
+#                    BinaryData = row[2]
+#                    FacNum = data[1]
+#                    # Delete the rows
+#                    cursor.deleteRow()
+#    # Delete the cursor                
+#        del cursor
+
+fields = '*'
+with arcpy.da.UpdateCursor(AuxTable, fields) as cursor:
+    for row in cursor:
+            #print(row)
+                # Delete the rows
+            cursor.deleteRow()
+    # Delete the cursor                
+    del cursor
 	
 if __name__ == "__main__":
     main(ImageTable, ImageDataField, ImageNameField, ImageRelationalOIDField, AuxTable, AuxAttributes, GeomTable, GeomAttributes, OutputFolder)
