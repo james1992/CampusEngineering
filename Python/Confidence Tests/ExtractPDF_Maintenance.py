@@ -37,7 +37,7 @@ AuxAttributes       = ['GlobalID', 'REL_GlobalID']
 GeomTable           = r'Database Connections\CampusEngineeringOperations.sde\ConfidenceTests'
 GeomAttributes      = ['GlobalID', 'FacNum', 'System']
 # Folder where attachments will be saved, need to create first
-OutputFolder        = r'C:\Users\jamesd26\UW\Confidence Tests - Confidence Tests'
+OutputFolder        = r'C:\Users\Administrator\UW\Confidence Tests - Confidence Tests'
 
 #############################################################################  
 ###Script Follows
@@ -46,7 +46,7 @@ OutputFolder        = r'C:\Users\jamesd26\UW\Confidence Tests - Confidence Tests
 def main(TableLocation, ImageDataField, ImageNameField, ImageRelationalOIDField, AuxTable, AuxAttributes, GeomTable, GeomAttributes, OutputFolder):
     print OutputFolder
     SearchCursor(ImageTable, ImageDataField, ImageNameField, ImageRelationalOIDField, AuxTable, AuxAttributes, GeomTable, GeomAttributes, OutputFolder)
-
+    DeleteAttachments(TableLocation)
 
 def SearchCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttributes, GeomTable, GeomAttributes, FolderLocation):
     '''
@@ -63,7 +63,7 @@ def SearchCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttri
     # Remove schema lock on table
     del row
     del cursor
-
+    
     # Second list to hold the FacNum (from geom table) and OID (from aux table)
     AuxList = []
     with arcpy.da.SearchCursor(AuxTable, AuxAttributes) as cursor:
@@ -76,19 +76,18 @@ def SearchCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttri
     del row
     del cursor
     
-    with arcpy.da.SearchCursor(TableLocation, [GeomOID, ImageName, BlobData]) as cursor:
-        for row in cursor:
-            for data in AuxList:
-                # If the OID matches the REL_OBJECTID
-                if data[0] == row[0]:
-                    FileName = row[1]
-                    BinaryData = row[2]
-                    FacNum = data[1]
-                    System = data[2]
-                    # Call the File creator with each iteration
-                    FileCreator(FileName, BinaryData, FacNum, System, FolderLocation) 
+    cursor = arcpy.da.SearchCursor(TableLocation, [GeomOID, ImageName, BlobData])
+    for row in cursor:
+        for data in AuxList:
+            # If the OID matches the REL_OBJECTID
+            if data[0] == row[0]:
+                FileName = row[1]
+                BinaryData = row[2]
+                FacNum = data[1]
+                System = data[2]
+                # Call the File creator with each iteration
+                FileCreator(FileName, BinaryData, FacNum, System, FolderLocation) 
     # Remove schema lock on table
-    del row
     del cursor
 
 def FileCreator(AttachmentName, BinaryInfo, FacNum, System, FolderLocation):
@@ -114,6 +113,24 @@ def FileCreator(AttachmentName, BinaryInfo, FacNum, System, FolderLocation):
                 pass
             else:
                 open(DocumentPath + os.sep + AttachmentName, 'wb').write(BinaryInfo.tobytes())
+
+def DeleteAttachments(TableLocation):
+    '''
+    The final function in this script deletes the GIS copy of the PDF from the database.
+    This way there is only one copy of each document for retention purposes.  This function
+    only runs after the documents are successfully copied to Office 365
+    '''
+    edit = arcpy.da.Editor(r"Database Connections\CampusEngineeringOperations.sde")
+    edit.startEditing(False, True)
+    edit.startOperation()
+
+    with arcpy.da.UpdateCursor(TableLocation, ["ATT_NAME"]) as cursor:
+        for row in cursor:
+            cursor.deleteRow()
+
+    edit.stopOperation()
+    # Stop editing and save edits
+    edit.stopEditing(True)
 	
 if __name__ == "__main__":
     main(ImageTable, ImageDataField, ImageNameField, ImageRelationalOIDField, AuxTable, AuxAttributes, GeomTable, GeomAttributes, OutputFolder)

@@ -37,7 +37,7 @@ AuxAttributes       = ['GlobalID', 'REL_GlobalID']
 GeomTable           = r'Database Connections\CampusEngineeringOperations.sde\ConfidenceTests'
 GeomAttributes      = ['GlobalID', 'FacNum']
 # Folder where attachments will be saved, need to create first
-OutputFolder        = r'C:\Users\jamesd26\UW\Confidence Tests - Confidence Tests'
+OutputFolder        = r'C:\Users\Administrator\UW\Confidence Tests - Confidence Tests'
 
 #############################################################################  
 ###Script Follows
@@ -46,7 +46,7 @@ OutputFolder        = r'C:\Users\jamesd26\UW\Confidence Tests - Confidence Tests
 def main(TableLocation, ImageDataField, ImageNameField, ImageRelationalOIDField, AuxTable, AuxAttributes, GeomTable, GeomAttributes, OutputFolder):
     print OutputFolder
     SearchCursor(ImageTable, ImageDataField, ImageNameField, ImageRelationalOIDField, AuxTable, AuxAttributes, GeomTable, GeomAttributes, OutputFolder)
-
+    DeleteAttachments(TableLocation)
 
 def SearchCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttributes, GeomTable, GeomAttributes, FolderLocation):
     '''
@@ -85,9 +85,8 @@ def SearchCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttri
                     BinaryData = row[2]
                     FacNum = data[1]
                     # Call the File creator with each iteration
-                    FileCreator(FileName, BinaryData, FacNum, FolderLocation) 
+                    FileCreator(FileName, BinaryData, FacNum, FolderLocation)   
     # Remove schema lock on table
-    del row
     del cursor
 
 def FileCreator(AttachmentName, BinaryInfo, FacNum, FolderLocation):
@@ -110,6 +109,24 @@ def FileCreator(AttachmentName, BinaryInfo, FacNum, FolderLocation):
                 pass
             else:
                 open(DocumentPath + os.sep + AttachmentName, 'wb').write(BinaryInfo.tobytes())
+
+def DeleteAttachments(TableLocation):
+    '''
+    The final function in this script deletes the GIS copy of the PDF from the database.
+    This way there is only one copy of each document for retention purposes.  This function
+    only runs after the documents are successfully copied to Office 365
+    '''
+    edit = arcpy.da.Editor(r"Database Connections\CampusEngineeringOperations.sde")
+    edit.startEditing(False, True)
+    edit.startOperation()
+    
+    with arcpy.da.UpdateCursor(TableLocation, ["ATT_NAME"]) as cursor:
+        for row in cursor:
+            cursor.deleteRow()
+
+    edit.stopOperation()
+    # Stop editing and save edits
+    edit.stopEditing(True)
 	
 if __name__ == "__main__":
     main(ImageTable, ImageDataField, ImageNameField, ImageRelationalOIDField, AuxTable, AuxAttributes, GeomTable, GeomAttributes, OutputFolder)
