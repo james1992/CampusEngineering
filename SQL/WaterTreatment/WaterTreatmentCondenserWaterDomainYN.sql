@@ -1,7 +1,6 @@
 ------------------------------------------------------------------------------------------------------------
---Written by Yurika Harada
 --Date Created: 1/16/2019
---This code is meant to update the table scheme for the Water Treatment Project managed by Brett M and the NALCO team..
+--This code is meant to update the table scheme for the Water Treatment Project managed by Brett M and the NALCO team.
 ------------------------------------------------------------------------------------------------------------
 
 --Goes into the Facilities Maintenance database.
