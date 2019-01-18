@@ -14,6 +14,6 @@ SELECT			CONCAT(BaseComponents.dbo.ViewUniversityBuildings.FacilityName, '-', db
 				CONCAT(YEAR(dbo.WaterTreatmentCondenserWaterTests.SurveyDate), '-', FORMAT(dbo.WaterTreatmentCondenserWaterTests.SurveyDate, 'MM')) AS YearAndMonth
 FROM            dbo.WaterTreatmentCondenserWaterTests LEFT OUTER JOIN
                          BaseComponents.dbo.ViewUniversityBuildings ON dbo.WaterTreatmentCondenserWaterTests.FacNum = BaseComponents.dbo.ViewUniversityBuildings.FacilityNumber
-WHERE BaseComponents.dbo.ViewUniversityBuildings.FacilityName IS NOT NULL
+WHERE BaseComponents.dbo.ViewUniversityBuildings.FacilityName IS NOT NULL AND ((Month(SurveyDate) = Month(GETDATE())) AND (YEAR(SurveyDate) = YEAR(GETDATE())))
 GROUP BY CONCAT(BaseComponents.dbo.ViewUniversityBuildings.FacilityName, '-', dbo.WaterTreatmentCondenserWaterTests.LoopType), CONCAT(YEAR(dbo.WaterTreatmentCondenserWaterTests.SurveyDate), '-', FORMAT(dbo.WaterTreatmentCondenserWaterTests.SurveyDate, 'MM')), dbo.WaterTreatmentCondenserWaterTests.TowerOperating, dbo.WaterTreatmentCondenserWaterTests.PumpSpeedAdjustment, dbo.WaterTreatmentCondenserWaterTests.Notes, dbo.WaterTreatmentCondenserWaterTests.DataEntryUser
 
