@@ -2,7 +2,7 @@
 ### Jay Dahlstrom
 ### Engineering Services, University of Washington
 ### Created: March 17, 2017
-### Updated: May 1, 2018
+### Updated: January 14, 2019
 ###
 
 ############################################################################# 
@@ -34,11 +34,11 @@ import shutil
 # Spatial view that contains all of the attributes to be copied.
 # Don't forget to put 'r' before file paths
 TreeView = r"Database Connections\FacilitiesMaintenance.sde\ViewTreeMemorial"
-TreeViewFields = ["TreeNumber", "Designation", "DesignationNotes", "SpeciesName", "CommonName", "Type", "GlobalID", "SHAPE@"]
+TreeViewFields = ["TreeNumber", "Designation", "DesignationNotes", "SpeciesName", "CommonName", "Type", "last_edited_date", "GlobalID", "SHAPE@"]
 
 # Output feature class
 MemorialFC = r"Database Connections\PublicData.sde\MemorialTrees"
-MemorialFCFields = ["TreeNumber", "MemorialDesignation", "MemorialDescription", "SpeciesName", "CommonName", "TreeType", "REL_GlobalID", "SHAPE@"]
+MemorialFCFields = ["TreeNumber", "MemorialDesignation", "MemorialDescription", "SpeciesName", "CommonName", "TreeType", "LastEditDate", "REL_GlobalID", "SHAPE@"]
 
 # Link between GlobalID in editable table and GlobalID in memorial feature class.
 # Used to link the images to the correct points since GlobalIDs cannot be copied over through a script.
@@ -98,7 +98,7 @@ def TreeViewSearchCursor(FC, Fields, TreeList):
     '''
     with arcpy.da.SearchCursor(FC, Fields) as cursor:
         for row in cursor:             
-            TreeList.append([row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]])
+            TreeList.append([row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8]])
     print "Number of trees being copied to memorial layer is: " + str(len(TreeList))
     del row
     del cursor
@@ -120,7 +120,7 @@ def MemorialTreeInsertCursor(FC, Fields, TreeList):
 
     with arcpy.da.InsertCursor(FC, Fields) as MemorialTreeInsert:
         for item in TreeList:
-            MemorialTreeInsert.insertRow([item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7]])
+            MemorialTreeInsert.insertRow([item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8]])
     del MemorialTreeInsert
 
     edit.stopOperation()

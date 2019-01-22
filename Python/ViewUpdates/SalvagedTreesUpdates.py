@@ -1,7 +1,7 @@
 ############################################################################# 
 ### Jay Dahlstrom
 ### Engineering Services, University of Washington
-### Created: May 1, 2018
+### Created: January 14, 2019
 ### Updated: January 14, 2019
 ###
 
@@ -9,7 +9,7 @@
 ### Description: This script takes the tree information from the editable
 ### feature class and tables and condenses it into a single feature class that
 ### contains all of the information used to populate the public msp.  This new
-### feature class is used in the public tree map service.
+### feature class is used in the salvaged trees map service.
 ###
 ### In the past spatial views were used to create these services but performance
 ### was poor and it was impossible to include attachments.  This script resolves
@@ -33,20 +33,24 @@ import shutil
 
 # Spatial view that contains all of the attributes to be copied.
 # Don't forget to put 'r' before file paths
-TreeView = r"Database Connections\FacilitiesMaintenance.sde\ViewTreesPublic"
-TreeViewFields = ["TREENUMBER", "Type", "SpeciesName", "CommonName", "CommonNameGenus", "DSH", "Height", "TreeValue", "TreeValueNotes", "last_edited_date", "GlobalID", "SHAPE@"]
+SalvageTreeView = r"Database Connections\FacilitiesMaintenance.sde\ViewGroundsTreeSalvage"
+SalvageTreeViewFields = ["TREENUMBER", "TreeStatus", "SpeciesName", "CommonName", "Height", "DSH", "SourceLocation", "CurrentLocation", "SalvageStatus",
+                  "SalvageDate", "MillDate", "ReadyDate", "NumberOfLogs", "SlabYield", "YieldDimensions", "UseDescription", "UseDate", "UseLocation",
+                  "Budget", "WorkOrder", "Customer", "Project", "ImageURL", "Scraps", "last_edited_date", "GlobalID", "SHAPE@"]
 
 # Output feature class
-MemorialFC = r"Database Connections\PublicData.sde\PublicTrees"
-MemorialFCFields = ["TreeNumber", "TreeType", "SpeciesName", "CommonName", "CommonNameGenus", "DSH", "Height", "TreeValue", "TreeValueNotes", "LastEditDate", "REL_GlobalID", "SHAPE@"]
+SalvageFC = r"Database Connections\PublicData.sde\SalvagedTrees"
+SalvageFCFields = ["TREENUMBER", "TreeStatus", "SpeciesName", "CommonName", "Height", "DSH", "SourceLocation", "CurrentLocation", "SalvageStatus",
+                  "SalvageDate", "MillDate", "ReadyDate", "NumberOfLogs", "SlabYield", "YieldDimensions", "UseDescription", "UseDate", "UseLocation",
+                  "Budget", "WorkOrder", "Customer", "Project", "ImageURL", "Scraps", "LastEditDate", "REL_GlobalID", "SHAPE@"]
 
-# Link between GlobalID in editable table and GlobalID in memorial feature class.
+# Link between GlobalID in editable table and GlobalID in salvage tree feature class.
 # Used to link the images to the correct points since GlobalIDs cannot be copied over through a script.
-MemorialFCFieldsGUID = ["REL_GlobalID", "GlobalID"]
+SalvageFCFieldsGUID = ["REL_GlobalID", "GlobalID"]
 
 # Output attachment table
-MemorialAttachmentTable = r"Database Connections\PublicData.sde\PublicTrees__ATTACH"
-MemorialAttachmentField = ["REL_GLOBALID", "CONTENT_TYPE", "ATT_NAME", "DATA"]
+SalvageAttachmentTable = r"Database Connections\PublicData.sde\SalvagedTrees__ATTACH"
+SalvageAttachmentField = ["REL_GLOBALID", "CONTENT_TYPE", "ATT_NAME", "DATA"]
 
 # File path to editable attachment table
 EditableTreeImageTable         = r"Database Connections\FacilitiesMaintenance.sde\GroundsTrees__ATTACH"
@@ -98,8 +102,10 @@ def TreeViewSearchCursor(FC, Fields, TreeList):
     '''
     with arcpy.da.SearchCursor(FC, Fields) as cursor:
         for row in cursor:             
-            TreeList.append([row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11]])
-    print "Number of trees being copied to public layer is: " + str(len(TreeList))
+            TreeList.append([row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10],
+                             row[11], row[12], row[13], row[14], row[15], row[16], row[17], row[18], row[19], row[20],
+                             row[21], row[22], row[23], row[24], row[25], row[26]])
+    print "Number of trees being copied to salvaged tree layer is: " + str(len(TreeList))
     del row
     del cursor
 
@@ -120,7 +126,9 @@ def MemorialTreeInsertCursor(FC, Fields, TreeList):
 
     with arcpy.da.InsertCursor(FC, Fields) as MemorialTreeInsert:
         for item in TreeList:
-            MemorialTreeInsert.insertRow([item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11]])
+            MemorialTreeInsert.insertRow([item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10],
+                                          item[11], item[12], item[13], item[14], item[15], item[16], item[17], item[18], item[19], item[20],
+                                          item[21], item[22], item[23], item[24], item[25], item[26]])
     del MemorialTreeInsert
 
     edit.stopOperation()
@@ -242,5 +250,5 @@ def InsertAttachments(FinalList, Table, Attributes):
 
 
 if __name__ == "__main__":
-    main(TreeView, TreeViewFields, MemorialFC, MemorialFCFields, MemorialFCFieldsGUID, MemorialAttachmentTable, MemorialAttachmentField, EditableTreeImageTable, EditableTreeImageDataField, EditableTreeImageNameField, EditableTreeImageRelationalGuidField, TempImageFolder)
+    main(SalvageTreeView, SalvageTreeViewFields, SalvageFC, SalvageFCFields, SalvageFCFieldsGUID, SalvageAttachmentTable, SalvageAttachmentField, EditableTreeImageTable, EditableTreeImageDataField, EditableTreeImageNameField, EditableTreeImageRelationalGuidField, TempImageFolder)
 
