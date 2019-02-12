@@ -1,3 +1,3 @@
 UPDATE dbo.CONFIDENCETESTS
-SET MaintenanceReportYear = YEAR(GETDATE())
-WHERE MaintenanceReportYear = '2013'
+SET MaintenanceReportYear = MaintenanceReportYear + 5
+WHERE MaintenanceReportYear = (YEAR(GETDATE()) - 1)
