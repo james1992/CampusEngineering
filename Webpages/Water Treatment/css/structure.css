@@ -116,8 +116,16 @@ button {
     width: 100%;
     padding: 0px;
 }
+
+.rlist {
+    float: center;
+}
+
+.llist {
+    float: center;
+}
 /* ...medium styles here... */ 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 1000px) {
 
 .column {
     float: center;
@@ -126,8 +134,20 @@ button {
 
 .pic {
     float: center;
-    width: 70%;
+    width: 90%;
     padding: 5px;
+}
+
+.rlist {
+    float: right;
+    width: 35%;
+    padding-right: 15%;
+}
+
+.llist {
+    float: left;
+    width: 35%;
+    padding-left: 15%;
 }
 
 /* ...large styles here...*/ 
