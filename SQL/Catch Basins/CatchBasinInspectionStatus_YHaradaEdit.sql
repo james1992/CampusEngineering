@@ -35,7 +35,7 @@ SELECT			dbo.GROUNDSCATCHBASINS.OBJECTID,
 				WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork = 'Yes'
 				AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisCoveringGrate = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisSumpFilled60Percent = 'No' 
 				AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DebrisInPipe = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.DeadAnimalsOrVegitationStructur = 'No' AND 
-				dbo.ViewGroundsCatchBasinInspectionsMostRecent.SedimentSumpFilled60Percent = 'No'
+				dbo.ViewGroundsCatchBasinInspectionsMostRecent.SedimentSumpFilled60Percent = 'No' AND dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned <> 'Yes' 
 				THEN 'Supplemental Work Required'
 				  
 				--Cleaning Required
@@ -109,8 +109,9 @@ SELECT			dbo.GROUNDSCATCHBASINS.OBJECTID,
 				dbo.ViewGroundsCatchBasinInspectionsMostRecent.OpenGrateLockingMechanism, 
                 dbo.ViewGroundsCatchBasinInspectionsMostRecent.OpenGrateNotInPlace, 
 				dbo.ViewGroundsCatchBasinInspectionsMostRecent.SignsofContaminationOrPollution, 
-                CAST(dbo.GROUNDSCATCHBASINS.OBJECTID AS INT) AS ID
-
+                CAST(dbo.GROUNDSCATCHBASINS.OBJECTID AS INT) AS ID,
+				dbo.ViewGroundsCatchBasinInspectionsMostRecent.DrainToLakeSticker, 
+				dbo.GROUNDSCATCHBASINS.SHAPE
 
 				
 
