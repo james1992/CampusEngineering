@@ -110,12 +110,24 @@ button {
     width: 100%;
     padding: 10px;
 }
+
+.pic {
+    float: center;
+    width: 100%;
+    padding: 0px;
+}
 /* ...medium styles here... */ 
 @media screen and (min-width: 700px) {
 
 .column {
     float: center;
     width: 50%;
+}
+
+.pic {
+    float: center;
+    width: 70%;
+    padding: 5px;
 }
 
 /* ...large styles here...*/ 
@@ -126,7 +138,14 @@ button {
     width: 33.33%;
     padding: 10px;
 	
-}}
+}
+.pic {
+    float: center;
+    width: 27.5%;
+    padding: 10px;
+}
+
+}
 /* hover effect and dashboard appearance here*/
 .hovereffect {
   width: 90%;
