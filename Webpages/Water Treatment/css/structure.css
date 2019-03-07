@@ -145,6 +145,18 @@ button {
     padding: 10px;
 }
 
+.rlist {
+    float: right;
+    width: 35%;
+    padding-right: 15%;
+}
+
+.llist {
+    float: left;
+    width: 35%;
+    padding-left: 15%;
+}
+
 }
 /* hover effect and dashboard appearance here*/
 .hovereffect {
