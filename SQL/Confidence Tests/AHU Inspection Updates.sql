@@ -148,6 +148,9 @@ FROM        #AirHandlingUnitInspectionProgress
 GROUP BY FacNum
 GO
 
+TRUNCATE TABLE AirHandlingUnitsBuildingProgress
+GO
+
 INSERT INTO AirHandlingUnitsBuildingProgress
 SELECT dbo.ViewUniversityBuildings.FacilityNumber, 
 		dbo.ViewUniversityBuildings.FacilityName, 
