@@ -104,9 +104,9 @@ def FileCreator(AttachmentName, BinaryInfo, FacNum, System, FolderLocation):
         # If the FacNums match
         if FacNum == SplitFolder[1]:
             print AttachmentName
-            if System == 'Dry Sprinkler' or 'Wet Sprinkler':
+            if System == 'Dry Sprinkler' or System == 'Wet Sprinkler':
                 DocumentPath = os.path.join(FolderLocation, Folder, 'Sprinkler')
-            if System == 'Dry Standpipe' or 'Wet Standpipe':
+            if System == 'Dry Standpipe' or System == 'Wet Standpipe':
                 DocumentPath = os.path.join(FolderLocation, Folder, 'Stand Pipe')
             Files = os.listdir(DocumentPath)
             if AttachmentName in Files:
