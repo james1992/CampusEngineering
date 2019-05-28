@@ -86,11 +86,11 @@ def SearchCursor(TableLocation, BlobData, ImageName, GeomOID, AuxTable, AuxAttri
                     BinaryData = row[2]
                     FacNum = data[1]
                     # Call the File creator with each iteration
-                    FileCreator(FileName, BinaryData, FacNum, FolderLocation)   
+                    FileCreator(FileName, BinaryData, FacNum, FolderLocation, TableLocation)   
     # Remove schema lock on table
     del cursor
 
-def FileCreator(AttachmentName, BinaryInfo, FacNum, FolderLocation):
+def FileCreator(AttachmentName, BinaryInfo, FacNum, FolderLocation, TableLocation):
     '''
     The second function takes the name of an attachment, it's BLOB data, a FacNum, the test system
     and folder location and converts the BLOB data into a file in the appropriate folder.
@@ -119,11 +119,19 @@ def UpdateAttachmentRecords(TableLocation, Setting, AttachmentName):
     value of No.  This function is only called from within FileCreator and takes the
     attachment table location, update value (Yes or Duplicate) and attachment name as inputs.
     '''
+    edit = arcpy.da.Editor(r"Database Connections\CampusEngineeringOperations.sde")
+    edit.startEditing(False, True)
+    edit.startOperation()
+    
     with arcpy.da.UpdateCursor(TableLocation, ["ATT_NAME", "Migrated"]) as cursor:
         for row in cursor:
             if row[0] == AttachmentName:
                 row[1] = Setting
             cursor.updateRow(row)
+
+    edit.stopOperation()
+    # Stop editing and save edits
+    edit.stopEditing(True)
 
 def DeleteAttachments(TableLocation):
     '''

@@ -127,11 +127,19 @@ def UpdateAttachmentRecords(TableLocation, Setting, AttachmentName):
     value of No.  This function is only called from within FileCreator and takes the
     attachment table location, update value (Yes or Duplicate) and attachment name as inputs.
     '''
+    edit = arcpy.da.Editor(r"Database Connections\CampusEngineeringOperations.sde")
+    edit.startEditing(False, True)
+    edit.startOperation()
+    
     with arcpy.da.UpdateCursor(TableLocation, ["ATT_NAME", "Migrated"]) as cursor:
         for row in cursor:
             if row[0] == AttachmentName:
                 row[1] = Setting
             cursor.updateRow(row)
+
+    edit.stopOperation()
+    # Stop editing and save edits
+    edit.stopEditing(True)
 
 def DeleteAttachments(TableLocation):
     '''
