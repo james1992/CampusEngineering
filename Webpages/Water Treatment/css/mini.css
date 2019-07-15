@@ -9,6 +9,24 @@
   font-style: normal;
 }
 
+.button {
+		background-color: #85754d;
+		color: white;
+		 -webkit-transition-duration: 0.4s; /* Safari */
+		transition-duration: 0.4s;
+		cursor: pointer;
+	}
+	
+.button1 {
+  background-color: #85754d; 
+  color: white; 
+}
+
+.button1:hover {
+  background-color: #4b2e83;
+  color: white;
+}
+
 /* Pulled from our CSS */
 
 .uw-thinstrip {
@@ -126,5 +144,4 @@
   .uw-thinstrip ul.uw-thin-links li {
     display: none;
   }
-
 }
