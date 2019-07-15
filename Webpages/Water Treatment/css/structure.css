@@ -124,6 +124,11 @@ button {
 .llist {
     float: center;
 }
+
+.button {
+	height:50%;
+	width:50%;
+}
 /* ...medium styles here... */ 
 @media screen and (min-width: 1000px) {
 
@@ -148,6 +153,11 @@ button {
     float: left;
     width: 45%;
     padding-left: 10%;
+}
+
+.button {
+	height:40%;
+	width: 40%;
 }
 
 /* ...large styles here...*/ 
@@ -176,7 +186,10 @@ button {
     width: 47%;
     padding-left: 20%;
 }
-
+.button {
+	height:25%;
+	width:25%;
+}
 }
 /* hover effect and dashboard appearance here*/
 .hovereffect {
