@@ -21,6 +21,7 @@ SELECT			dbo.GROUNDSCATCHBASINS.OBJECTID,
 				-- Added this statement to satisfy Brian Davis request that points reset at Biennium end July, 2019 --> To be updated on 12/31/2020
 				CAST(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate AS Date) < '07/01/2019' AND CAST(GETDATE() AS DATE) >= '07/01/2019' THEN 'Inspection Due'
 				WHEN YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) + 2 <= YEAR(GETDATE()) THEN 'Inspection Due (Prioritize)'
+				WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate IS NULL THEN 'Inspection Due (Prioritize)'
 
 				WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.FollowUpInspectionRequired = 'Yes' THEN 'Inspection Not Complete, Follow up Required'
 
@@ -85,7 +86,7 @@ SELECT			dbo.GROUNDSCATCHBASINS.OBJECTID,
                 dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate, 
 				dbo.ViewGroundsCatchBasinInspectionsMostRecent.Cleaned, 
 				dbo.ViewGroundsCatchBasinInspectionsMostRecent.CleanedDate,
-				dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork,
+				dbo.ViewGroundsCatchBasinInspectionsMostRecent.SupplementalWork AS SupplementalWorkRequired,
 				dbo.ViewGroundsCatchBasinInspectionsMostRecent.FollowUpInspectionRequired, 
                 dbo.ViewGroundsCatchBasinInspectionsMostRecent.Notes, 
 				dbo.ViewGroundsCatchBasinInspectionsMostRecent.Downturn90, 
