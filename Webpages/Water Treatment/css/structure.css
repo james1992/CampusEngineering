@@ -101,7 +101,6 @@ button {
 	grid-template-columns: repeat(12, 1fr);
 }
 
-
 /* ...small styles here... */ 
 @media screen and (min-width: 400px) {
 
@@ -129,6 +128,12 @@ button {
 	height:50%;
 	width:50%;
 }
+.pic1 {
+    float: center;
+	width:75%;
+    padding: 0px;
+}
+
 /* ...medium styles here... */ 
 @media screen and (min-width: 1000px) {
 
@@ -157,7 +162,12 @@ button {
 
 .button {
 	height:40%;
-	width: 40%;
+	width:40%;
+}
+.pic1 {
+    float: center;
+	width:80%;
+    padding: 0px;
 }
 
 /* ...large styles here...*/ 
@@ -189,6 +199,12 @@ button {
 .button {
 	height:25%;
 	width:25%;
+	 display: inline-block;
+}
+.pic1 {
+    float: center;
+	width:80%;
+    padding: 0px;
 }
 }
 /* hover effect and dashboard appearance here*/
