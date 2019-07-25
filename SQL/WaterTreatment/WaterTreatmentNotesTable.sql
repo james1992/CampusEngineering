@@ -1,7 +1,7 @@
 USE [FacilitiesMaintenance]
 GO
 
-/****** Object:  Table [dbo].[WaterTreatmentNotesTable]    Script Date: 7/17/2019 10:44:53 AM ******/
+/****** Object:  Table [dbo].[WaterTreatmentNotesTable]    Script Date: 7/23/2019 10:03:21 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -14,7 +14,8 @@ CREATE TABLE [dbo].[WaterTreatmentNotesTable](
 	[Notes] [varchar](500) NULL,
 	[Date] [datetime] NOT NULL,
 	[CreatedBy] [varchar](50) NOT NULL,
-	[FacNum] [varchar](5) NOT NULL
+	[FacNum] [varchar](5) NOT NULL,
+	PRIMARY KEY (UniqueID)
 ) ON [PRIMARY]
 GO
 
