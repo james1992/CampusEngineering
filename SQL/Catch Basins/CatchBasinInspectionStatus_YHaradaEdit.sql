@@ -15,11 +15,8 @@ SELECT			dbo.GROUNDSCATCHBASINS.OBJECTID,
 				
 				--CASE WHEN statements:
 
-				--Year CASE WHEN statements
-				CASE WHEN --YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) + 1 = YEAR(GETDATE()) THEN 'Inspection Due this Year'
-				  
 				-- Added this statement to satisfy Brian Davis request that points reset at Biennium end July, 2019 --> To be updated on 12/31/2020
-				CAST(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate AS Date) < '07/01/2019' AND CAST(GETDATE() AS DATE) >= '07/01/2019' THEN 'Inspection Due'
+				CASE WHEN YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) + 1 <= YEAR(GETDATE()) THEN 'Inspection Due'
 				WHEN YEAR(dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate) + 2 <= YEAR(GETDATE()) THEN 'Inspection Due (Prioritize)'
 				WHEN dbo.ViewGroundsCatchBasinInspectionsMostRecent.InspectionDate IS NULL THEN 'Inspection Due (Prioritize)'
 
