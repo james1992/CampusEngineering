@@ -5,218 +5,247 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
       <!-- Global site tag (gtag.js) - Google Analytics All Pages-->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127220532-4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127220532-4"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  gtag('config', 'UA-127220532-4');
-</script>
+        gtag('config', 'UA-127220532-4');
+      </script>
 
-<!-- Global site tag (gtag.js) - Google Analytics Single Page-->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127220532-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+      <!-- Global site tag (gtag.js) - Google Analytics Single Page-->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127220532-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  gtag('config', 'UA-127220532-1');
-</script>
+        gtag('config', 'UA-127220532-1');
+      </script>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Facilities GIS</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Facilities GIS</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="css/full.css">
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="shortcut icon" href="assets/img/W.PNG">
+      <script src="//uw.edu/assets/uw.js"></script>
+      <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js?ver=1.9.1'></script>
+      <script type='text/javascript' src='https://www.washington.edu/wp-includes/js/underscore.min.js?ver=1.6.0'></script>
+      <script type='text/javascript' src='https://www.washington.edu/wp-includes/js/backbone.min.js?ver=1.1.2'></script>
+      <script type='text/javascript' src='https://www.washington.edu/wp-content/themes/uw-2014/js/site.dev.js'></script>
 
-        <link rel="stylesheet" href="css/full.css">
-
-        <link rel="shortcut icon" href="assets/img/W.PNG">
-        <script src="//uw.edu/assets/uw.js"></script>
-		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js?ver=1.9.1'></script>
-		<script type='text/javascript' src='https://www.washington.edu/wp-includes/js/underscore.min.js?ver=1.6.0'></script>
-		<script type='text/javascript' src='https://www.washington.edu/wp-includes/js/backbone.min.js?ver=1.1.2'></script>
-		<script type='text/javascript' src='https://www.washington.edu/wp-content/themes/uw-2014/js/site.dev.js'></script>
-
-        <!--[if lt IE 9]>
-            <script src="js/html5shiv.js" type="text/javascript"></script>
-            <script src="js/respond.js" type="text/javascript"></script>
-            <link rel='stylesheet' href='css/ie.css' type='text/css' media='all' />
-        <![endif]-->
-
+      <!--[if lt IE 9]>
+          <script src="js/html5shiv.js" type="text/javascript"></script>
+          <script src="js/respond.js" type="text/javascript"></script>
+          <link rel='stylesheet' href='css/ie.css' type='text/css' media='all' />
+      <![endif]-->
     </head>
     <body>
+      <div id='uwsearcharea' aria-hidden="true" class="uw-search-bar-container"></div>
+        <div id="uw-container">
+          <div id="uw-container-inner">
+              <header class="uw-thinstrip">
+                  <div class='align-right'>
+                  <nav class="uw-thin-strip-nav">
+                      <ul class="uw-thin-links">
+                      </ul>
+                  </nav>
+                  <nav aria-label="search and quick links" id="search-quicklinks" role="navigation">
+                      <button class='uw-quicklinks' aria-haspopup="true" aria-expanded="false">Quick Links<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15.63px" height="69.13px" viewBox="0 0 15.63 69.13" enable-background="new 0 0 15.63 69.13" xml:space="preserve"><polygon fill="#FFFFFF" points="12.8,7.776 12.803,7.773 5.424,0 3.766,1.573 9.65,7.776 3.766,13.98 5.424,15.553 12.803,7.78"></polygon><polygon fill="#FFFFFF" points="9.037,61.351 9.036,61.351 14.918,55.15 13.26,53.577 7.459,59.689 1.658,53.577 0,55.15 5.882,61.351 5.882,61.351 5.884,61.353 0,67.557 1.658,69.13 7.459,63.019 13.26,69.13 14.918,67.557 9.034,61.353"></polygon></svg></button>
+                  </nav>
+                  </div>
+
+                  <div class="container">
+                      <a class="uw-patch" href="http://uw.edu" tabindex="-1" title=
+                      "University of Washington Home">Home</a> <a class="uw-wordmark"
+                      href="http://uw.edu" title=
+                      "University of Washington Home">Home</a>
+                  </div>
+              </header>
+
+              <nav id="dawgdrops">
+                  <div class="dawgdrops-inner container">
+                      <ul class="dawgdrops-nav" id="menu-brand-menu">
+                          <li class="dawgdrops-item">
+                              <a href="index.html"
+                                 id="193" title="gis-home">Home</a>
+                          </li>  
+                          <li class="dawgdrops-item">
+                              <a href="public.html" class="dropdown-toggle"
+                                 id="189" title="public">Public Maps</a>
+
+                              <ul class="dawgdrops-menu" id="menu-189">
+                                  <li>
+                                      <a href="https://depts.washington.edu/ceogis/Public/Accessibility/Map/" target="_blank"
+                                         id="492" tabindex="-1" title="Access Guide">Access Guide</a>
+                                  </li>
+                                
+                                  <li>
+                                      <a href="https://depts.washington.edu/ceogis/Public/Benches/" target="_blank"
+                                         id="492" tabindex="-1" title="Benches">Benches</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="https://depts.washington.edu/ceogis/Public/BikeLockers/" target="_blank"
+                                         id="492" tabindex="-1" title="Bike Lockers">Bike Lockers</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="https://depts.washington.edu/ceogis/Public/BikeRacks/" target="_blank"
+                                         id="488" tabindex="-1" title="Bike Racks">Bike Racks</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="https://depts.washington.edu/ceogis/Public/BikeRooms/" target="_blank"
+                                         id="488" tabindex="-1" title="Bike Rooms">Bike Rooms</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="https://depts.washington.edu/ceogis/Public/Bollards/" target="_blank"
+                                         id="488" tabindex="-1" title="Bollards">Bollards</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="https://depts.washington.edu/ceogis/Public/Buildings/" target="_blank"
+                                         id="488" tabindex="-1" title="Buildings">Buildings</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="https://depts.washington.edu/ceogis/Public/CampusMemorials/" target="_blank"
+                                         id="488" tabindex="-1" title="Campus Memorials">Campus Memorials</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="https://depts.washington.edu/ceogis/Public/EV_Parking/" target="_blank"
+                                         id="488" tabindex="-1" title="Charging Stations">Charging Stations</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="https://depts.washington.edu/ceogis/Public/DialARide/" target="_blank"
+                                         id="488" tabindex="-1" title="Dial a Ride">Dial a Ride</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="https://depts.washington.edu/ceogis/Public/LoadingZones/" target="_blank"
+                                         id="488" tabindex="-1" title="Loading Zones">Loading Zones</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="https://depts.washington.edu/ceogis/Public/MotorcycleParking/" target="_blank"
+                                         id="488" tabindex="-1" title="Motorcycle Parking">Motorcycle Parking</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="https://depts.washington.edu/ceogis/Public/SnowRemoval/" target="_blank"
+                                         id="488" tabindex="-1" title="Snow Removal">Snow Removal</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="https://depts.washington.edu/ceogis/Public/Trees/" target="_blank"
+                                         id="488" tabindex="-1" title="Trees">Trees</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="https://depts.washington.edu/ceogis/Public/SalvageWoodProgram/" target="_blank"
+                                         id="488" tabindex="-1" title="Trees: Salvage Wood Program">Trees: Salvage Wood Program</a>
+                                  </li>
+                              </ul>
+                          </li>
+
+                          <li class="dawgdrops-item">
+                              <a href="departments.html" class="dropdown-toggle"
+                                 id="189" title="facilities-departments">UW Facilities Departments</a>
+
+                              <ul class="dawgdrops-menu" id="menu-189">
+                                  <li>
+                                      <a href="Departments/All/index.html"
+                                         id="492" tabindex="-1" title="facilities">All Departments</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="Departments/CEO/index.html"
+                                         id="488" tabindex="-1" title="ceo">Campus Utilities & Operations</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="Departments/ES/index.html"
+                                         id="488" tabindex="-1" title="es">Engineering Services</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="Departments/FABS-EIO/index.html"
+                                         id="488" tabindex="-1" title="fabs-eio">Facilities - EIO</a>
+                                  </li>                                
+                                
+                                  <li>
+                                      <a href="Departments/FMC-BuildingEnvelope/index.html"
+                                         id="488" tabindex="-1" title="fmc-building-envelope">Facilities Maintenance & Construction - Building Envelope</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="Departments/FMC-HeavyEquipment/index.html"
+                                         id="488" tabindex="-1" title="fmc-heo">Facilities Maintenance & Construction - Heavy Equipment</a>
+                                  </li>
+                                  
+                                  <li>
+                                      <a href="Departments/FMC-Grounds/index.html"
+                                         id="488" tabindex="-1" title="fmc-grounds">Facilities Maintenance & Construction - Grounds</a>
+                                  </li>
+                                
+                                  <li>
+                                      <a href="Departments/FMC-Refrigeration/index.html"
+                                         id="488" tabindex="-1" title="fmc-refrigeration">Facilities Maintenance & Construction - Water Treatment</a>
+                                  </li>
+
+                                  <li>
+                                      <a href="Departments/TS/index.html"
+                                         id="488" tabindex="-1" title="ts">Transportation Services</a>
+                                  </li>
+                              </ul>
+                          </li>
 
 
+                      </ul>
+                  </div>
+              </nav>
+              <div id="content">
+                  <div id="gistext">
+                      <h1>Welcome to the UW Facilities GIS Dashboard</h1>
 
-<div id='uwsearcharea' aria-hidden="true" class="uw-search-bar-container"></div>
-<div id="uw-container">
-
-    <div id="uw-container-inner">
-        <header class="uw-thinstrip">
-
-            <div class='align-right'>
-            <nav class="uw-thin-strip-nav">
-                <ul class="uw-thin-links">
-                    <li>
-                        <a title="Home Page" href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/">UW Facilities GIS Home</a>
-                    </li>
-                </ul>
-            </nav>
-            <nav aria-label="search and quick links" id="search-quicklinks" role="navigation">
-                <button class='uw-quicklinks' aria-haspopup="true" aria-expanded="false">Quick Links<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15.63px" height="69.13px" viewBox="0 0 15.63 69.13" enable-background="new 0 0 15.63 69.13" xml:space="preserve"><polygon fill="#FFFFFF" points="12.8,7.776 12.803,7.773 5.424,0 3.766,1.573 9.65,7.776 3.766,13.98 5.424,15.553 12.803,7.78"></polygon><polygon fill="#FFFFFF" points="9.037,61.351 9.036,61.351 14.918,55.15 13.26,53.577 7.459,59.689 1.658,53.577 0,55.15 5.882,61.351 5.882,61.351 5.884,61.353 0,67.557 1.658,69.13 7.459,63.019 13.26,69.13 14.918,67.557 9.034,61.353"></polygon></svg></button>
-            </nav>
-            </div>
-
-            <div class="container">
-                <a class="uw-patch" href="http://uw.edu" tabindex="-1" title=
-                "University of Washington Home">Home</a> <a class="uw-wordmark"
-                href="http://uw.edu" title=
-                "University of Washington Home">Home</a>
-            </div>
-        </header>
-
-        <nav id="dawgdrops">
-            <div class="dawgdrops-inner container">
-                <ul class="dawgdrops-nav" id="menu-brand-menu">
-                    <li class="dawgdrops-item">
-                        <a class="dropdown-toggle"
-                           id="189" title="public">Public</a>
-
-                        <ul class="dawgdrops-menu" id="menu-189">
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/public/Benches"
-                                   id="492" tabindex="-1" title="Benches">Benches</a>
-                            </li>
-                            
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/public/Bike%20Lockers"
-                                   id="492" tabindex="-1" title="Bike Lockers">Bike Lockers</a>
-                            </li>
-
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/public/Bike%20Racks"
-                                   id="488" tabindex="-1" title="Bike Racks">Bike Racks</a>
-                            </li>
-                          
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/public/Bike%20Rooms"
-                                   id="488" tabindex="-1" title="Bike Rooms">Bike Rooms</a>
-                            </li>
-
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/public/Buildings"
-                                   id="488" tabindex="-1" title="Buildings">Buildings</a>
-                            </li>
-
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/public/Campus%20Memorials"
-                                   id="488" tabindex="-1" title="Campus Memorials">Campus Memorials</a>
-                            </li>
-                            
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/public/Charging%20Stations"
-                                   id="488" tabindex="-1" title="Campus Memorials">Charging Stations</a>
-                            </li>
-                            
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/public/Dial%20a%20Ride/"
-                                   id="488" tabindex="-1" title="Campus Memorials">Dial a Ride</a>
-                            </li>
-
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/public/Loading%20Zones"
-                                   id="488" tabindex="-1" title="Loading Zones">Loading Zones</a>
-                            </li>
-                            
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/public/Motorcycle%20Parking"
-                                   id="488" tabindex="-1" title="Loading Zones">Motorcycle Parking</a>
-                            </li>
-
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/public/Snow%20Removal"
-                                   id="488" tabindex="-1" title="Snow Removal">Snow Removal</a>
-                            </li>
-
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/public/Trees"
-                                   id="488" tabindex="-1" title="Trees">Trees</a>
-                            </li>
-
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/public/Trees%20Salvage%20Wood%20Program"
-                                   id="488" tabindex="-1" title="Trees: Salvage Wood Program">Trees: Salvage Wood Program</a>
-                            </li>
-                        </ul>
-                    </li>
+                      <h2>How to use this site</h2>
+                      <p><b>Public/Greater University Community:</b> UW Facilities makes certain maps available to the public.  These maps include, among others, the location of bike racks, buildings and trees.  Hover over the Public Maps dropdown at the top of the page (underneath the W) to view publicly available maps.</p>
+                      
+                      <a class="uw-btn" href="public.html">Public Maps</a>
                     
-                    <li class="dawgdrops-item">
-                        <a class="dropdown-toggle"
-                           id="189" title="fs-apps">UW Facilities</a>
+                      <p>UW Facilities makes GIS data available for download through the <a href="https://guides.lib.uw.edu/research/gis/uw-lib_data" target="_blank">Washington State Geospatial Data Archive (WAGDA)</a>. If you are unable to find the data you are looking in for in WAGDA please send an email to the <a href="mailto:fsgis@uw.edu">UW Facilities GIS team</a> and we will be happy to assist you in any way we can.</p>
+                    
+                      <a class="uw-btn" href="https://guides.lib.uw.edu/research/gis/uw-lib_data" target="_blank">WAGDA</a>
+                                             
+                      <p><b>UW Facilities Staff:</b> If you are part of a department that completed a GIS project with the UW Facilities GIS team you will find your maps by hovering over the UW Facilities dropdown.  You will then see a list of departments, select your department from the list.  Even if you don’t have a department specific project, clicking All Departments will provide you with access to maps that are available to everyone in UW Facilities. </p>
+                    
+                      <p><font color="red"><b>Please note that to access these internal maps you must be on an on campus computer or use <a href="https://itconnect.uw.edu/connect/uw-networks/about-husky-onnet/use-husky-onnet/" target="_blank">Husky OnNet.</a></b></font></p>
 
-                        <ul class="dawgdrops-menu" id="menu-189">
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/fs"
-                                   id="492" tabindex="-1" title="fs">All FS</a>
-                            </li>
+                      <a class="uw-btn" href="departments.html">UW Facilities Departments</a>
+                    
+                      <h2>What is GIS (Geographic Information System)?</h2>
 
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/ceo"
-                                   id="488" tabindex="-1" title="ceo">Campus Engineering & Operations</a>
-                            </li>
+                      <p>A Geographic Information System (GIS) lets us visualize, question, analyze, and interpret data to understand relationships, patterns, and trends.</p>
+                      <p>GIS is widely used to optimize maintenance schedules and better inform decision makers by providing actionable spatial information.  If you want to learn more about GIS, please use this link to go to the <a href="http://www.esri.com/what-is-gis" target="_blank">ESRI</a> web page on the topic.</p>
 
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/es"
-                                   id="488" tabindex="-1" title="es">Engineering Services</a>
-                            </li>
+                      <h2>Why does UW Facilities use GIS?</h2>
 
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/fmc_grounds"
-                                   id="488" tabindex="-1" title="fmc-grounds">Facilities Maintenance & Construction - Grounds</a>
-                            </li>
+                      <p>With GIS, it is possible to develop spatial tools and applications that effectively support the core business activities of University of Washington Facilities through high quality spatial data and integration with other business systems.</p>
 
-                            <li>
-                                <a href="https://depts.washington.edu/ceogis/FacilitiesServicesGIS/maps/fabs_eio"
-                                   id="488" tabindex="-1" title="fabs-eio">Finance & Business Services - EIO</a>
-                            </li>
-                        </ul>
-                    </li>
+                      <h2>Questions or Comments?</h2>
 
-                    <li class="dawgdrops-item">
-                        <a href="https://facilities.uw.edu/" target="_blank"
-                           id="193" title="fs-home">UW Facilities Home</a>
-                    </li>
-
-                </ul>
-            </div>
-        </nav>
-        <div id="content">
-            <div id="gistext">
-                <h1>Welcome to the UW Facilities GIS Dashboard</h1>
-
-                <h2>How to use this site</h2>
-                <p><b>Public/Greater University Community:</b> UW Facilities makes certain maps and data available to the public.  These maps include among others the location of bike racks, buildings and trees.  Hover over the Public dropdown at the top of the page (underneath the W) to view publicly available maps.</p>
-                <p><b>UW Facilities Staff:</b> If you are part of a department that completed a GIS project with the FS GIS team you will find your maps by hovering over UW Facilities dropdown.  You will then see a list of departments, select your department from the list.  Even if you don’t have a department specific project, clicking All Facilities will provide you with access to maps that are available to the entire organization.</p>
-                <p>The last link, Facilities Home, will take you to the UW Facilities homepage. From there you can submit a request for service and view other services and tools provided by UW Facilities. </p>
-                <p>In the top right corner of every page of this dashboard, you will find a link labelled Facilities GIS Home. That link will take you back to this page.</p>
-                
-                <h2>What is GIS (Geographic Information System)?</h2>
-
-                <p>A Geographic Information System (GIS) lets us visualize, question, analyze, and interpret data to understand relationships, patterns, and trends.</p>
-                <p>GIS is widely used to optimize maintenance schedules and better inform decision makers by providing actionable spatial information.  If you want to learn more about GIS, please use this link to go to the <a href="http://www.esri.com/what-is-gis" target="_blank">ESRI</a> web page on the topic.</p>
-
-                <h2>Why does UW Facilities use GIS?</h2>
-
-                <p>With GIS, it is possible to develop spatial tools and applications that effectively support the core business activities of University of Washington Facilities through high quality spatial data and integration with other business systems.</p>
-
-                <h2>Questions or Comments?</h2>
-
-                <p>If you have any questions or comments about the maps on this dashboard or if you are interested in starting a GIS project, please send an email to <a href="mailto:fsgis@uw.edu">FS GIS</a> and we will be happy to assist you.</p>
-            </div>
-        </div>
-    </div>
-</div>
+                      <p>If you have any questions or comments about the maps on this dashboard or if you are interested in starting a GIS project, please send an email to the <a href="mailto:fsgis@uw.edu">UW Facilities GIS team</a> and we will be happy to assist you.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
     </body>
 </html>
