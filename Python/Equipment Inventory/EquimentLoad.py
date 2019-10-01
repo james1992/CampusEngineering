@@ -28,9 +28,9 @@ import datetime
 ### Parameters
 ###
 
-CSV = r"C:\Users\jamesd26.NETID\Downloads\OASIS.csv"
+CSV = r"C:\Users\jamesd26\Desktop\OASIS.csv"
 
-ExcelLoadTable = r"Database Connections\FacilitiesServices.sde\EquipmentInventoryExcelLoad"
+ExcelLoadTable = r"Database Connections\FacilitiesServices.sde\EquipmentInventoryOASIS"
 ExcelLoadAttributes = ["AssetTag","OldAssetTag","Description","Manufacturer","Model","SerialNumber","Custodian","Building","Wing","Room","OtherLocation","Budget","DateReceived"]
 
 EquipmentFeatureClass = r"Database Connections\FacilitiesServices.sde\EquipmentInventory"
