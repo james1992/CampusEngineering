@@ -1,0 +1,6 @@
+UPDATE FA_FanFireAlarmInformation
+SET FA_FanFireAlarmInformation.DataOrder = FA_FanInformation.DataOrder
+FROM FA_FanFireAlarmInformation
+INNER JOIN 
+	FA_FanInformation
+ON FA_FanFireAlarmInformation.FanID = FA_FanInformation.FanID
