@@ -1,18 +1,18 @@
 -- =============================================
 -- Author:		Jay Dahlstrom
--- Create date: 5/1/2019
+-- Create date: 10/16/2019
 -- Description:	This TSQL is designed to be run through
 -- SQL Server agent on an hourly basis to update the
--- Air Handling Unit Progress and Air Handling Unit Building
--- Progress tables.  
+-- Air Handling Unit Building Progress table in the
+-- sysgen schema.  
 -- =============================================
 
 -- Define the working database
 
 USE CampusEngineeringOperations
 
--- Create a temporary table to hold confidence test maintenance most recent data
--- Table is automatically purged from tempdb after session, drop statement is there just in case to prevent errors.
+-- Create a temporary table to hold the current AHU inspection data
+-- Temp table is automatically purged from tempdb after session, drop statement is there just in case to prevent errors if a user runs the script multiple times.
 
 IF OBJECT_ID('tempdb.dbo.#AirHandlingUnitInspectionMostRecent') IS NOT NULL
 	DROP TABLE #AirHandlingUnitInspectionMostRecent
@@ -41,6 +41,9 @@ FROM    dbo.AIRHANDLINGUNITSINSPECTIONS
 -- The purpose of the where statement is to return only the most recent inspection for each asset
 WHERE   (OBJECTID IN (SELECT MAX(OBJECTID) AS OID FROM dbo.AIRHANDLINGUNITSINSPECTIONS AS ResultsMax GROUP BY REL_OBJECTID))
 GO
+
+-- Create a temporary table to hold the current AHU inspection progress data
+-- Temp table is automatically purged from tempdb after session, drop statement is there just in case to prevent errors if a user runs the script multiple times.
 
 IF OBJECT_ID('tempdb.dbo.#AirHandlingUnitInspectionProgress') IS NOT NULL
 	DROP TABLE #AirHandlingUnitInspectionProgress
@@ -129,34 +132,37 @@ FROM (SELECT dbo.AIRHANDLINGUNITS.OBJECTID,
 		#AirHandlingUnitInspectionMostRecent ON dbo.AIRHANDLINGUNITS.OBJECTID = #AirHandlingUnitInspectionMostRecent.REL_OBJECTID) AS innertable
 GO
 
+-- Create a temporary table to hold the current AHU inspection data aggregated by building
+-- Temp table is automatically purged from tempdb after session, drop statement is there just in case to prevent errors if a user runs the script multiple times.
+
 IF OBJECT_ID('tempdb.dbo.#AirHandlingUnitBuildingProgress') IS NOT NULL
 	DROP TABLE #AirHandlingUnitBuildingProgress
 
 CREATE TABLE #AirHandlingUnitBuildingProgress 
 		(FacilityNumber nvarchar(5) NULL, 
-		 NumberComplete int NULL,
-		 TotalTestsToDate int NULL,
+		 NumberInspected int NULL,
+		 NumberDevices int NULL,
 		 last_edited_date datetime2(7) NULL)
 GO
 
 INSERT INTO #AirHandlingUnitBuildingProgress
 SELECT      FacNum, 
-			SUM(InspectionCompleteCount) AS NumberComplete, 
-			COUNT(OBJECTID) AS TotalTestsToDate, 
+			SUM(InspectionCompleteCount) AS NumberInspected, 
+			COUNT(OBJECTID) AS NumberDevices, 
 			MIN(last_edited_date) AS LastEdited
 FROM        #AirHandlingUnitInspectionProgress
 GROUP BY FacNum
 GO
 
-TRUNCATE TABLE AirHandlingUnitsBuildingProgress
+TRUNCATE TABLE sysgen.AirHandlingUnitsBuildingProgress
 GO
 
-INSERT INTO AirHandlingUnitsBuildingProgress
-SELECT dbo.ViewUniversityBuildings.FacilityNumber, 
+INSERT INTO sysgen.AirHandlingUnitsBuildingProgress
+SELECT	dbo.ViewUniversityBuildings.FacilityNumber, 
 		dbo.ViewUniversityBuildings.FacilityName, 
-		#AirHandlingUnitBuildingProgress.NumberComplete,
-		#AirHandlingUnitBuildingProgress.TotalTestsToDate,
-		#AirHandlingUnitBuildingProgress.NumberComplete / CAST(#AirHandlingUnitBuildingProgress.TotalTestsToDate AS FLOAT) AS PercentComplete,
+		#AirHandlingUnitBuildingProgress.NumberDevices,
+		#AirHandlingUnitBuildingProgress.NumberInspected,
+		#AirHandlingUnitBuildingProgress.NumberInspected / CAST(#AirHandlingUnitBuildingProgress.NumberDevices AS FLOAT) AS PercentComplete,
 		#AirHandlingUnitBuildingProgress.last_edited_date,
 		dbo.ViewUniversityBuildings.SHAPE
 FROM dbo.ViewUniversityBuildings INNER JOIN
