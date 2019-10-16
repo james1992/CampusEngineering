@@ -1,11 +1,12 @@
 -- =============================================
 -- Author:		Jay Dahlstrom
--- Create date: 1/28/2019
+-- Create date: 10/15/2019
 -- Description:	This TSQL is designed to be run through
 -- SQL Server agent on an hourly basis to update the
 -- Confidence Test Maintenance tables.  This replaces
 -- all of the views that previously supported the web maps
--- with only the two tables produced by this script.
+-- with only the two tables produced by this script in the
+-- sysgen schema.
 -- =============================================
 
 -- Define the working database
@@ -44,10 +45,10 @@ GO
 -- Truncate ConfidenceTestMaintenanceProgress table and then populate with new values
 -- These are the points on the map.
 
-TRUNCATE TABLE ConfidenceTestsMaintenanceProgress
+TRUNCATE TABLE sysgen.ConfidenceTestsMaintenanceProgressSystems
 GO
 
-INSERT INTO dbo.ConfidenceTestsMaintenanceProgress
+INSERT INTO sysgen.ConfidenceTestsMaintenanceProgressSystems
 
 SELECT      OBJECTID, 
 			System, 
@@ -125,7 +126,7 @@ SELECT      FacilityNumber,
 			SUM(TestCompleteCount) AS NumberComplete, 
 			COUNT(TestStatus) AS TotalTestsToDate, 
 			MIN(last_edited_date) AS LastEdited
-FROM        dbo.ConfidenceTestsMaintenanceProgress
+FROM        sysgen.ConfidenceTestsMaintenanceProgressSystems
 WHERE TestStatus <> 'Test not Due Yet'
 GROUP BY FacilityNumber, DocumentStorage
 GO
@@ -133,10 +134,10 @@ GO
 -- Truncate ConfidenceTestMaintenanceBuildingProgress table and then populate with new values
 -- There are the buildings on the map.
 
-TRUNCATE TABLE ConfidenceTestsMaintenanceBuildingProgress
+TRUNCATE TABLE sysgen.ConfidenceTestsMaintenanceProgressBuildings
 GO
 
-INSERT INTO dbo.ConfidenceTestsMaintenanceBuildingProgress
+INSERT INTO sysgen.ConfidenceTestsMaintenanceProgressBuildings
 
 SELECT	dbo.ViewUniversityBuildings.FacilityNumber, 
 		dbo.ViewUniversityBuildings.FacilityName, 

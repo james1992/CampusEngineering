@@ -1,11 +1,12 @@
 -- =============================================
 -- Author:		Jay Dahlstrom
--- Create date: 1/28/2019
+-- Create date: 10/15/2019
 -- Description:	This TSQL is designed to be run through
 -- SQL Server agent on an hourly basis to update the
 -- Confidence Test Annual tables.  This replaces
 -- all of the views that previously supported the web maps
--- with only the two tables produced by this script.
+-- with only the two tables produced by this script in the
+-- sysgen schema.
 -- =============================================
 
 -- Define the working database
@@ -46,42 +47,41 @@ GO
 -- Truncate ConfidenceTestProgress table and then populate with new values
 -- These are the points on the map.
 
-TRUNCATE TABLE ConfidenceTestsProgress
+TRUNCATE TABLE sysgen.ConfidenceTestsProgressSystems
 GO
 
-INSERT INTO ConfidenceTestsProgress
+INSERT INTO sysgen.ConfidenceTestsProgressSystems
 
-SELECT OBJECTID, 
-System, 
-TestStatus, 
-CASE WHEN TestStatus = 'Confidence Test Complete' THEN 1 ELSE 0 END AS TestCompleteCount,
-CurrentMonth, 
-FacilityNumber, 
-FacilityName, 
-SystemLocation, 
-Serves, 
-MonthDue, 
-DocumentStorage, 
-SystemDescription,  
-InspectionDate, 
-QuarterInspected,
-Notes, 
-UserID, 
-last_edited_date,
-SHAPE 
+SELECT	OBJECTID, 
+		System, 
+		TestStatus, 
+		CASE WHEN TestStatus = 'Confidence Test Complete' THEN 1 ELSE 0 END AS TestCompleteCount,
+		CurrentMonth, 
+		FacilityNumber, 
+		FacilityName, 
+		SystemLocation, 
+		Serves, 
+		MonthDue, 
+		DocumentStorage, 
+		SystemDescription,  
+		InspectionDate, 
+		QuarterInspected,
+		Notes, 
+		UserID, 
+		last_edited_date,
+		SHAPE 
 
 FROM  (SELECT	dbo.CONFIDENCETESTS.OBJECTID, 
 				dbo.CONFIDENCETESTS.System, 
 				-- Determine if the most recent inspection date is in compliance or not.
-				CASE WHEN InspectionResult = 'Yellow (Maintenance Required)' THEN 'Maintenance Required' 
-				WHEN InspectionResult = 'Red (System Not Operational)' THEN 'Maintenance Required' 
-				WHEN YEAR(GETDATE()) - YEAR(InspectionDate) = 0 THEN 'Confidence Test Complete' 
-				WHEN MONTH(GETDATE()) = MonthDue THEN 'Confidence Test Due' 
-				WHEN MONTH(GETDATE()) > MonthDue AND YEAR(GETDATE()) - YEAR(InspectionDate) = 1 THEN 'Confidence Past Due' 
-				WHEN MONTH(GETDATE()) < MonthDue AND YEAR(GETDATE()) - YEAR(InspectionDate) = 1 THEN 'Confidence Test Complete' 
-				WHEN YEAR(GETDATE()) - YEAR(InspectionDate) > 1 THEN 'Confidence Past Due' 
-				WHEN InspectionDate IS NULL THEN 'No Previously Recorded Tests' END AS TestStatus, 
-
+				CASE	WHEN InspectionResult = 'Yellow (Maintenance Required)' THEN 'Maintenance Required' 
+						WHEN InspectionResult = 'Red (System Not Operational)' THEN 'Maintenance Required' 
+						WHEN YEAR(GETDATE()) - YEAR(InspectionDate) = 0 THEN 'Confidence Test Complete' 
+						WHEN MONTH(GETDATE()) = MonthDue THEN 'Confidence Test Due' 
+						WHEN MONTH(GETDATE()) > MonthDue AND YEAR(GETDATE()) - YEAR(InspectionDate) = 1 THEN 'Confidence Past Due' 
+						WHEN MONTH(GETDATE()) < MonthDue AND YEAR(GETDATE()) - YEAR(InspectionDate) = 1 THEN 'Confidence Test Complete' 
+						WHEN YEAR(GETDATE()) - YEAR(InspectionDate) > 1 THEN 'Confidence Past Due' 
+						WHEN InspectionDate IS NULL THEN 'No Previously Recorded Tests' END AS TestStatus, 
 				MONTH(GETDATE()) AS CurrentMonth, 
 				dbo.CONFIDENCETESTS.FacNum AS FacilityNumber, 
 				dbo.CONFIDENCETESTS.FacName AS FacilityName, 
@@ -123,17 +123,17 @@ SELECT      FacilityNumber,
 			SUM(TestCompleteCount) AS NumberComplete, 
 			COUNT(OBJECTID) AS TotalTestsToDate, 
 			MIN(last_edited_date) AS LastEdited
-FROM        dbo.ConfidenceTestsProgress
+FROM        sysgen.ConfidenceTestsProgressSystems
 GROUP BY FacilityNumber, DocumentStorage
 GO
 
 -- Truncate ConfidenceTestBuildingProgress table and then populate with new values
 -- These are the buildings on the map.
 
-TRUNCATE TABLE ConfidenceTestsBuildingProgress
+TRUNCATE TABLE sysgen.ConfidenceTestsProgressBuildings
 GO
 
-INSERT INTO dbo.ConfidenceTestsBuildingProgress
+INSERT INTO sysgen.ConfidenceTestsProgressBuildings
 
 SELECT	dbo.ViewUniversityBuildings.FacilityNumber, 
 		dbo.ViewUniversityBuildings.FacilityName, 
